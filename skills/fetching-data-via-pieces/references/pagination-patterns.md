@@ -3,8 +3,8 @@
 ## Contents
 
 - [Salesforce — `@activepieces/piece-salesforce`](#salesforce--activepiecespiece-salesforce) — `run_query` with SOQL LIMIT/OFFSET; keyset workaround for tables >2 000 rows.
-- [Airtable — `@activepieces/piece-airtable`](#airtable--activepiecespiece-airtable) — single-page `airtable_find_record`; multi-page requires a CODE step against the Airtable API.
-- [HubSpot — `@activepieces/piece-hubspot`](#hubspot--activepiecespiece-hubspot) — piece action returns one page only; multi-page requires a CODE step using the HubSpot CRM Search API.
+- [Airtable — `@activepieces/piece-airtable`](#airtable--activepiecespiece-airtable) — single-page `airtable_find_record`; multi-page uses the piece's `custom_api_call` with the `offset` token per call.
+- [HubSpot — `@activepieces/piece-hubspot`](#hubspot--activepiecespiece-hubspot) — piece action returns one page only; multi-page uses the piece's `custom_api_call` against CRM Search with the `after` cursor per call.
 - [Notion — `@activepieces/piece-notion`](#notion--activepiecespiece-notion) — `notion-find-database-item` paginates internally; use date/ID range filters for large tables.
 - [Postgres — `@activepieces/piece-postgres`](#postgres--activepiecespiece-postgres) — `run-query` with parameterized LIMIT/OFFSET and an agent-controlled loop.
 - [Google Sheets — `@activepieces/piece-google-sheets`](#google-sheets--activepiecespiece-google-sheets) — `find_rows` with `startingRow`/`numberOfRows` props for explicit row windows.
@@ -43,13 +43,13 @@ while True:
 
 Recommended action: `airtable_find_record` (finds records matching a field/value filter). The piece has no general list-all action — use `find-record` with an empty or broad `searchValue` to retrieve a first page, then walk pages via the Airtable `offset` token.
 
-**Important:** The Airtable AP action does not expose an `offset` prop. The action fetches one page internally. To paginate, call the Airtable REST API directly inside a CODE step, or ask the user whether a full-table export is really needed.
+**Important:** The Airtable AP action does not expose an `offset` prop. The action fetches one page internally. To paginate, sample the piece's `custom_api_call` action against `GET /{baseId}/{tableId}` (it reuses the connection's auth), or ask the user whether a full-table export is really needed.
 
-If the table is small enough to fit in one response, use `airtable_find_record` with a catch-all filter. For larger tables, the recommended pattern is to build the pagination loop in a CODE step that calls the Airtable API directly with the `offset` token returned in each response.
+If the table is small enough to fit in one response, use `airtable_find_record` with a catch-all filter. For larger tables, sample `custom_api_call` once per page, passing the `offset` token returned in each response as the next call's `offset` query parameter; stop when a response has no `offset`.
 
 ```python
 # Single-page fetch via the piece — works for tables < AP_MAX_FILE_SIZE_MB.
-# For multi-page needs, write a CODE step that calls the Airtable API directly.
+# For multi-page needs, sample custom_api_call once per page with the offset token.
 # piece @activepieces/piece-airtable 0.6.7 (verify at install time), action airtable_find_record, connection "Prod Airtable"
 page = sample({
     "base": "<base-id>",          # Airtable base ID (starts with "app")
@@ -66,7 +66,7 @@ records = page  # list of AirtableRecord dicts
 
 Recommended action: `find-contact`, `find-deal`, `find-company`, etc. Each uses `doSearch` internally and returns up to `MAX_SEARCH_PAGE_SIZE` (100) results per call. The `after` cursor appears in the *response* (`paging.next.after`), not as an input prop.
 
-To walk all pages, call the action once per page and pass the cursor from the previous response back via the `after` field in props — but **the current AP action does not expose `after` as a prop**. Multi-page collection requires a CODE step that calls the HubSpot CRM Search API directly (`POST /crm/v3/objects/{objectType}/search` with `{"after": "<cursor>", "limit": 100}`).
+To walk all pages, call the action once per page and pass the cursor from the previous response back via the `after` field in props — but **the current AP action does not expose `after` as a prop**. Multi-page collection samples the piece's `custom_api_call` action once per page (`POST /crm/v3/objects/{objectType}/search` with `{"after": "<cursor>", "limit": 100}`), passing the previous response's `paging.next.after` as `after`.
 
 ```python
 # Multi-page HubSpot contacts — the piece's custom_api_call action reuses the
@@ -79,7 +79,7 @@ page1 = sample({
     "firstSearchPropertyValue": "@example.com",
 })
 contacts = page1.get("results", [])
-# For full pagination, build a CODE step using the HubSpot CRM Search API
+# For full pagination, sample custom_api_call against the HubSpot CRM Search API
 # and pass paging.next.after through successive calls.
 ```
 
