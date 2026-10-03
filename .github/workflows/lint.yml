@@ -12,6 +12,7 @@ jobs:
           done
       - name: Every SKILL.md has name and description frontmatter
         run: |
+          shopt -s nullglob
           status=0
           for f in skills/*/SKILL.md; do
             dir=$(basename "$(dirname "$f")")
@@ -22,4 +23,4 @@ jobs:
           exit $status
       - name: No hermes-only material
         run: |
-          ! grep -rnE 'PLATFORM_[A-Z_]+|ACTIVEPIECES_[A-Z_]+|requestActivepiecesToken|ask_user_question|set_goal|delegate_task|codingAgentSessionId|coding_agent_session_id|gql\.py|invoke_action\.py|the platform piece|\bMarcus\b' skills/ README.md
+          if grep -rnE 'PLATFORM_[A-Z_]+|ACTIVEPIECES_[A-Z_]+|requestActivepiecesToken|ask_user_question|set_goal|delegate_task|codingAgentSessionId|coding_agent_session_id|gql\.py|invoke_action\.py|the platform piece|\bMarcus\b' skills/ README.md; then exit 1; fi
