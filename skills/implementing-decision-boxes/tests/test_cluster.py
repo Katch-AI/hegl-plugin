@@ -1,3 +1,4 @@
+import io
 import json
 
 import pytest
@@ -167,3 +168,38 @@ def test_request_targets_the_proxy_with_the_key():
 def test_proxy_flags_parse():
     args = cluster.parse_args(REQUIRED + ["--proxy-url", "https://proxy.example", "--api-key", "sk-test"])
     assert (args.proxy_url, args.api_key) == ("https://proxy.example", "sk-test")
+
+
+def test_a_proxy_error_exits_with_its_status_and_body(monkeypatch):
+    def refuse(request, timeout):
+        raise cluster.HTTPError(request.full_url, 401, "Unauthorized", {}, io.BytesIO(b"key expired"))
+    monkeypatch.setattr(cluster, "urlopen", refuse)
+
+    with pytest.raises(SystemExit) as exit_info:
+        cluster.http_client("https://proxy.example", "sk-test")("/v1/chat/completions", {})
+
+    assert "401" in str(exit_info.value.code) and "key expired" in str(exit_info.value.code)
+
+
+def test_main_sends_every_call_through_the_flagged_proxy(tmp_path, monkeypatch):
+    clients, paths = [], []
+
+    def fake_client(proxy_url, api_key):
+        clients.append((proxy_url, api_key))
+
+        def post(path, body):
+            paths.append(path)
+            if path == "/typesafe/v1/systemone":
+                return {"answers": choice("wrong_total")}
+            categories = [{"key": key, **category, "merged": []} for key, category in TAXONOMY.items()]
+            return {"choices": [{"message": {"content": json.dumps({"categories": categories})}}]}
+        return post
+    monkeypatch.setattr(cluster, "http_client", fake_client)
+    (tmp_path / "rows.jsonl").write_text(json.dumps({"id": "1", "text": "total should be 1500"}) + "\n")
+    (tmp_path / "t.json").write_text(json.dumps(TAXONOMY))
+
+    cluster.main(["--proxy-url", "https://proxy.example", "--api-key", "sk-test", "--input", str(tmp_path / "rows.jsonl"),
+                  "--purpose", "p", "--out", str(tmp_path / "o.jsonl"), "--taxonomy", str(tmp_path / "t.json")])
+
+    assert clients == [("https://proxy.example", "sk-test")]
+    assert set(paths) == {"/typesafe/v1/systemone", "/v1/chat/completions"}

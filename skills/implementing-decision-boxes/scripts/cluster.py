@@ -7,6 +7,7 @@ import argparse
 import json
 import os
 import sys
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 OTHER = "other"
@@ -198,8 +199,11 @@ def build_request(proxy_url, api_key, path, body):
 
 def http_client(proxy_url, api_key):
     def post(path, body):
-        with urlopen(build_request(proxy_url, api_key, path, body), timeout=300) as response:
-            return json.load(response)
+        try:
+            with urlopen(build_request(proxy_url, api_key, path, body), timeout=300) as response:
+                return json.load(response)
+        except HTTPError as error:
+            sys.exit(f"proxy returned {error.code} for {path}: {error.read().decode(errors='replace')}")
     return post
 
 
