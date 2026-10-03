@@ -27,4 +27,5 @@ jobs:
           exit $status
       - name: No hermes-only material
         run: |
-          if grep -rnE 'PLATFORM_[A-Z_]+|ACTIVEPIECES_[A-Z_]+|requestActivepiecesToken|ask_user_question|set_goal|delegate_task|codingAgentSessionId|coding_agent_session_id|gql\.py|invoke_action\.py|the platform piece|\bMarcus\b' skills/ README.md; then exit 1; fi
+          files="skills/"; [ -f README.md ] && files="$files README.md"
+          if grep -rnE 'PLATFORM_[A-Z_]+|ACTIVEPIECES_[A-Z_]+|requestActivepiecesToken|ask_user_question|set_goal|delegate_task|codingAgentSessionId|coding_agent_session_id|gql\.py|invoke_action\.py|the platform piece|\bMarcus\b' $files; then exit 1; fi

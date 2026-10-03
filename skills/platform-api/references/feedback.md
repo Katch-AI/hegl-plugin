@@ -16,7 +16,7 @@ Feedback is a real-world outcome tied to a run: right or wrong, and ideally whic
 | CRM status push (a webhook when a stage flips) | Piece trigger on the record; branch on terminal stages only. | `DIRECT` |
 | Chat reaction (Slack 👍/👎) | `reaction_added` trigger filtered to an allowlist; ignore the bot's own reactions. | `DIRECT` |
 | Reply to email sent from the user's own mailbox | Gmail/Outlook trigger, then the Hegl LLM piece's `jev_decision` (a `noul` for is-feedback, a `choice` for polarity) or `completions`; a CODE step buckets the probability into `confidence`. Only when Hegl email is not an option. | bucketed |
-| External webhook or widget | AP `WEBHOOK` trigger; the caller posts `{flow_run_id, positive, text}`. Needs a `feedback_agent`-scoped token instead of the piece connection. | `DIRECT` |
+| External webhook or widget | AP `WEBHOOK` trigger; the caller posts `{flow_run_id, positive, text}`. Needs a `feedback_agent`-scoped token, which there is no tool to mint: ask Hegl for one with `report_platform_issue` (category `MISSING_API`) and tell the user this source waits on it. | `DIRECT` |
 
 ## Correlation
 

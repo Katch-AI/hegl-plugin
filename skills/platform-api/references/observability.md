@@ -14,4 +14,4 @@ A finished run that failed only on bookkeeping, or one the user wants reclassifi
 
 ## Credits
 
-`get_flow_run`'s `llmUsage`, and through `graphql` `findCodingAgentSession(id:) { llmUsage { credits requests promptTokens completionTokens cacheReadTokens cacheCreationTokens syncedAt } }` for the `sessionId` that `issue_llm_proxy_credentials` returned: the LLM credits attributed to that run or session, summed by a sweep that runs every few minutes (`syncedAt` null = nothing swept yet; the token/request counts arrive as strings).
+Through `graphql`, `findFlowRun(id:) { llmUsage { … } }` for a run and `findCodingAgentSession(id:) { llmUsage { … } }` for the `sessionId` that `issue_llm_proxy_credentials` returned give `{ credits requests promptTokens completionTokens cacheReadTokens cacheCreationTokens syncedAt }`: the LLM credits attributed to that run or session, summed by a sweep that runs every few minutes (`syncedAt` null = nothing swept yet; the token/request counts arrive as strings). A session's number includes every call made with the key issued for it.
