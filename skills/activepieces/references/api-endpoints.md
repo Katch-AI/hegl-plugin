@@ -5,7 +5,7 @@
 | Endpoint | Tool |
 |---|---|
 | `GET /pieces` | `list_activepieces_pieces` |
-| `GET /pieces/{name}`, `GET /pieces/{scope}/{name}` | `get_activepieces_piece(piece_name, version?)` |
+| `GET /pieces/{name}`, `GET /pieces/{scope}/{name}` | `get_activepieces_piece(piece_name, version?)` (`action:` / `trigger:` narrow to one) |
 | `POST /pieces/options` | `get_activepieces_piece_options` |
 | `GET /app-connections` | `list_activepieces_connections(piece_name?)` |
 | `GET /flows` | `list_activepieces_flows` |

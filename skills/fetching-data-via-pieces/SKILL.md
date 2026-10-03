@@ -10,7 +10,7 @@ Read records by running one piece action on the agent's scratch flow. Every call
 ## The loop
 
 1. `get_agent` → `scratchActivepiecesFlowId`, the `flow_id` below. `get_activepieces_flow(flow_id)` → `versionId`, the draft you sample.
-2. Build the step: `list_activepieces_connections(piece_name)` → the connection's `externalId`; `get_activepieces_piece(piece_name)` → `version` and `actions[<action>].props` (never guess prop names); `get_activepieces_piece_options(…)` for a dropdown's values.
+2. Build the step: `list_activepieces_connections(piece_name)` → the connection's `externalId`; `get_activepieces_piece(piece_name, action: "<action>")` → `version` and `actions[<action>].props` (never guess prop names); `get_activepieces_piece_options(…)` for a dropdown's values.
 3. `apply_activepieces_flow_operation(flow_id, "ADD_ACTION", request)`: one `PIECE` step named `inv_<uuid>` with `parentStep: "trigger"`, the action's props in `settings.input` plus `auth: "{{connections['<externalId>']}}"`, and one `{"type": "MANUAL"}` `propertySettings` entry per input key. An unknown `parentStep` still answers 200; check the step is in the returned tree.
 4. `sample_activepieces_step(flow_version_id, step_name)` → a run id. Poll `get_activepieces_flow_run(flow_run_id)` until `SUCCEEDED`, `FAILED`, `TIMEOUT` or `STOPPED`, then read `steps.inv_<uuid>.output` (`.errorMessage` on failure). An output over 512KB comes back as `{fileId, size, url}`: fetch the `url` directly.
 5. `apply_activepieces_flow_operation(flow_id, "DELETE_ACTION", {"names": ["inv_<uuid>"]})`, also after a failure, and re-fetch the flow to confirm it is gone.
