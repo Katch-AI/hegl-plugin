@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import plugin, { HeglPlugin } from './plugins/hegl.js';
+import v2Plugin, { HeglPlugin, SKILLS_DIR, createSetup } from './plugins/hegl.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const skillsDir = path.resolve(here, '../skills');
@@ -33,24 +34,62 @@ test('V1 config hook does not override a user-defined hegl server', async () => 
   assert.equal(config.mcp.hegl.url, 'https://staging.example/mcp');
 });
 
-test('V2 setup registers each skills/*/SKILL.md through ctx.skill.transform', async (t) => {
-  const fixtureDir = path.join(skillsDir, 'zz-test-fixture');
-  fs.mkdirSync(fixtureDir);
-  t.after(() => fs.rmSync(fixtureDir, { recursive: true, force: true }));
-  fs.writeFileSync(path.join(fixtureDir, 'SKILL.md'), '---\nname: zz-test-fixture\ndescription: Use when testing\n---\nBody\n');
-  const added = [];
-  const ctx = { skill: { transform: async (fn) => fn({ add: (s) => added.push(s) }) } };
-  await plugin.setup(ctx);
-  assert.equal(plugin.id, 'hegl');
-  assert.deepEqual(added.find((s) => s.id === 'zz-test-fixture'), {
-    id: 'zz-test-fixture',
-    name: 'zz-test-fixture',
-    description: 'Use when testing',
-    path: path.join(fixtureDir, 'SKILL.md'),
-    content: 'Body\n',
-  });
+test('config hook leaves a V2-shaped config untouched', async () => {
+  const plugin = await HeglPlugin({});
+  const config = { skills: [] };
+  await plugin.config(config);
+  assert.deepEqual(config, { skills: [] });
 });
 
-test('V2 setup returns quietly on a V1-shaped ctx', async () => {
-  await plugin.setup({});
+test('default skills dir is ../../skills relative to the plugin file', () => {
+  assert.equal(SKILLS_DIR, skillsDir);
+  assert.equal(v2Plugin.id, 'hegl');
+});
+
+const makeSkillsDir = (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'hegl-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  return dir;
+};
+
+const writeSkill = (dir, name, text) => {
+  fs.mkdirSync(path.join(dir, name));
+  fs.writeFileSync(path.join(dir, name, 'SKILL.md'), text);
+};
+
+const recordingCtx = () => {
+  const added = [];
+  const ctx = { skill: { transform: async (fn) => fn({ add: (s) => added.push(s) }) } };
+  return { ctx, added };
+};
+
+test('V2 setup registers each SKILL.md through ctx.skill.transform', async (t) => {
+  const dir = makeSkillsDir(t);
+  writeSkill(dir, 'alpha', '---\nname: alpha\ndescription: Use when testing\n---\nBody\n');
+  const { ctx, added } = recordingCtx();
+  await createSetup(dir)(ctx);
+  assert.deepEqual(added, [{
+    id: 'alpha',
+    name: 'alpha',
+    description: 'Use when testing',
+    path: path.join(dir, 'alpha', 'SKILL.md'),
+    content: 'Body\n',
+  }]);
+});
+
+test('V2 setup skips an unreadable SKILL.md and keeps the rest', async (t) => {
+  const dir = makeSkillsDir(t);
+  writeSkill(dir, 'good', '---\nname: good\n---\nOk\n');
+  fs.mkdirSync(path.join(dir, 'bad', 'SKILL.md'), { recursive: true });
+  t.mock.method(console, 'error', () => {});
+  const { ctx, added } = recordingCtx();
+  await createSetup(dir)(ctx);
+  assert.deepEqual(added.map((s) => s.id), ['good']);
+});
+
+test('V2 setup returns before touching a V1-shaped ctx', async (t) => {
+  const errors = t.mock.method(console, 'error', () => {});
+  await v2Plugin.setup({});
+  await v2Plugin.setup({ skill: {} });
+  assert.equal(errors.mock.callCount(), 0);
 });

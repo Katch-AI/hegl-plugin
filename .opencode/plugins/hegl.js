@@ -48,30 +48,34 @@ const extractAndStripFrontmatter = (content) => {
   return { frontmatter, content: match[2] };
 };
 
-const readSkills = () => {
-  if (!fs.existsSync(SKILLS_DIR)) return [];
+const readSkills = (dir) => {
+  if (!fs.existsSync(dir)) return [];
   const skills = [];
-  for (const entry of fs.readdirSync(SKILLS_DIR, { withFileTypes: true })) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (!entry.isDirectory() || entry.name.startsWith('.')) continue;
-    const skillPath = path.join(SKILLS_DIR, entry.name, 'SKILL.md');
+    const skillPath = path.join(dir, entry.name, 'SKILL.md');
     if (!fs.existsSync(skillPath)) continue;
-    const { frontmatter, content } = extractAndStripFrontmatter(fs.readFileSync(skillPath, 'utf8'));
-    skills.push({
-      id: entry.name,
-      name: frontmatter.name || entry.name,
-      ...(frontmatter.description ? { description: frontmatter.description } : {}),
-      path: skillPath,
-      content,
-    });
+    try {
+      const { frontmatter, content } = extractAndStripFrontmatter(fs.readFileSync(skillPath, 'utf8'));
+      skills.push({
+        id: entry.name,
+        name: frontmatter.name || entry.name,
+        ...(frontmatter.description ? { description: frontmatter.description } : {}),
+        path: skillPath,
+        content,
+      });
+    } catch (err) {
+      console.error(`[hegl] skill "${entry.name}" unreadable, skipping:`, err);
+    }
   }
   return skills;
 };
 
-async function setup(ctx) {
+export const createSetup = (skillsDir) => async function setup(ctx) {
   // V1 also calls default.setup with a ctx lacking the skill domain; HeglPlugin serves V1.
   if (!ctx || !ctx.skill || typeof ctx.skill.transform !== 'function') return;
   try {
-    const skills = readSkills();
+    const skills = readSkills(skillsDir);
     await ctx.skill.transform((draft) => {
       // A throw escaping this callback makes the V2 host disable the whole plugin.
       for (const skill of skills) {
@@ -85,10 +89,10 @@ async function setup(ctx) {
   } catch (err) {
     console.error('[hegl] skill registration failed:', err);
   }
-}
+};
 
 export default {
   id: 'hegl',
   server: HeglPlugin,
-  setup,
+  setup: createSetup(SKILLS_DIR),
 };
