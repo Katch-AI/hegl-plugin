@@ -2,7 +2,7 @@
 
 Three worked examples, each self-contained. Copy, adapt the connection name and field list, run.
 
-**Prerequisite:** `sample(props)` below is one pass of the SKILL.md loop (`UPDATE_ACTION` the `inv_<uuid>` step's `input` to `props`, `sample_activepieces_step`, poll `get_activepieces_flow_run`, return `steps.inv_<uuid>.output`); write each output to a file and run the rest of the script over the files.
+**Prerequisite:** `sample(props)` below is one pass of the SKILL.md loop (`UPDATE_ACTION` the `inv_<uuid>` step with its full action body and `props` as `input`, `sample_activepieces_step`, poll `get_activepieces_flow_run`, return `steps.inv_<uuid>.output`). The step runs the piece and action the block's `# step: …` comment names: `ADD_ACTION` it on the first call and whenever the piece or action changes, after deleting the previous one; write each output to a file and run the rest of the script over the files.
 
 ## Contents
 

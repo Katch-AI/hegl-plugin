@@ -9,7 +9,7 @@
 - [Postgres — `@activepieces/piece-postgres`](#postgres--activepiecespiece-postgres) — `run-query` with parameterized LIMIT/OFFSET and an agent-controlled loop.
 - [Google Sheets — `@activepieces/piece-google-sheets`](#google-sheets--activepiecespiece-google-sheets) — `find_rows` with `startingRow`/`numberOfRows` props for explicit row windows.
 
-Each section gives the recommended action, the pagination mechanism the agent controls via `props`, and a loop to follow. In the loops, `sample(props)` is one pass of the SKILL.md loop (`UPDATE_ACTION` the `inv_<uuid>` step's `input` to `props`, `sample_activepieces_step`, poll `get_activepieces_flow_run`, return `steps.inv_<uuid>.output`).
+Each section gives the recommended action, the pagination mechanism the agent controls via `props`, and a loop to follow. In the loops, `sample(props)` is one pass of the SKILL.md loop (`UPDATE_ACTION` the `inv_<uuid>` step with its full action body and `props` as `input`, `sample_activepieces_step`, poll `get_activepieces_flow_run`, return `steps.inv_<uuid>.output`). The step runs the piece and action the block's `# piece …` comment names, or `custom_api_call` where the text says so: `ADD_ACTION` it on the first call and whenever the piece or action changes, after deleting the previous one.
 
 Versions are from the AP checkout at the time of writing. Flag any mismatch with `# verify at install time`.
 

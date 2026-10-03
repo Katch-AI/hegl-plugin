@@ -21,7 +21,7 @@ Make the first sample a handful of rows: it confirms the connection, the account
 
 ## Pagination
 
-One sample per page: `UPDATE_ACTION` the same step with the next offset, cursor or row window in its `input`, sample, read, repeat. Stop on an empty page or once you have the count the eval set needs. Per-piece props and ceilings (Salesforce's 2 000-row `OFFSET`; Airtable and HubSpot return one page only): `references/pagination-patterns.md`. A labeled pull with an 80/20 split, a two-source join, and a connection check: `references/example-ingestions.md`.
+One sample per page: `UPDATE_ACTION` the same step with its full action body (the call replaces the whole action) and the next offset, cursor or row window in `input`, sample, read, repeat. Stop on an empty page or once you have the count the eval set needs. Per-piece props and ceilings (Salesforce's 2 000-row `OFFSET`; Airtable and HubSpot return one page only): `references/pagination-patterns.md`. A labeled pull with an 80/20 split, a two-source join, and a connection check: `references/example-ingestions.md`.
 
 ## Keep the rows out of your context
 
