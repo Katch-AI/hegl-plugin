@@ -48,7 +48,7 @@ Write `plan.md` and push it (`update_agent_documents(flow_description:)`):
 
 - **Trigger**: source, event, and a table of the fields downstream steps read.
 - **One run, step by step**: a numbered plain-language walkthrough naming every box, pause, side effect, and what happens on failure.
-- **Diagram**: a Mermaid flowchart with every box, branch, and the finish and fail ends. Follow the `mermaid` skill and run `mermaid-lint` before pushing; a diagram that fails to parse shows as a code block.
+- **Diagram**: a Mermaid flowchart with every box, branch, and the finish and fail ends. Follow the `mermaid` skill; a diagram that fails to parse shows as a code block, so check the rendered Flow description on the agent page after pushing.
 
 Keep command-level detail (step JSON, prop names, sampled output shapes, stub bodies, the smoke-test payload) in a local `implementation.md`. Sample every piece output you will reference (`activepieces` → "Discovering a piece's I/O"); a wrong field name resolves to an empty string with no error.
 
@@ -57,9 +57,9 @@ Keep command-level detail (step JSON, prop names, sampled output shapes, stub bo
 Work through the list in order:
 
 1. `install_activepieces_piece` per piece, poll `get_activepieces_piece_install` until `ready`. Never for the Hegl pieces; they are built in.
-2. `request_connection` per piece with auth (never for the Hegl pieces; LLM calls go through the Hegl LLM piece and need none). `request_config` for tenant settings such as a base URL. Then tell the user, in plain words, what to connect on the agent's page in the dashboard, and poll `get_agent` until the requirement's `status` is `SATISFIED`. The connection's `externalId` goes into every `auth` slot as `{{connections['<externalId>']}}`; read it with `list_activepieces_connections(piece_name)` or `graphql` `findAgent(id:) { connectionRequirements { pieceName connection { externalId } } }`.
+2. `request_connection` per piece with auth (never for the Hegl pieces; LLM calls go through the Hegl LLM piece and need none). `request_config` for tenant settings such as a base URL; poll `get_config_requirement` for the values. Then tell the user, in plain words, what to connect on the agent's page in the dashboard, and poll `get_agent` until the requirement's `status` is `SATISFIED`. Its `connection.externalId` goes into every `auth` slot as `{{connections['<externalId>']}}`.
 3. `create_decision_box` per box. Schemas lock here.
-4. `create_trigger_flow` per event source, poll `get_trigger_flow` until `ready`, then fill its AP flow (production trigger + `trigger_flow`) with `apply_activepieces_flow_operation` and `LOCK_AND_PUBLISH` with `"status": "DISABLED"` (Hegl enables it on publish; `ENABLED` makes the trigger fire now, and every event fails with no published flow). For inbound email pass `trigger_key: "inbound_email"` and do not fill it; Hegl provisions the body.
+4. `create_trigger_flow` per event source, poll `get_trigger_flow` until its `activepiecesStatus` is `ready`, then fill its AP flow (`activepiecesFlowId`; production trigger + `trigger_flow`) with `apply_activepieces_flow_operation` and `LOCK_AND_PUBLISH` with `"status": "DISABLED"` (Hegl enables it on publish; `ENABLED` makes the trigger fire now, and every event fails with no published flow). For inbound email pass `trigger_key: "inbound_email"` and do not fill it; Hegl provisions the body.
 5. `create_flow` for the candidate, poll `get_agent` until its `activepiecesStatus` is `ready`, then `apply_activepieces_flow_operation(type: IMPORT_FLOW)` the full tree into its AP flow (`activepiecesFlowId`; `activepieces/references/flow-json-shape.md`). Re-fetch with `get_activepieces_flow` and check no step is `valid: false`.
 6. `wire_decision_box` per box with the CODE step's name as `external_id`.
 7. `LOCK_AND_PUBLISH` the candidate. An unpublished flow answers 410.
@@ -86,7 +86,7 @@ Trigger through Hegl, never by POSTing to the AP webhook (that skips the `FlowTr
 |---|---|
 | `dispatchError` set | candidate not `ENABLED` (410), or AP unreachable |
 | dispatched but no AP run | the trigger's `auth` is not the Hegl connection, so the signature check failed |
-| dispatched, `flowRuns: []` | `start_flow_run` failed inside AP (usually `flowTriggerId` resolving to `""`); `list_activepieces_flow_runs(flow_id)` and read `steps.<name>.errorMessage` with `get_activepieces_flow_run` |
+| dispatched, `flowRuns: []` | `start_flow_run` failed inside AP (usually `flowTriggerId` resolving to `""`); `list_activepieces_flow_runs` with the candidate's `activepiecesFlowId` and read `steps.<name>.errorMessage` with `get_activepieces_flow_run` |
 | first step failed | wrong `auth` on `start_flow_run`, or the Hegl connection was never provisioned (`get_agent` shows `platformConnectionExternalId` null) |
 | record step failed | wrong `decisionBoxId` or `flowId` |
 | `record_artifact` failed | body failed AsciiDoc validation; fix the formatter |
