@@ -44,7 +44,7 @@ request_connection(
 )
 ```
 
-`allowedAuthTypes` filters the methods the customer sees; pass exactly what
+`allowed_auth_types` filters the methods the customer sees; pass exactly what
 the API accepts. One requirement per distinct API, even if two share an auth
 style.
 
@@ -157,7 +157,7 @@ protocol — belong in a sandbox step instead (`activepieces` →
 
 ## Per-auth-shape notes
 
-| Shape | allowedAuthTypes | Customer enters | Step extras |
+| Shape | allowed_auth_types | Customer enters | Step extras |
 |---|---|---|---|
 | API key | `["SECRET_TEXT"]` | the key | `auth_header_name`/`_prefix` if not `Authorization: Bearer` |
 | Basic | `["BASIC_AUTH"]` | username + password | none |

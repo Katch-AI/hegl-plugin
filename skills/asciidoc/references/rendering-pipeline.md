@@ -5,7 +5,7 @@ How AsciiDoc artifacts move from the agent-written body to the user's screen, wh
 ## Pipeline
 
 ```
-`record_artifact` action (flow runtime)
+record_artifact action (flow runtime)
        │
        ▼
 Asciidoctor.convert(safe: :secure, doctype: :article, standalone: false)
@@ -143,7 +143,7 @@ The Hegl piece's `record_artifact` action inside the flow (a flow-runtime action
 - Persists or upserts on `(flowRunId, name)`.
 - A body that fails validation makes the action throw, so the step fails loud.
 
-The runtime AP CODE piece downstream of the decision box should:
+The runtime steps downstream of the decision box:
 
 1. Transform the decision box's JSON output into AsciiDoc via the deterministic formatter.
 2. Run the `record_artifact` action.
