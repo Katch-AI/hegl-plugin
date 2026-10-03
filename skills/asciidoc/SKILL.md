@@ -20,7 +20,7 @@ Full allowlist and the security details: `references/rendering-pipeline.md`.
 ## Loop
 
 1. Write the formatter as a deterministic function (no LLM calls).
-2. `validate_artifact(agent_id, body)` → `{valid, errors, warnings, renderedHtmlPreview}`. Fix warnings too; they are usually unresolved cross-references, malformed table cells, or unclosed delimiters.
+2. `validate_artifact(agent_id, body)` → `{valid, validationErrors, warnings, renderedHtmlPreview}`. Fix warnings too; they are usually unresolved cross-references, malformed table cells, or unclosed delimiters.
 3. Ship. At runtime `record_artifact` fails the step if the body does not validate.
 
 ## Conventions

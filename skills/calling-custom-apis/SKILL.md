@@ -67,7 +67,7 @@ Any other tenant config the custom API needs (e.g. a tenant/account id, a
 default query param) can be declared the same way — either more fields on
 the same `request_config` call, or a separate standalone `request_config` call
 (no `connection_requirement_id`) for config that isn't tied to this connection.
-See `platform-api`'s `graphql-mutations.md` → `requestConfig` for the full
+See the `request_config` tool (see `platform-api`) for the full
 argument/field reference and the standalone-vs-linked distinction. For a
 **non-secret** field you can derive from the API's public docs — the base
 URL, a header name, a fixed default — set its `value` in the `request_config`

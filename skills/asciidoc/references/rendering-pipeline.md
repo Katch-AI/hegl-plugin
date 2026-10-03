@@ -5,7 +5,7 @@ How AsciiDoc artifacts move from the agent-written body to the user's screen, wh
 ## Pipeline
 
 ```
-record_artifact(body)       piece action, flow_execution scope
+`record_artifact` action (flow runtime)
        │
        ▼
 Asciidoctor.convert(safe: :secure, doctype: :article, standalone: false)
@@ -129,7 +129,7 @@ validate_artifact(agent_id: "a-…", body: "= Title\n\nNOTE: …")
 - No persistence.
 - Returns:
   - `valid: true` iff Asciidoctor produced no `:ERROR`/`:FATAL`-severity log messages.
-  - `errors`: ERROR/FATAL Asciidoctor messages.
+  - `validationErrors`: ERROR/FATAL Asciidoctor messages.
   - `warnings`: WARN/INFO Asciidoctor messages (unresolved cross-references show up here).
   - `renderedHtmlPreview`: the sanitized HTML the runtime would store.
 
@@ -137,14 +137,14 @@ Iterate the formatter against this in development. Treat warnings as "fix before
 
 ### `record_artifact` — runtime
 
-The Hegl piece's `record_artifact` action inside the flow (a flow-runtime action, not a tool). Inputs: `flowRunId`, `name`, `title`, `body`.
+The Hegl piece's `record_artifact` action inside the flow (a flow-runtime action, not a tool).
 
-- Scope: `flow_execution`.
+- Props: `flowRunId` (from `start_flow_run`), `name`, `title`, `body`. Output: `{ artifactId }`.
 - Persists or upserts on `(flowRunId, name)`.
-- If the body fails validation at write time, `errors` is non-empty and `artifact` is `null` — the flow step fails loud.
+- A body that fails validation makes the action throw, so the step fails loud.
 
 The runtime AP CODE piece downstream of the decision box should:
 
 1. Transform the decision box's JSON output into AsciiDoc via the deterministic formatter.
-2. Run `record_artifact`.
-3. Treat a non-empty `errors` array as a hard failure of the step (don't swallow).
+2. Run the `record_artifact` action.
+3. A validation failure fails the step; fix the formatter.
