@@ -2,7 +2,7 @@
 
 What happens on one run. You never make these calls yourself; you compose the Hegl piece actions that do.
 
-1. A trigger flow's production trigger fires. Its `trigger_flow` action calls `triggerFlow(trigger, inputs)`; Hegl picks the published flow, inserts a `FlowTrigger`, and enqueues dispatch. Dispatch errors show up on `flowTrigger.dispatchError`, not in `errors`.
+1. A trigger flow's production trigger fires. Its `trigger_flow` action dispatches a run with `trigger` and `inputs`; Hegl picks the published flow, inserts a `FlowTrigger`, and enqueues dispatch. Dispatch errors show up on `flowTrigger.dispatchError`, not in `errors`.
 2. Dispatch POSTs `{ flow_trigger_id, trigger, inputs }` to the candidate flow's webhook with a signature header. The `marcus_triggered` trigger verifies it; unsigned calls are dropped and no run is created.
 3. `start_flow_run` (`flowTriggerId: "{{ trigger.output.body.flow_trigger_id }}"`, optional `tagline`) creates the `FlowRun` and returns `{ runId, flowRunId }`. `runId` goes to every lifecycle step as `activepiecesFlowRunId`; `flowRunId` (`fr-…`) goes to `record_artifact`, `send_email`, `await_user_input`, `record_feedback`.
 4. Each decision box: CODE step, then `record_decision_box_execution` with `decisionBoxId`, `flowId`, `activepiecesFlowRunId`, `inputs`, `outputs` (or `errorMessage`, `errorType`, `stackTrace`), `durationMs`. Schema violations are computed server-side and stored, never blocking. Hegl attributes the execution to the box's pinned iteration for this flow automatically.
