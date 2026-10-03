@@ -142,3 +142,28 @@ def test_run_asks_the_proposer_first_when_the_taxonomy_is_empty(tmp_path):
 
     assert set(taxonomy) == {"wrong_total"}
     assert len(jev.calls) == 1
+
+
+REQUIRED = ["--input", "r.jsonl", "--purpose", "p", "--out", "o.jsonl", "--taxonomy", "t.json"]
+
+
+@pytest.mark.parametrize("missing", ["--proxy-url", "--api-key"])
+def test_proxy_flags_are_required(missing):
+    flags = {"--proxy-url": "https://proxy.example", "--api-key": "sk-test"}
+    del flags[missing]
+    with pytest.raises(SystemExit):
+        cluster.parse_args(REQUIRED + [arg for pair in flags.items() for arg in pair])
+
+
+def test_request_targets_the_proxy_with_the_key():
+    request = cluster.build_request("https://proxy.example/", "sk-test", "/v1/chat/completions", {"a": 1})
+    assert request.full_url == "https://proxy.example/v1/chat/completions"
+    assert request.get_header("Authorization") == "Bearer sk-test"
+    assert request.get_header("User-agent") == "hegl-plugin-cluster/1.0"
+    assert request.get_header("X-litellm-tags") is None
+    assert json.loads(request.data) == {"a": 1}
+
+
+def test_proxy_flags_parse():
+    args = cluster.parse_args(REQUIRED + ["--proxy-url", "https://proxy.example", "--api-key", "sk-test"])
+    assert (args.proxy_url, args.api_key) == ("https://proxy.example", "sk-test")

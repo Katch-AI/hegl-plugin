@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Cluster rows of text into a named taxonomy: Jev assigns every row, an LLM proposes a category only when Jev abstains.
 
-cluster.py --input rows.jsonl --purpose "Which failure does this feedback report?" --out labels.jsonl --taxonomy taxonomy.json
+cluster.py --proxy-url URL --api-key KEY --input rows.jsonl --purpose "Which failure does this feedback report?" --out labels.jsonl --taxonomy taxonomy.json
 """
 import argparse
 import json
@@ -188,25 +188,28 @@ def consolidate(taxonomy, counts, *, examples, propose):
             for key, category in final.items()}
 
 
-def proxy_url():
-    return os.environ["HEGL_LLM_PROXY_URL"].rstrip("/")
-
-
-def post(path, body):
-    request = Request(proxy_url() + path, data=json.dumps(body).encode(), headers={
-        "Authorization": f"Bearer {os.environ['HEGL_LLM_PROXY_KEY']}",
+def build_request(proxy_url, api_key, path, body):
+    return Request(proxy_url.rstrip("/") + path, data=json.dumps(body).encode(), headers={
+        "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
         "User-Agent": "hegl-plugin-cluster/1.0",
     })
-    with urlopen(request, timeout=300) as response:
-        return json.load(response)
 
 
-def jev_http(state, questions):
-    return post("/typesafe/v1/systemone", {"model": JEV_MODEL, "state": state, "questions": questions})["answers"]
+def http_client(proxy_url, api_key):
+    def post(path, body):
+        with urlopen(build_request(proxy_url, api_key, path, body), timeout=300) as response:
+            return json.load(response)
+    return post
 
 
-def proposer_http(model, prompt, schema):
+def jev_http(post):
+    def jev(state, questions):
+        return post("/typesafe/v1/systemone", {"model": JEV_MODEL, "state": state, "questions": questions})["answers"]
+    return jev
+
+
+def proposer_http(post, model, prompt, schema):
     def propose(context):
         body = {"model": model, "messages": [{"role": "system", "content": prompt},
                                              {"role": "user", "content": json.dumps(context, indent=1)}],
@@ -220,6 +223,8 @@ def proposer_http(model, prompt, schema):
 
 def parse_args(argv):
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--proxy-url", required=True, help="proxyUrl from issue_llm_proxy_credentials")
+    parser.add_argument("--api-key", required=True, help="apiKey from issue_llm_proxy_credentials")
     parser.add_argument("--input", required=True, help="JSONL rows with an `id` and a `text` field; other fields join the state")
     parser.add_argument("--purpose", required=True, help="the Choice instructions, e.g. 'Which failure does this feedback report?'")
     parser.add_argument("--out", required=True, help="discovery labels (JSONL, appended per row; resumes on restart)")
@@ -236,16 +241,18 @@ def main(argv=None):
     args = parse_args(argv)
     rows = [json.loads(line) for line in open(args.input) if line.strip()]
     taxonomy = json.load(open(args.taxonomy)) if os.path.exists(args.taxonomy) else {}
-    propose = proposer_http(args.proposer_model, PROPOSER_PROMPT, PROPOSAL_SCHEMA)
-    taxonomy = run(rows, taxonomy, jev=jev_http, propose=propose, purpose=args.purpose, threshold=args.threshold,
+    post = http_client(args.proxy_url, args.api_key)
+    jev = jev_http(post)
+    propose = proposer_http(post, args.proposer_model, PROPOSER_PROMPT, PROPOSAL_SCHEMA)
+    taxonomy = run(rows, taxonomy, jev=jev, propose=propose, purpose=args.purpose, threshold=args.threshold,
                    out_path=args.out, sample_size=args.sample_size, max_categories=args.max_categories)
     labels = load_labels(args.out)
     counts = {key: sum(label["category"] == key for label in labels.values()) for key in taxonomy}
     examples = {key: [row.get("text") for row in rows if labels[row["id"]]["category"] == key][:3] for key in taxonomy}
     taxonomy = consolidate(taxonomy, counts, examples=examples,
-                           propose=proposer_http(args.proposer_model, CONSOLIDATE_PROMPT, CONSOLIDATE_SCHEMA))
+                           propose=proposer_http(post, args.proposer_model, CONSOLIDATE_PROMPT, CONSOLIDATE_SCHEMA))
     json.dump(taxonomy, open(args.taxonomy, "w"), indent=2)
-    final = relabel(rows, taxonomy, jev=jev_http, purpose=args.purpose, out_path=args.final or f"{args.out}.final.jsonl")
+    final = relabel(rows, taxonomy, jev=jev, purpose=args.purpose, out_path=args.final or f"{args.out}.final.jsonl")
     for key in taxonomy:
         print(f"{key}: {sum(label['category'] == key for label in final)}")
     print(f"{OTHER}: {sum(label['category'] == OTHER for label in final)}")

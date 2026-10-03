@@ -9,6 +9,12 @@ jobs:
         with: { node-version: 22 }
       - name: OpenCode plugin tests
         run: node --test .opencode/hegl.test.mjs
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Skill script tests
+        run: |
+          pip install pytest
+          python3 -m pytest skills/*/tests -q
       - name: Manifests parse
         run: |
           for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json .codex-plugin/plugin.json codex/mcp.json; do
