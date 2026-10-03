@@ -6,6 +6,8 @@ Add to `~/.config/opencode/opencode.json` (V1) or the V2 equivalent:
 { "plugin": ["hegl@git+https://github.com/Katch-AI/hegl-plugin.git"] }
 ```
 
+From a local checkout, use `"hegl@file:///absolute/path/to/hegl-plugin"` instead.
+
 Restart OpenCode. The plugin registers the Hegl skills and the `hegl` MCP server
 (`https://app.hegl.ai/mcp`); the first tool call opens the Hegl login.
 
