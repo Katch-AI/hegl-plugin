@@ -9,7 +9,7 @@ Hegl turns a job someone does by hand into an automation that runs on its own. T
 
 ## Tools
 
-The `hegl` MCP server acts as the signed-in user across their organizations. Start with `list_organizations` for organization and agent ids. Tools that create or search under an agent take `agent_id`; tools that act on an existing record take that record's id (`id`, `flow_id`, `decision_box_id`, …). `get_agent` returns an agent's name, description, documents, flows, trigger flows and connection requirements; poll it for provisioning and connection status. Anything without a tool goes through `graphql` (introspection works, errors carry "Did you mean"). `platform-api` maps what to call when.
+The `hegl` MCP server acts as the signed-in user across their organizations. Start with `list_organizations` for organization and agent ids. Tools that create, search or run in an agent's context take `agent_id`; tools that act on an existing record take that record's id (`id`, `flow_id`, `decision_box_id`, …). `get_agent` returns an agent's name, description, documents, flows, trigger flows and connection requirements; poll it for provisioning and connection status. Anything without a tool goes through `graphql` (introspection works, errors carry "Did you mean"). `platform-api` maps what to call when.
 
 ## How the work goes
 

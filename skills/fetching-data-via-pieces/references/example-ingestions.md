@@ -173,7 +173,7 @@ The user has just connected Salesforce. Before scaffolding the full ingestion, p
 ```python
 import json
 
-# step: @activepieces/piece-salesforce 0.7.2, action run_query, connection "Prod Salesforce"
+# step: @activepieces/piece-salesforce 0.7.3, action run_query, connection "Prod Salesforce"
 rows = sample({"query": "SELECT Id, Name, StageName FROM Opportunity LIMIT 5"})
 print(json.dumps(rows, indent=2))
 ```

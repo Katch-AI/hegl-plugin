@@ -1,6 +1,6 @@
 ---
 name: composing-email-html
-description: Use when authoring the htmlBody of any sendEmail step — during Execute when building flow steps that send email, and during Plan when sketching email content. Covers the fragment contract (Hegl wraps every email in a branded layout), what styling comes free, the palette, and copy-paste snippet patterns for stat rows, item cards, tables, callouts, and CTAs.
+description: Use when authoring the htmlBody of any send_email step — during Execute when building flow steps that send email, and during Plan when sketching email content. Covers the fragment contract (Hegl wraps every email in a branded layout), what styling comes free, the palette, and copy-paste snippet patterns for stat rows, item cards, tables, callouts, and CTAs.
 ---
 
 # Composing Email HTML

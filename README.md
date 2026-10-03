@@ -13,15 +13,15 @@ Build, measure and improve [Hegl](https://hegl.ai) agents from your own coding h
 
 **Codex**
 
-Add the marketplace to `~/.codex/config.toml`, then install from `/plugins`:
+Add the marketplace from the shell, then install from `/plugins`: `codex plugin marketplace add Katch-AI/hegl-plugin`. On first use Codex asks you to authorize `hegl` through the browser.
+
+Alternatively, add it to `~/.codex/config.toml`:
 
 ```toml
 [marketplaces.hegl]
 source_type = "git"
 source = "https://github.com/Katch-AI/hegl-plugin"
 ```
-
-The same from the shell: `codex plugin marketplace add Katch-AI/hegl-plugin`. On first use Codex asks you to authorize `hegl` through the browser.
 
 **OpenCode**
 

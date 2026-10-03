@@ -5,7 +5,7 @@ description: Use when deciding which Hegl tool performs an operation (agent docu
 
 # The Hegl API
 
-Tools that create or search under an agent take `agent_id` (from `list_organizations`); tools that act on an existing record take that record's id. Every tool returns the record it touched; errors come back as the tool's error text. `graphql(query, variables)` runs any query or mutation as the signed-in user: arguments are flat (no `input:` wrapper), id variables use the per-type scalar (`DecisionBoxId!`, never `ID!`; `MetricValueInput.metricDefinitionId` is `PrefixedId!`), introspection works (`{ __type(name: "FlowRun") { fields { name } } }`), and `findX(id:)` returns `null` for anything you cannot see. There is no `findFlow` root: reach a flow via `findAgent(id:) { flows { … } }` or `node(id:)`.
+Tools that create, search or run in an agent's context take `agent_id` (from `list_organizations`); tools that act on an existing record take that record's id. Every tool returns the record it touched; errors come back as the tool's error text. `graphql(query, variables)` runs any query or mutation as the signed-in user: arguments are flat (no `input:` wrapper), id variables use the per-type scalar (`DecisionBoxId!`, never `ID!`; `MetricValueInput.metricDefinitionId` is `PrefixedId!`), introspection works (`{ __type(name: "FlowRun") { fields { name } } }`), and `findX(id:)` returns `null` for anything you cannot see. There is no `findFlow` root: reach a flow via `findAgent(id:) { flows { … } }` or `node(id:)`.
 
 ## What to call when
 
@@ -37,7 +37,7 @@ Tools that create or search under an agent take `agent_id` (from `list_organizat
 
 **Feedback.** `references/feedback.md`. **Email.** `references/email.md` (`create_agent_inbox`, `update_agent_inbox`, `discard_agent_inbox`). **Agent notes.** `references/agent-notes.md` (`create_agent_note`, `update_agent_note_status`; change requests, distinct from feedback).
 
-**Operating.** `search_flow_runs(query, status?, since?)`, `get_flow_run`, `annotate_flow_run(id, note, outcome?)` (reclassifies a run as `FINISHED` / `FAILED` in lists and search without touching its reported status; each call replaces the previous annotation), `search_decision_box_executions(query, since?)`, `search_feedbacks(query, sentiment?, source?, confidence?, decision_box_id?, flow_id?, since?)`. `since` defaults to 7 days (30 for feedback).
+**Operating.** `search_flow_runs(query, status?, since?)`, `get_flow_run`, `annotate_flow_run(id, note, outcome?)` (reclassifies a run as `FINISHED` / `FAILED` in lists and search without touching its reported status; each call replaces the previous annotation), `search_decision_box_executions(query, since?)`, `search_feedbacks(query, sentiment?, source?, confidence?, decision_box_id?, flow_id?, since?)`. `since` (`H24 | D7 | D30 | ALL`) defaults to 7 days (30 for feedback).
 
 **Platform issues.** `report_platform_issue(title, category, severity, body)` when a skill, tool, piece or API is missing, wrong or awkward. `category`: `MISSING_SKILL | MISSING_API | BUG | INCONSISTENCY | TOOLING | OTHER`; `severity`: `BLOCKER | FRICTION | IDEA`; `body`: what you were doing, what happened, what you tried, a suggested fix. `list_platform_issues` first to avoid duplicates; `update_platform_issue`, `discard_platform_issue`.
 

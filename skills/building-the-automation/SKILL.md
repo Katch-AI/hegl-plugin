@@ -73,7 +73,7 @@ The smoke test checks the happy path only. Before it, check each authored step:
 
 - **Routers**: `conditions` is `[[AND], [AND]]`, outer array is OR. One inner group testing a field for two different exact values never fires. `FALLBACK` must be the real catch-all and be last. Failure edges branch on the success-only field being absent (`DOES_NOT_EXIST` on `{{ <step>.output.outputs }}`), never on `status == "FAILED"`. A branch does not end the run (execution resumes at the router's `nextAction`) and `fail_flow_run` does not stop AP (a later `finish_flow_run` overwrites it); to end a run early, throw in a CODE step. Inside a loop, count errors and fail once afterwards.
 - **`piece-http` with `failureMode: continue_all`**: a non-2xx does not fail the step, but its output becomes `{response: {status, body}, request}` while 2xx stays `{status, headers, body}`. Normalise in the next CODE step (`const r = raw.response ?? raw`).
-- **References**: every `{{ step.field }}` matches a sampled output or code you wrote. A loop's result is `{ item, index, iterations }`.
+- **References**: every `{{ step.output.field }}` matches a sampled output or code you wrote. A loop's result is `{ item, index, iterations }`.
 - **Telemetry**: `record_decision_box_execution` gets the full `inputs` and `outputs`. Never truncate them; evals depend on them.
 
 ## 6. Smoke test

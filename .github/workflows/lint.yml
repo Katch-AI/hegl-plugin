@@ -22,7 +22,7 @@ jobs:
           done
       - name: Every SKILL.md has name and description frontmatter
         run: |
-          shopt -s nullglob
+          compgen -G 'skills/*/SKILL.md' > /dev/null || { echo "no skills/*/SKILL.md found"; exit 1; }
           status=0
           for f in skills/*/SKILL.md; do
             dir=$(basename "$(dirname "$f")")
@@ -33,6 +33,7 @@ jobs:
           exit $status
       - name: No hermes-only material
         run: |
+          compgen -G 'skills/*/SKILL.md' > /dev/null || { echo "no skills/*/SKILL.md found"; exit 1; }
           files="skills/"; [ -f README.md ] && files="$files README.md"
-          if grep -rnE 'PLATFORM_[A-Z_]+|ACTIVEPIECES_[A-Z_]+|requestActivepiecesToken|ask_user_question|set_goal|delegate_task|codingAgentSessionId|coding_agent_session_id|gql\.py|invoke_action\.py|the platform piece' $files; then exit 1; fi
-          if grep -rnw 'Marcus' $files | grep -vE 'X-Marcus-Signature|^skills/activepieces/references/pieces-catalog\.md:[0-9]+:\| @marcus-ai/'; then echo "brand name outside a frozen identifier"; exit 1; fi
+          if grep -rnE 'PLATFORM_[A-Z_]+|ACTIVEPIECES_[A-Z_]+|requestActivepiecesToken|ask_user_question|set_goal|delegate_task|codingAgentSessionId|coding_agent_session_id|gql\.py|invoke_action\.py|the platform\b' $files; then exit 1; fi
+          if grep -rnw 'Marcus' $files | grep -vE '^skills/activepieces/references/pieces-catalog\.md:[0-9]+:\| @marcus-ai/' | sed 's/X-Marcus-Signature//g' | grep -w 'Marcus'; then echo "brand name outside a frozen identifier"; exit 1; fi

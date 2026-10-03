@@ -34,7 +34,7 @@ Append `| raw` as the LAST filter to insert a value you know is already safe mar
 
 ## Failure behavior
 
-The step fails, with line and column, on a syntax error, a variable not present in `data`, an unknown filter, or a template that runs too long. There is no partial output. Smoke-test a template once with `triggerFlow` before publishing.
+The step fails, with line and column, on a syntax error, a variable not present in `data`, an unknown filter, or a template that runs too long. There is no partial output. Smoke-test a template once with `trigger_flow` before publishing.
 
 ## Not for JSON
 

@@ -80,7 +80,7 @@ shows in run history.
 
 Reference the connection by its **externalId** (read it back via
 `get_agent` (its `connectionRequirements`: `status`, `connection.externalId`)
-once the requirement is `satisfied`), never by display name.
+once the requirement is `SATISFIED`), never by display name.
 
 The base URL is read at dispatch time off the trigger payload's injected
 config, keyed by the connection requirement's id —

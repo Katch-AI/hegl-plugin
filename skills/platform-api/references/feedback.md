@@ -12,7 +12,7 @@ Feedback is a real-world outcome tied to a run: right or wrong, and ideally whic
 |---|---|---|
 | Fields the team already fills in their CRM (`Outcome`, `Quality score`) | A cron trigger flow polls records changed since the last run that carry the run-id marker and a filled field; a CODE step maps field values to `positive`; loop and record. Keep a cursor in `@activepieces/piece-store`. Handles late and edited entries. | `DIRECT` |
 | Reply to an email the agent sent through Hegl | Automatic. Hegl matches the reply and classifies it. Nothing to build; just pass `flowRunId` to `send_email`. | classifier |
-| Approve/correct pause in the flow | After `await_user_input`, a router on `{{ <pause>.button }}`; on the "approve edited" branch record feedback with `payload: {original, corrected, reason}`. Pair with a post-run source for volume. | `DIRECT` |
+| Approve/correct pause in the flow | After `await_user_input`, a router on `{{ <pause>.output.button }}`; on the "approve edited" branch record feedback with `payload: {original, corrected, reason}`. Pair with a post-run source for volume. | `DIRECT` |
 | CRM status push (a webhook when a stage flips) | Piece trigger on the record; branch on terminal stages only. | `DIRECT` |
 | Chat reaction (Slack 👍/👎) | `reaction_added` trigger filtered to an allowlist; ignore the bot's own reactions. | `DIRECT` |
 | Reply to email sent from the user's own mailbox | Gmail/Outlook trigger, then the Hegl LLM piece's `jev_decision` (a `noul` for is-feedback, a `choice` for polarity) or `completions`; a CODE step buckets the probability into `confidence`. Only when Hegl email is not an option. | bucketed |

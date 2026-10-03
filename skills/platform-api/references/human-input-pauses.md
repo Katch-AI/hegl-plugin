@@ -184,7 +184,7 @@ The `prefill` step input is a flat `{ field_name: value }` map computed by upstr
           "flowRunId": "{{ step_start.output.flowRunId }}",       // from start_flow_run
           "stepName":  "await_outreach_approval",          // human-readable; shown in dashboard
           "formShape": { /* the JSON DSL from above */ },
-          "prefill":   { "draft": "{{ compose_draft.outputs.draft }}" }
+          "prefill":   { "draft": "{{ compose_draft.output.outputs.draft }}" }
         }
       }
     }
@@ -198,7 +198,7 @@ The pause cap is set by `AP_PAUSED_FLOW_TIMEOUT_DAYS` (30 days on the AP side); 
 
 ## The resume envelope
 
-The step's output (what downstream `{{ <step>.* }}` references read) is the resume body:
+The step's output (what downstream `{{ <step>.output.* }}` references read) is the resume body:
 
 | Terminal | Step output |
 |---|---|
@@ -212,9 +212,9 @@ downstream step can ever read is `outcome: "submitted"`.
 
 Downstream access patterns:
 
-- `{{ <pause_step>.button }}` — which button the user clicked. Branch here for in-form choices.
-- `{{ <pause_step>.values.<field_name> }}` — individual answers.
-- `{{ <pause_step>.outcome }}` — always `"submitted"` when a downstream step runs; nothing to branch on.
+- `{{ <pause_step>.output.button }}` — which button the user clicked. Branch here for in-form choices.
+- `{{ <pause_step>.output.values.<field_name> }}` — individual answers.
+- `{{ <pause_step>.output.outcome }}` — always `"submitted"` when a downstream step runs; nothing to branch on.
 
 Convention: branch on `button` for user choices. Every button press (including cancel-role) is `outcome: "submitted"` — a cancel-role button still resumes the flow; only out-of-band cancel/expiry kills it.
 

@@ -42,7 +42,7 @@ Installing a piece is `install_activepieces_piece`; creating a flow is `create_f
 
 ## Flow runs
 
-`get_activepieces_flow_run`: `{id, status, steps, failedStepMessage, raw}`. `steps` is an object **keyed by step name** (`steps.<stepName>.output` / `.errorMessage` / `.status`), not an array. `status`: `QUEUED`, `RUNNING`, `SUCCEEDED`, `FAILED`, `TIMEOUT`, `PAUSED`, `STOPPED`; poll until `SUCCEEDED` / `FAILED` / `TIMEOUT` / `STOPPED`. A step output over 512KB serialised is stored as `{fileId, size, url}`: fetch the signed `url` directly to read it (its `/step-files` path is not on the `activepieces_request` allowlist); downstream `{{ step.x }}` refs still resolve. Step outputs are purged after 30 days (`steps: {}`).
+`get_activepieces_flow_run`: `{id, status, steps, failedStepMessage, raw}`. `steps` is an object **keyed by step name** (`steps.<stepName>.output` / `.errorMessage` / `.status`), not an array. `status`: `QUEUED`, `RUNNING`, `SUCCEEDED`, `FAILED`, `TIMEOUT`, `PAUSED`, `STOPPED`; poll until `SUCCEEDED` / `FAILED` / `TIMEOUT` / `STOPPED`. A step output over 512KB serialised is stored as `{fileId, size, url}`: fetch the signed `url` directly to read it (its `/step-files` path is not on the `activepieces_request` allowlist); downstream `{{ step.output.x }}` refs still resolve. Step outputs are purged after 30 days (`steps: {}`).
 
 `list_activepieces_flow_runs`: newest first, PRODUCTION runs only; a sampling run is TESTING and is read by id.
 
