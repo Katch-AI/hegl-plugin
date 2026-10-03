@@ -34,4 +34,5 @@ jobs:
       - name: No hermes-only material
         run: |
           files="skills/"; [ -f README.md ] && files="$files README.md"
-          if grep -rnE 'PLATFORM_[A-Z_]+|ACTIVEPIECES_[A-Z_]+|requestActivepiecesToken|ask_user_question|set_goal|delegate_task|codingAgentSessionId|coding_agent_session_id|gql\.py|invoke_action\.py|the platform piece|\bMarcus\b' $files; then exit 1; fi
+          if grep -rnE 'PLATFORM_[A-Z_]+|ACTIVEPIECES_[A-Z_]+|requestActivepiecesToken|ask_user_question|set_goal|delegate_task|codingAgentSessionId|coding_agent_session_id|gql\.py|invoke_action\.py|the platform piece' $files; then exit 1; fi
+          if grep -rnw 'Marcus' $files | grep -vE 'X-Marcus-Signature|\| Marcus \|'; then echo "brand name outside a frozen identifier"; exit 1; fi
