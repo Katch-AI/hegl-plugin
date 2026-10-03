@@ -5,6 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: OpenCode plugin tests
+        run: node --test .opencode/hegl.test.mjs
       - name: Manifests parse
         run: |
           for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json .codex-plugin/plugin.json codex/mcp.json; do
