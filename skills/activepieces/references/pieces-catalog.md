@@ -4,9 +4,6 @@ Source: <https://cloud.activepieces.com/api/v1/pieces>
 Pieces: 766 (plus 2 Hegl-internal pieces; see bottom of table)
 Detail files: 4 (see `piece-<name>.md` files in this directory for trigger/action/prop reference per piece)
 
-This catalog is regenerated daily by .github/workflows/refresh-pieces-catalog.yml.
-To refresh manually: `AP_PIECES_URL=https://cloud.activepieces.com/api/v1/pieces ./bin/refresh-pieces-catalog.sh`
-
 The `detail` column marks pieces with a per-piece file at `piece-<piece-name>.md` in this
 directory — read it before scaffolding a step using that piece. Pieces without a detail file
 haven't been deeply documented yet; check the piece source at `./activepieces/packages/pieces/`
@@ -796,5 +793,5 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-zoo | Zoo | 0.1.7 | 81 | 0 |  |
 | @activepieces/piece-zoom | Zoom | 0.8.0 | 5 | 0 |  |
 | @activepieces/piece-zuora | Zuora | 0.1.6 | 4 | 0 |  |
-| @marcus-ai/piece-marcus | Marcus | (built-in) | — | — | Pre-installed in Hegl's AP image; never install via `install_activepieces_piece`. Connection auto-provisioned per agent at creation time — never `request_connection` for it. See the `activepieces` skill's "The Hegl pieces" section. |
+| @marcus-ai/piece-marcus | Marcus | (built-in) | — | — | Pre-installed in Hegl's AP image; never install via `install_activepieces_piece`. Connection auto-provisioned per agent at creation time — never `request_connection` for it. See the `activepieces` skill's "The Hegl pieces" section for the full action list. |
 | @hegl-ai/piece-template | Template | (built-in) | 1 | 0 | Pre-installed in Hegl's AP image; never install via `install_activepieces_piece`. No connection. Renders Liquid templates with format escaping — see the `rendering-templates` skill. |

@@ -281,7 +281,7 @@ real strings.
 
 ## Candidate flow example (the Hegl piece `marcus_triggered` trigger → start_flow_run → decision boxes → finish_flow_run)
 
-The candidate flow's root trigger AND every lifecycle step (`start_flow_run`, decision-box recording, `finish_flow_run`, `fail_flow_run`, `record_artifact`, `send_email`) come from the **Hegl piece (`@marcus-ai/piece-marcus`)**, NOT hand-rolled CODE steps or the generic webhook piece. The piece is pre-installed and its connection is auto-provisioned per agent — see the `activepieces` skill's "The Hegl pieces" section. Every Hegl piece step and the trigger reference the connection in `settings.input.auth` as `"{{connections['<platform connection external id>']}}"`; the id is `findAgent(id:) { platformConnectionExternalId }` through `graphql`.
+The candidate flow's root trigger AND every lifecycle step (`start_flow_run`, decision-box recording, `finish_flow_run`, `fail_flow_run`, `record_artifact`, `send_email`) come from the **Hegl piece (`@marcus-ai/piece-marcus`)**, NOT hand-rolled CODE steps or the generic webhook piece. The piece is pre-installed and its connection is auto-provisioned per agent — see the `activepieces` skill's "The Hegl pieces" section. Every Hegl piece step and the trigger reference the connection in `settings.input.auth` as `"{{connections['<platform connection external id>']}}"`; the id is `platformConnectionExternalId` on `get_agent`.
 
 Hegl dispatches the candidate flow with a POST to its webhook, body:
 
@@ -512,7 +512,7 @@ A sandbox step (`sandbox-environments.md`) goes anywhere a CODE step would. As a
         "actionName": "execute_snapshot_command",
         "input": {
           "auth": "{{connections['<platform connection external id>']}}",
-          "snapshotId": "sbs-<from snapshotSandbox>",
+          "snapshotId": "sbs-<from snapshot_sandbox>",
           "command": "node classify_lead.js",
           "inputs": "{{ trigger.output.body.inputs.lead }}"
         },

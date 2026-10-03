@@ -45,7 +45,7 @@ Tools that create or search under an agent take `agent_id` (from `list_organizat
 
 ## Runtime actions in flow JSON
 
-Runtime mutations are never called from a CODE step. Use the Hegl piece's typed actions with `auth: "{{connections['<platform connection external id>']}}"` (the id is `findAgent(id:) { platformConnectionExternalId }` through `graphql`): `trigger_flow`, `schedule_flow`, `start_flow_run`, `finish_flow_run`, `fail_flow_run`, `set_flow_run_tagline`, `record_decision_box_execution`, `record_artifact`, `validate_artifact`, `send_email`, `record_feedback`, `await_user_input`, `execute_snapshot_command`. Shape data in a formatting-only CODE step first and read `{{ <step>.output.* }}` from the action. Lifecycle: `references/observability.md`.
+Runtime mutations are never called from a CODE step. Use the Hegl piece's typed actions with `auth: "{{connections['<platform connection external id>']}}"` (the id is `platformConnectionExternalId` on `get_agent`, alongside `platformLlmConnectionExternalId` for the Hegl LLM piece): `trigger_flow`, `schedule_flow`, `start_flow_run`, `finish_flow_run`, `fail_flow_run`, `set_flow_run_tagline`, `record_decision_box_execution`, `record_artifact`, `validate_artifact`, `send_email`, `record_feedback`, `await_user_input`, `execute_snapshot_command`. Shape data in a formatting-only CODE step first and read `{{ <step>.output.* }}` from the action. Lifecycle: `references/observability.md`.
 
 `schedule_flow` re-arms the published flow later (`at` or `delay`); it stops after ~100 generations, so "run every hour forever" is a cron trigger flow, not self-scheduling.
 
