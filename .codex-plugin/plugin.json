@@ -1,0 +1,20 @@
+{
+  "name": "hegl",
+  "version": "0.1.0",
+  "description": "Build, measure and improve Hegl agents from Codex: the Hegl MCP server plus the skills the hosted coding agent uses.",
+  "author": { "name": "Katch AI", "url": "https://hegl.ai" },
+  "homepage": "https://hegl.ai",
+  "repository": "https://github.com/Katch-AI/hegl-plugin",
+  "license": "MIT",
+  "keywords": ["hegl", "automation", "activepieces", "mcp", "skills"],
+  "skills": "./skills/",
+  "mcpServers": "./codex/mcp.json",
+  "interface": {
+    "displayName": "Hegl",
+    "shortDescription": "Build and improve Hegl agents from Codex",
+    "developerName": "Katch AI",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "websiteURL": "https://hegl.ai"
+  }
+}

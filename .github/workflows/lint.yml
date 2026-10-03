@@ -1,0 +1,25 @@
+name: lint
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Manifests parse
+        run: |
+          for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json .codex-plugin/plugin.json codex/mcp.json; do
+            jq -e . "$f" > /dev/null || { echo "invalid JSON: $f"; exit 1; }
+          done
+      - name: Every SKILL.md has name and description frontmatter
+        run: |
+          status=0
+          for f in skills/*/SKILL.md; do
+            dir=$(basename "$(dirname "$f")")
+            head -1 "$f" | grep -qx -- '---' || { echo "$f: missing frontmatter"; status=1; }
+            sed -n '2,10p' "$f" | grep -q "^name: $dir$" || { echo "$f: name must be $dir"; status=1; }
+            sed -n '2,10p' "$f" | grep -q '^description: Use when' || { echo "$f: description must start with 'Use when'"; status=1; }
+          done
+          exit $status
+      - name: No hermes-only material
+        run: |
+          ! grep -rnE 'PLATFORM_[A-Z_]+|ACTIVEPIECES_[A-Z_]+|requestActivepiecesToken|ask_user_question|set_goal|delegate_task|codingAgentSessionId|coding_agent_session_id|gql\.py|invoke_action\.py|the platform piece|\bMarcus\b' skills/ README.md

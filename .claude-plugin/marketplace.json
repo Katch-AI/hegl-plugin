@@ -1,0 +1,13 @@
+{
+  "name": "hegl",
+  "description": "Hegl's plugin for coding harnesses.",
+  "owner": { "name": "Katch AI", "url": "https://hegl.ai" },
+  "plugins": [
+    {
+      "name": "hegl",
+      "description": "Build, measure and improve Hegl agents from your coding harness: the Hegl MCP server plus the skills the hosted coding agent uses.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
