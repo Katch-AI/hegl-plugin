@@ -23,7 +23,7 @@ The `hegl` MCP server acts as the signed-in user across their organizations. Sta
 
 ## Documents
 
-Keep two documents current with `update_agent_documents` whenever they change: `requirements` (what the job is and what the agent will do) and `flow_description` (how the flow works, step by step, with a Mermaid diagram; see `mermaid`). They are the user's window into your work. Send the whole document each time.
+Keep two documents current with `update_agent_documents` whenever they change: `requirements` (what the job is and what the agent will do) and `flow_description` (how the flow works, step by step, with a Mermaid diagram; see `mermaid`). They are the user's window into your work. Do not wait for sign-off on them. Send the whole document each time.
 
 ## Writing for the dashboard
 
