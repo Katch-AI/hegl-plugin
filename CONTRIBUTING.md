@@ -10,4 +10,10 @@ The skills here are read by a model, every turn. Brevity is the rule: teach only
 
 To work against a development host, see README's "Developing against another Hegl host".
 
-Run the lint locally: `node --test .opencode/hegl.test.mjs`, `python3 -m pytest skills/*/tests -q`, `claude plugin validate .`, and the checks in `.github/workflows/lint.yml`.
+Run the lint locally: `node --test .opencode/hegl.test.mjs`, `python3 -m pytest skills/*/tests tests -q`, `claude plugin validate .`, and the checks in `.github/workflows/lint.yml`.
+
+## Releases
+
+Every merge to `main` is released. If `VERSION` has no tag yet, the merge is tagged with it. Otherwise a `Release x.y.z` pull request bumps the patch and merges itself, and that merge is tagged. For a minor or major release, run `bin/set-version <version>` in your pull request.
+
+Label a pull request `automerge` to have it squash-merged once it is approved and lint is green; `auto-approve` supplies the approval.
