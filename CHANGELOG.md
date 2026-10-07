@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.1 — 2026-10-07
+
+- Refresh the pieces catalog daily
+- Merge pull request #3 from Katch-AI/ci-automation
+- Drop the auto-approve label from the contributing guide
+- Let every repo admin's pull requests be auto-approved
+- Let sudo-katch's pull requests be auto-approved
+- Auto-approve only pull requests opened by Dependabot or the workflow bot
+- Add auto-approve, automerge and release-on-merge workflows
+
 ## 0.1.0 — 2026-10-05
 
 - First release: the Hegl MCP server and eleven skills for Claude Code, Codex and OpenCode.
