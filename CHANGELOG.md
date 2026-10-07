@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2 — 2026-10-07
+
+- Bump actions/setup-node from 4 to 7
+
 ## 0.1.1 — 2026-10-07
 
 - Refresh the pieces catalog daily
