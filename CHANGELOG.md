@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.4 — 2026-10-07
+
+- Document fail_flow_run's real props and the incident-driven improvement runs
+
 ## 0.1.3 — 2026-10-07
 
 - cluster.py: optional --tags for spend attribution
