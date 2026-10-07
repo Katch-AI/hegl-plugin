@@ -165,9 +165,32 @@ def test_request_targets_the_proxy_with_the_key():
     assert json.loads(request.data) == {"a": 1}
 
 
+def test_tags_ride_as_the_litellm_tags_header():
+    request = cluster.build_request("https://proxy.example", "sk-test", "/v1/chat/completions", {}, tags="cas:cas-1")
+    assert request.get_header("X-litellm-tags") == "cas:cas-1"
+
+
+def test_tags_flag_is_optional_and_parsed():
+    assert cluster.parse_args(REQUIRED + ["--proxy-url", "u", "--api-key", "k"]).tags is None
+    assert cluster.parse_args(REQUIRED + ["--proxy-url", "u", "--api-key", "k", "--tags", "cas:x"]).tags == "cas:x"
+
+
 def test_proxy_flags_parse():
     args = cluster.parse_args(REQUIRED + ["--proxy-url", "https://proxy.example", "--api-key", "sk-test"])
     assert (args.proxy_url, args.api_key) == ("https://proxy.example", "sk-test")
+
+
+def test_http_client_sends_the_tags_header_on_the_wire(monkeypatch):
+    sent = []
+
+    def capture(request, timeout):
+        sent.append(request)
+        return io.BytesIO(b"{}")
+    monkeypatch.setattr(cluster, "urlopen", capture)
+
+    cluster.http_client("https://proxy.example", "sk-test", tags="cas:x")("/v1/chat/completions", {})
+
+    assert sent[0].get_header("X-litellm-tags") == "cas:x"
 
 
 def test_a_proxy_error_exits_with_its_status_and_body(monkeypatch):
@@ -184,8 +207,8 @@ def test_a_proxy_error_exits_with_its_status_and_body(monkeypatch):
 def test_main_sends_every_call_through_the_flagged_proxy(tmp_path, monkeypatch):
     clients, paths = [], []
 
-    def fake_client(proxy_url, api_key):
-        clients.append((proxy_url, api_key))
+    def fake_client(proxy_url, api_key, tags=None):
+        clients.append((proxy_url, api_key, tags))
 
         def post(path, body):
             paths.append(path)
@@ -198,8 +221,8 @@ def test_main_sends_every_call_through_the_flagged_proxy(tmp_path, monkeypatch):
     (tmp_path / "rows.jsonl").write_text(json.dumps({"id": "1", "text": "total should be 1500"}) + "\n")
     (tmp_path / "t.json").write_text(json.dumps(TAXONOMY))
 
-    cluster.main(["--proxy-url", "https://proxy.example", "--api-key", "sk-test", "--input", str(tmp_path / "rows.jsonl"),
-                  "--purpose", "p", "--out", str(tmp_path / "o.jsonl"), "--taxonomy", str(tmp_path / "t.json")])
+    cluster.main(["--proxy-url", "https://proxy.example", "--api-key", "sk-test", "--tags", "cas:cas-9",
+                  "--input", str(tmp_path / "rows.jsonl"), "--purpose", "p", "--out", str(tmp_path / "o.jsonl"), "--taxonomy", str(tmp_path / "t.json")])
 
-    assert clients == [("https://proxy.example", "sk-test")]
+    assert clients == [("https://proxy.example", "sk-test", "cas:cas-9")]
     assert set(paths) == {"/typesafe/v1/systemone", "/v1/chat/completions"}

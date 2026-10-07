@@ -189,18 +189,21 @@ def consolidate(taxonomy, counts, *, examples, propose):
             for key, category in final.items()}
 
 
-def build_request(proxy_url, api_key, path, body):
-    return Request(proxy_url.rstrip("/") + path, data=json.dumps(body).encode(), headers={
+def build_request(proxy_url, api_key, path, body, tags=None):
+    headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
         "User-Agent": "hegl-plugin-cluster/1.0",
-    })
+    }
+    if tags:
+        headers["x-litellm-tags"] = tags
+    return Request(proxy_url.rstrip("/") + path, data=json.dumps(body).encode(), headers=headers)
 
 
-def http_client(proxy_url, api_key):
+def http_client(proxy_url, api_key, tags=None):
     def post(path, body):
         try:
-            with urlopen(build_request(proxy_url, api_key, path, body), timeout=300) as response:
+            with urlopen(build_request(proxy_url, api_key, path, body, tags=tags), timeout=300) as response:
                 return json.load(response)
         except HTTPError as error:
             sys.exit(f"proxy returned {error.code} for {path}: {error.read().decode(errors='replace')}")
@@ -229,6 +232,7 @@ def parse_args(argv):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--proxy-url", required=True, help="proxyUrl from issue_llm_proxy_credentials")
     parser.add_argument("--api-key", required=True, help="apiKey from issue_llm_proxy_credentials")
+    parser.add_argument("--tags", help="x-litellm-tags value, e.g. tagsHeader from issue_llm_proxy_credentials")
     parser.add_argument("--input", required=True, help="JSONL rows with an `id` and a `text` field; other fields join the state")
     parser.add_argument("--purpose", required=True, help="the Choice instructions, e.g. 'Which failure does this feedback report?'")
     parser.add_argument("--out", required=True, help="discovery labels (JSONL, appended per row; resumes on restart)")
@@ -245,7 +249,7 @@ def main(argv=None):
     args = parse_args(argv)
     rows = [json.loads(line) for line in open(args.input) if line.strip()]
     taxonomy = json.load(open(args.taxonomy)) if os.path.exists(args.taxonomy) else {}
-    post = http_client(args.proxy_url, args.api_key)
+    post = http_client(args.proxy_url, args.api_key, tags=args.tags)
     jev = jev_http(post)
     propose = proposer_http(post, args.proposer_model, PROPOSER_PROMPT, PROPOSAL_SCHEMA)
     taxonomy = run(rows, taxonomy, jev=jev, propose=propose, purpose=args.purpose, threshold=args.threshold,
