@@ -51,8 +51,8 @@ ImprovementRun fields: `id`, `agentId`, `candidateFlowId`, `baseFlowId` (nullabl
 ## Enums
 
 - Run status — `RUNNING`, `PAUSED_ON_QUESTION`, `AWAITING_REVIEW`, `COMPLETED`, `CANCELLED`. `PAUSED_ON_QUESTION` is set while a question card for the run is open in the dashboard; the run flips back to `RUNNING` once the last one is answered or dismissed.
-- Kind — `INITIAL_BUILD`, `IMPROVEMENT`.
-- Triggered by — `ADMIN`, `SCHEDULE`, `CODING_AGENT`, `USER`.
+- Kind — `INITIAL_BUILD`, `IMPROVEMENT`, `ERROR_FIX` (a fix Hegl started for an error incident; you read these, you never start one).
+- Triggered by — `ADMIN`, `SCHEDULE`, `CODING_AGENT`, `USER`, `INCIDENT` (Hegl, for an error incident), `FEEDBACK_THRESHOLD` (Hegl, once enough feedback accumulated).
 - `FlowLifecycleStatusEnum` — `BUILDING`, `CANDIDATE`, `READY`, `DORMANT`.
 
 ## Idempotency
