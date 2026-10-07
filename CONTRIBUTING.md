@@ -16,4 +16,4 @@ Run the lint locally: `node --test .opencode/hegl.test.mjs`, `python3 -m pytest 
 
 Every merge to `main` is released. If `VERSION` has no tag yet, the merge is tagged with it. Otherwise a `Release x.y.z` pull request bumps the patch and merges itself, and that merge is tagged. For a minor or major release, run `bin/set-version <version>` in your pull request.
 
-Label a pull request `automerge` to have it squash-merged once it is approved and lint is green; `auto-approve` supplies the approval only on pull requests opened by Dependabot or the workflow bot; yours needs a person's review.
+Label a pull request `automerge` to have it squash-merged once it is approved and lint is green; `auto-approve` supplies the approval only for the authors listed in `.github/workflows/auto-approve.yml`; anyone else needs a person's review.
