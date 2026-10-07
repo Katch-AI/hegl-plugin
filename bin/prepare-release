@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Bumps the patch version and adds a changelog entry for every commit since the last release tag.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+current=$(cat VERSION)
+IFS=. read -r major minor patch <<< "$current"
+next="$major.$minor.$((patch + 1))"
+entries=$(git log "v$current..HEAD" --format='- %s')
+
+[ "$(head -1 CHANGELOG.md)" = "# Changelog" ] || { echo "CHANGELOG.md must start with '# Changelog'" >&2; exit 1; }
+bin/set-version "$next"
+{
+  printf '# Changelog\n\n## %s — %s\n\n%s\n\n' "$next" "$(date -u +%F)" "$entries"
+  tail -n +3 CHANGELOG.md
+} > CHANGELOG.md.tmp
+mv CHANGELOG.md.tmp CHANGELOG.md
+echo "$next"

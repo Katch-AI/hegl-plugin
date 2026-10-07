@@ -1,0 +1,68 @@
+name: release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# Runs queue, and each one reads main as it is now, so a superseded run finds nothing to do.
+concurrency:
+  group: release
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Plan
+        id: plan
+        run: |
+          version=$(cat VERSION)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if ! git rev-parse -q --verify "refs/tags/v$version" > /dev/null; then
+            echo "action=release" >> "$GITHUB_OUTPUT"
+          elif [ "$(git rev-list -n1 "v$version")" != "$(git rev-parse HEAD)" ]; then
+            echo "action=bump" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Tag and release VERSION
+        if: steps.plan.outputs.action == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.plan.outputs.version }}
+        run: gh release create "v$VERSION" --target "$(git rev-parse HEAD)" --title "$VERSION" --generate-notes
+      - name: Bump the patch version
+        if: steps.plan.outputs.action == 'bump'
+        id: bump
+        run: echo "version=$(bin/prepare-release)" >> "$GITHUB_OUTPUT"
+      # main only takes pull requests, so the bump lands as one; merging it tags the release.
+      - name: Mint app token
+        if: steps.plan.outputs.action == 'bump'
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.WORKFLOW_BOT_APP_ID }}
+          private-key: ${{ secrets.WORKFLOW_BOT_PRIVATE_KEY }}
+      - name: Open or update the release PR
+        if: steps.plan.outputs.action == 'bump'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          sign-commits: true
+          branch: auto/release
+          delete-branch: true
+          labels: |
+            auto-approve
+            automerge
+          commit-message: Release ${{ steps.bump.outputs.version }}
+          title: Release ${{ steps.bump.outputs.version }}
+          body: |
+            Patch release for everything merged since v${{ steps.plan.outputs.version }}; see the `CHANGELOG.md` diff.
+
+            Opened by `.github/workflows/release.yml`. Merging it tags v${{ steps.bump.outputs.version }}.

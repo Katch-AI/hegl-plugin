@@ -14,11 +14,16 @@ jobs:
       - name: Skill script tests
         run: |
           pip install pytest
-          python3 -m pytest skills/*/tests -q
+          python3 -m pytest skills/*/tests tests -q
       - name: Manifests parse
         run: |
           for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json .codex-plugin/plugin.json codex/mcp.json .agents/plugins/marketplace.json package.json; do
             jq -e . "$f" > /dev/null || { echo "invalid JSON: $f"; exit 1; }
+          done
+      - name: Manifest versions match VERSION
+        run: |
+          for f in .claude-plugin/plugin.json .codex-plugin/plugin.json package.json; do
+            [ "$(jq -r .version "$f")" = "$(cat VERSION)" ] || { echo "$f: version differs from VERSION; run bin/set-version"; exit 1; }
           done
       - name: Every SKILL.md has name and description frontmatter
         run: |

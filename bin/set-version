@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Usage: bin/set-version <major.minor.patch> -- writes VERSION and every manifest that repeats it.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+version=${1:-}
+[[ $version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "usage: bin/set-version <major.minor.patch>" >&2; exit 1; }
+
+manifests=(.claude-plugin/plugin.json .codex-plugin/plugin.json package.json)
+echo "$version" > VERSION
+perl -pi -e 's/^(  "version": ")[^"]*/${1}'"$version"'/' "${manifests[@]}"
+for f in "${manifests[@]}"; do
+  [ "$(jq -r .version "$f")" = "$version" ] || { echo "$f: version not updated" >&2; exit 1; }
+done

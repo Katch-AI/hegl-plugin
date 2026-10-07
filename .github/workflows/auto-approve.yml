@@ -1,0 +1,20 @@
+name: auto-approve
+
+on:
+  pull_request_target:
+    types: [opened, labeled, reopened, synchronize]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  approve:
+    # Anyone with triage access can set a label, so only PRs from the bots and the repo admins are approved.
+    if: >
+      contains(fromJSON('["dependabot[bot]", "marcus-ai-workflow-bot[bot]", "sudo-katch", "SimeonKostov", "alex-sumin"]'), github.event.pull_request.user.login) &&
+      (contains(github.event.pull_request.labels.*.name, 'dependencies') ||
+      contains(github.event.pull_request.labels.*.name, 'auto-approve'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hmarr/auto-approve-action@v4
