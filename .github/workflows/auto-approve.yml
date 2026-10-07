@@ -10,9 +10,9 @@ permissions:
 
 jobs:
   approve:
-    # Anyone with triage access can set a label, so only PRs from these authors are approved.
+    # Anyone with triage access can set a label, so only PRs from the bots and the repo admins are approved.
     if: >
-      contains(fromJSON('["dependabot[bot]", "marcus-ai-workflow-bot[bot]", "sudo-katch"]'), github.event.pull_request.user.login) &&
+      contains(fromJSON('["dependabot[bot]", "marcus-ai-workflow-bot[bot]", "sudo-katch", "SimeonKostov", "alex-sumin"]'), github.event.pull_request.user.login) &&
       (contains(github.event.pull_request.labels.*.name, 'dependencies') ||
       contains(github.event.pull_request.labels.*.name, 'auto-approve'))
     runs-on: ubuntu-latest
