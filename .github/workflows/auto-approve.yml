@@ -10,9 +10,11 @@ permissions:
 
 jobs:
   approve:
+    # Anyone with triage access can set a label, so a label alone must never approve a person's PR.
     if: >
-      contains(github.event.pull_request.labels.*.name, 'dependencies') ||
-      contains(github.event.pull_request.labels.*.name, 'auto-approve')
+      contains(fromJSON('["dependabot[bot]", "marcus-ai-workflow-bot[bot]"]'), github.event.pull_request.user.login) &&
+      (contains(github.event.pull_request.labels.*.name, 'dependencies') ||
+      contains(github.event.pull_request.labels.*.name, 'auto-approve'))
     runs-on: ubuntu-latest
     steps:
       - uses: hmarr/auto-approve-action@v4
