@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3 — 2026-10-07
+
+- cluster.py: optional --tags for spend attribution
+
 ## 0.1.2 — 2026-10-07
 
 - Bump actions/setup-node from 4 to 7
