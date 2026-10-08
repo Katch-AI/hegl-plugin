@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.7 — 2026-10-08
+
+- Label catalog refresh PRs so they approve and merge themselves
+- Refresh pieces-catalog.md
+
 ## 0.1.6 — 2026-10-08
 
 - Say the flow run id is Activepieces' own, not a synthesized UUID
