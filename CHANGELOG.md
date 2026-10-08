@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.5 — 2026-10-08
+
+- Run automerge when auto-approve finishes
+
 ## 0.1.4 — 2026-10-07
 
 - Document fail_flow_run's real props and the incident-driven improvement runs
