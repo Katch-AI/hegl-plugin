@@ -11,6 +11,14 @@ Hegl turns a job someone does by hand into an automation that runs on its own. T
 
 The `hegl` MCP server acts as the signed-in user across their organizations. Start with `list_organizations` for organization and agent ids. Tools that create, search or run in an agent's context take `agent_id`; tools that act on an existing record take that record's id (`id`, `flow_id`, `decision_box_id`, …). `get_agent` returns an agent's name, description, documents, flows, trigger flows and connection requirements; poll it for provisioning and connection status. Anything without a tool goes through `graphql` (introspection works, errors carry "Did you mean"). `platform-api` maps what to call when.
 
+## Signing in
+
+Call `list_organizations` first. If the `hegl` tools are missing or refuse with an authorization error, the user is not signed in: in Codex run `codex mcp login hegl`; in Claude Code ask them to run `/mcp`, pick `hegl`, then Authenticate. Either opens the Hegl sign-in in their browser. A new email gets a link to create an account, and the sign-in finishes when they are done. Then call `list_organizations` again. A new account has no plan (`list_organizations` shows `subscribed: false`); a tool that builds answers "Choose a plan to build agents: <link>". Open the link (in Claude Code the plugin does), tell the user to pick a plan there, then poll `list_organizations` every few seconds until `subscribed` is true and retry. Do not end your turn while waiting.
+
+## Dashboard links
+
+Tool results carry links to dashboard pages. Link whatever you mention that the user can look at, and open the page when a step is theirs to take (a connection, a config form, publishing, a human review): `linking-to-the-dashboard`.
+
 ## How the work goes
 
 1. Learn the job. Write it down.

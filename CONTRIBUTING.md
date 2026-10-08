@@ -10,7 +10,7 @@ The skills here are read by a model, every turn. Brevity is the rule: teach only
 
 To work against a development host, see README's "Developing against another Hegl host".
 
-Run the lint locally: `node --test .opencode/hegl.test.mjs`, `python3 -m pytest skills/*/tests tests -q`, `claude plugin validate .`, and the checks in `.github/workflows/lint.yml`.
+Run the lint locally: `node --test .opencode/hegl.test.mjs hooks/open-dashboard.test.mjs`, `python3 -m pytest skills/*/tests tests -q`, `claude plugin validate .`, and the checks in `.github/workflows/lint.yml`.
 
 ## Releases
 

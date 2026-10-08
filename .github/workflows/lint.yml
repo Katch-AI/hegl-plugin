@@ -9,6 +9,8 @@ jobs:
         with: { node-version: 22 }
       - name: OpenCode plugin tests
         run: node --test .opencode/hegl.test.mjs
+      - name: Claude Code hook tests
+        run: node --test hooks/open-dashboard.test.mjs
       - uses: actions/setup-python@v7
         with: { python-version: '3.12' }
       - name: Skill script tests
@@ -17,7 +19,7 @@ jobs:
           python3 -m pytest skills/*/tests tests -q
       - name: Manifests parse
         run: |
-          for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json .codex-plugin/plugin.json codex/mcp.json .agents/plugins/marketplace.json package.json; do
+          for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json hooks/hooks.json .mcp.json .codex-plugin/plugin.json codex/mcp.json .agents/plugins/marketplace.json package.json; do
             jq -e . "$f" > /dev/null || { echo "invalid JSON: $f"; exit 1; }
           done
       - name: Manifest versions match VERSION

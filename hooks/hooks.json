@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "mcp__(plugin_hegl_)?hegl__(create_agent|request_connection|request_config|finish_improvement_run)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/open-dashboard.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "mcp__(plugin_hegl_)?hegl__create_agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/open-dashboard.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
