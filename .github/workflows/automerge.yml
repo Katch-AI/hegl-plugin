@@ -7,10 +7,10 @@ on:
     types: [submitted]
   check_suite:
     types: [completed]
-  # check_suite never fires for Dependabot PRs, and a GITHUB_TOKEN approval (auto-approve)
-  # fires nothing at all; lint finishing is the event that reaches both.
+  # check_suite never fires for Dependabot PRs and a GITHUB_TOKEN approval fires no review
+  # event, so the lint and auto-approve runs finishing are what reach those PRs.
   workflow_run:
-    workflows: ["lint"]
+    workflows: ["lint", "auto-approve"]
     types: [completed]
 
 concurrency:
