@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.6 — 2026-10-08
+
+- Say the flow run id is Activepieces' own, not a synthesized UUID
+
 ## 0.1.5 — 2026-10-08
 
 - Run automerge when auto-approve finishes
