@@ -43,6 +43,9 @@ jobs:
           sign-commits: true
           branch: auto/refresh-pieces-catalog
           add-paths: ${{ env.CATALOG_PATH }}
+          labels: |
+            auto-approve
+            automerge
           commit-message: |
             Refresh pieces-catalog.md
 
