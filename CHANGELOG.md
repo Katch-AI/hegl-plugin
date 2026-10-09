@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.8 — 2026-10-09
+
+- Refresh pieces-catalog.md
+
 ## 0.1.7 — 2026-10-08
 
 - Label catalog refresh PRs so they approve and merge themselves

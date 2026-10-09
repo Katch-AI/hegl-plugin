@@ -1,6 +1,6 @@
 {
   "name": "hegl",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Build, measure and improve Hegl agents from your coding harness: the Hegl MCP server plus the skills the hosted coding agent uses.",
   "author": { "name": "Katch AI", "url": "https://hegl.ai" },
   "homepage": "https://hegl.ai",
