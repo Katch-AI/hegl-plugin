@@ -262,7 +262,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-floqer | Floqer | 0.1.2 | 4 | 0 |  |
 | @activepieces/piece-flow-helper | Flow Helper | 0.1.8 | 3 | 0 |  |
 | @activepieces/piece-flow-parser | FlowParser | 0.1.7 | 1 | 2 |  |
-| @activepieces/piece-flowise | Flowise | 0.2.1 | 2 | 0 |  |
+| @activepieces/piece-flowise | Flowise | 0.3.0 | 2 | 0 |  |
 | @activepieces/piece-flowlu | Flowlu | 0.2.1 | 24 | 4 |  |
 | @activepieces/piece-folk | Folk | 0.1.8 | 8 | 8 |  |
 | @activepieces/piece-foreplay-co | Foreplay | 0.1.9 | 5 | 3 |  |
@@ -312,7 +312,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-google-sheets | Google Sheets | 0.17.2 | 27 | 4 |  |
 | @activepieces/piece-google-slides | Google Slides | 0.4.2 | 19 | 0 |  |
 | @activepieces/piece-google-tasks | Google Tasks | 0.6.1 | 2 | 1 |  |
-| @activepieces/piece-google-translate | Google Translate | 0.0.1 | 4 | 0 |  |
+| @activepieces/piece-google-translate | Google Translate | 0.0.2 | 4 | 0 |  |
 | @activepieces/piece-google-vertexai | Google Vertex AI | 0.1.7 | 3 | 0 |  |
 | @activepieces/piece-googlechat | Google Chat | 0.1.8 | 6 | 2 |  |
 | @activepieces/piece-gorgias | Gorgias | 0.1.0 | 7 | 0 |  |
@@ -690,7 +690,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-tarvent | Tarvent | 0.1.8 | 18 | 17 |  |
 | @activepieces/piece-taskade | Taskade | 0.3.1 | 40 | 6 |  |
 | @activepieces/piece-tavily | Tavily | 0.3.1 | 3 | 0 |  |
-| @activepieces/piece-teable | Teable | 0.2.0 | 7 | 0 |  |
+| @activepieces/piece-teable | Teable | 0.3.1 | 17 | 2 |  |
 | @activepieces/piece-teamhood | Teamhood | 0.1.0 | 8 | 3 |  |
 | @activepieces/piece-teamleader | Teamleader | 0.2.0 | 13 | 5 |  |
 | @activepieces/piece-teamwork | Teamwork | 0.1.7 | 18 | 7 |  |
@@ -715,7 +715,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-truelayer | TrueLayer | 0.2.1 | 39 | 0 |  |
 | @activepieces/piece-trust | Trust | 0.1.0 | 12 | 1 |  |
 | @activepieces/piece-twenty | Twenty | 0.1.1 | 8 | 2 |  |
-| @activepieces/piece-twilio | Twilio | 0.6.1 | 6 | 5 |  |
+| @activepieces/piece-twilio | Twilio | 0.7.0 | 6 | 5 |  |
 | @activepieces/piece-twin-labs | Twin Web Agent | 0.1.7 | 1 | 0 |  |
 | @activepieces/piece-twitch | Twitch | 0.1.0 | 1 | 1 |  |
 | @activepieces/piece-twitter | Twitter | 0.5.1 | 2 | 0 |  |
@@ -754,7 +754,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-webflow | Webflow | 0.3.0 | 13 | 1 |  |
 | @activepieces/piece-webhook | Webhook | 0.1.42 | 2 | 1 | [piece-webhook](piece-webhook.md) |
 | @activepieces/piece-webling | Webling | 0.1.6 | 1 | 2 |  |
-| @activepieces/piece-webscraping-ai | WebScraping AI | 0.1.7 | 5 | 0 |  |
+| @activepieces/piece-webscraping-ai | WebScraping AI | 0.2.0 | 6 | 0 |  |
 | @activepieces/piece-wedof | Wedof | 1.4.7 | 45 | 28 |  |
 | @activepieces/piece-week-done | Weekdone | 0.1.0 | 14 | 0 |  |
 | @activepieces/piece-weekdone | Weekdone | 0.1.0 | 5 | 2 |  |
