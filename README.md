@@ -30,9 +30,21 @@ See [.opencode/INSTALL.md](.opencode/INSTALL.md).
 ## What you get
 
 - The `hegl` MCP server: every operation the hosted coding agent can perform, as tools, acting as you.
-- Twelve skills: `hegl` (start here), `building-the-automation`, `implementing-decision-boxes`, `linking-to-the-dashboard`, `platform-api`, `activepieces`, `fetching-data-via-pieces`, `calling-custom-apis`, `composing-email-html`, `rendering-templates`, `mermaid`, `asciidoc`.
+- Fifteen skills: `hegl` (start here), `build`, `feedback`, `fix-errors`, `building-the-automation`, `implementing-decision-boxes`, `linking-to-the-dashboard`, `platform-api`, `activepieces`, `fetching-data-via-pieces`, `calling-custom-apis`, `composing-email-html`, `rendering-templates`, `mermaid`, `asciidoc`.
 
 Start with "list my Hegl organizations" and go from there.
+
+## Commands
+
+In Claude Code, three of the skills are commands. Each takes an optional agent name.
+
+```
+/hegl:build [agent]        start building an agent, or pick up where the build stopped
+/hegl:feedback [agent]     see what people complained about and improve the agent on it
+/hegl:fix-errors [agent]   find out why runs are failing and fix it
+```
+
+In Codex and OpenCode, ask in words ("fix the errors on my agent") and the same skill loads.
 
 ## Developing against another Hegl host
 
