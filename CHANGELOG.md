@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.10 — 2026-10-10
+
+- Add build, feedback and fix-errors commands
+
 ## 0.1.9 — 2026-10-10
 
 - Refresh pieces-catalog.md
