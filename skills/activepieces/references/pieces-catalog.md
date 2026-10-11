@@ -67,7 +67,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-apollo | Apollo | 0.2.1 | 7 | 0 |  |
 | @activepieces/piece-appfollow | AppFollow | 0.2.1 | 3 | 2 |  |
 | @activepieces/piece-approval | Approval (Legacy) | 0.1.28 | 2 | 0 |  |
-| @activepieces/piece-asana | Asana | 0.7.1 | 2 | 0 |  |
+| @activepieces/piece-asana | Asana | 0.7.2 | 2 | 0 |  |
 | @activepieces/piece-ashby | Ashby | 0.2.1 | 1 | 0 |  |
 | @activepieces/piece-ask-handle | AskHandle | 0.1.8 | 4 | 3 |  |
 | @activepieces/piece-asknews | AskNews | 0.1.0 | 8 | 1 |  |
@@ -304,7 +304,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-google-contacts | Google Contacts | 0.5.4 | 4 | 1 |  |
 | @activepieces/piece-google-docs | Google Docs | 0.5.4 | 6 | 1 |  |
 | @activepieces/piece-google-drive | Google Drive | 0.11.3 | 17 | 3 |  |
-| @activepieces/piece-google-forms | Google Forms | 0.7.2 | 1 | 1 |  |
+| @activepieces/piece-google-forms | Google Forms | 0.7.3 | 1 | 1 |  |
 | @activepieces/piece-google-gemini | Google Gemini | 0.4.2 | 11 | 0 |  |
 | @activepieces/piece-google-my-business | Google My Business | 0.5.2 | 7 | 1 |  |
 | @activepieces/piece-google-search | Google Search | 0.0.9 | 1 | 0 |  |
@@ -429,7 +429,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-manual-trigger | Manual Trigger | 0.0.8 | 0 | 1 |  |
 | @activepieces/piece-manus | Manus | 0.2.0 | 5 | 2 |  |
 | @activepieces/piece-manychat | Manychat | 0.1.7 | 7 | 0 |  |
-| @activepieces/piece-mastodon | Mastodon | 0.8.1 | 14 | 4 |  |
+| @activepieces/piece-mastodon | Mastodon | 0.8.2 | 14 | 4 |  |
 | @activepieces/piece-math-helper | Math Helper | 0.1.0 | 6 | 0 |  |
 | @activepieces/piece-matomo | Matomo | 0.2.1 | 2 | 0 |  |
 | @activepieces/piece-matrix | Matrix | 0.5.1 | 2 | 0 |  |
@@ -495,7 +495,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-ntfy | ntfy | 0.4.1 | 8 | 1 |  |
 | @activepieces/piece-nuelink | Nuelink | 0.1.7 | 1 | 0 |  |
 | @activepieces/piece-octopush-sms | Octopush SMS | 0.2.0 | 3 | 0 |  |
-| @activepieces/piece-odoo | Odoo | 0.3.1 | 15 | 5 |  |
+| @activepieces/piece-odoo | Odoo | 0.3.2 | 15 | 5 |  |
 | @activepieces/piece-okta | Okta | 0.2.0 | 10 | 1 |  |
 | @activepieces/piece-omni-co | Omni | 0.2.0 | 9 | 0 |  |
 | @activepieces/piece-omnihr | Omni HR | 0.2.1 | 6 | 0 |  |
