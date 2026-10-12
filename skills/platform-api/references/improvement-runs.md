@@ -22,7 +22,7 @@ Submits the candidate for the user's review: `RUNNING` → `AWAITING_REVIEW`, st
 
 - `publish_narrative` — markdown summary of the experiments run and their results. The user reads this when deciding whether to publish.
 - `result_justification` — optional-but-gated — **required whenever any pinned box's primary metric is below its `targetValue`, has no VALIDATION value while a target is set, or is worse than the base version's pinned value** (all direction-aware; meeting the bar exactly passes). Explain why finishing anyway is the right call (e.g. label noise makes the target unreachable, or an apparent regression is dataset drift). Shown prominently to the user at publish review next to the shortfall numbers.
-- `base_flow_id` — the live flow, after another version went live while the run was open (a `candidate_stale` event). Rebuild the candidate on it first. Finishing a candidate not built on the live version is refused, and the error names the id to pass.
+- `base_flow_id` — the live flow, after another version went live while the run was open (a `candidate_stale` event). Rebuild the candidate on it first. Finishing a candidate not built on the live version is refused, and the error names the id to pass. Result shortfalls are then judged against it.
 
 ### The result gate
 
