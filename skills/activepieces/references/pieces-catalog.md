@@ -134,7 +134,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-certopus | Certopus | 0.3.0 | 2 | 0 |  |
 | @activepieces/piece-chain-aware | ChainAware.AI | 0.1.0 | 6 | 0 |  |
 | @activepieces/piece-chainalysis-api | Chainalysis Screening API | 0.1.7 | 1 | 0 |  |
-| @activepieces/piece-chaindesk | Chaindesk | 0.2.0 | 4 | 0 |  |
+| @activepieces/piece-chaindesk | Chaindesk | 0.2.1 | 4 | 0 |  |
 | @activepieces/piece-chargebee | Chargebee | 0.1.2 | 5 | 8 |  |
 | @activepieces/piece-chargekeep | ChargeKeep | 0.3.7 | 6 | 3 |  |
 | @activepieces/piece-chartly | Chartly | 0.0.9 | 2 | 0 |  |
