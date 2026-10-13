@@ -12,10 +12,13 @@ Every agent gets an inbox at creation (`ibx-<random>@<domain>`). Do not use the 
 `create_trigger_flow(name: "Email", trigger_key: "inbound_email")`. Hegl provisions the flow body; do not fill it. List its id in `set_supported_triggers`. The candidate's `trigger.body.inputs` is:
 
 ```json
-{ "received_email_id": "reml-…", "inbox": { "id": "ibx-…", "name": "…", "address": "…" }, "from": "…", "to": ["…"], "cc": ["…"],
+{ "received_email_id": "rcv-…", "inbox": { "id": "ibx-…", "name": "…", "address": "…" }, "from": "…", "to": ["…"], "cc": ["…"],
   "subject": "…", "text_body": "…", "html_body": "…", "received_at": "2026-…",
-  "attachments": [{ "id": "…", "filename": "…", "content_type": "…", "byte_size": 123 }] }
+  "attachments": [{ "id": "att-…", "filename": "…", "content_type": "…", "byte_size": 123, "download_url": "https://…" }],
+  "dropped_attachments": [{ "filename": "…", "detected_content_type": "…" }] }
 ```
+
+`download_url` needs no token and expires 1 hour after the run is triggered; download it in the first steps with a non-default `User-Agent` (Cloudflare rejects Python's). `dropped_attachments` were refused for a disallowed type.
 
 Route on `inbox.address` if several inboxes feed one flow. Anyone who has the address can start a run (it is the From of every email the agent sends), so check `from` against the allowed senders before any side effect and finish quietly for everyone else.
 
