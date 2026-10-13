@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.14 — 2026-10-13
+
+- Refresh pieces-catalog.md
+
 ## 0.1.13 — 2026-10-13
 
 - Document attachment download URLs in the inbound-email trigger payload
