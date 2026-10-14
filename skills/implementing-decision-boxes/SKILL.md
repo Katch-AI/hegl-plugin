@@ -14,7 +14,7 @@ An **improvement run** is one episode of building or improving the candidate flo
 1. `start_improvement_run(candidate_flow_id, kind, base_flow_id?)`. `INITIAL_BUILD` for the first build, `IMPROVEMENT` (with the published flow as `base_flow_id`) afterwards.
 2. For each box: eval set → backlog → experiments → pin the winner → port it into the flow. Spawn a subagent per box when boxes are independent and your harness has subagents.
    For an `IMPROVEMENT` run the candidate is a new flow: copy the tree with `IMPORT_FLOW` (`apply_activepieces_flow_operation`), replace every old `flw-`/`db-` literal with the new ids, `wire_decision_box(flow_id, decision_box_id, external_id)` each box again (wirings do not carry over), and call `set_supported_triggers(flow_id, trigger_flow_ids)` on it with every trigger flow it supports, in one call. Publishing enables exactly that list and disables the rest; a missing call switches the automation off.
-3. `finish_improvement_run(id, publish_narrative, result_justification?)`. The user publishes, asks for changes, or cancels in the dashboard; open the run's `dashboardUrl` for them. Read the outcome from the run's `status` (`get_improvement_run(id)`): `COMPLETED` is done; `RUNNING` again means they asked for changes (read `changeRequests` on the run, address them, finish again); `CANCELLED` means stop.
+3. `finish_improvement_run(id, publish_narrative, result_justification?, base_flow_id?)`. The user publishes, asks for changes, or cancels in the dashboard; open the run's `dashboardUrl` for them. Read the outcome from the run's `status` (`get_improvement_run(id)`): `COMPLETED` is done; `RUNNING` again means they asked for changes (read `changeRequests` on the run, address them, finish again); `CANCELLED` means stop.
 4. Changed the candidate after submitting it — because the user asked a follow-up, say? `reopen_improvement_run(id)` puts the run back to `RUNNING`, then finish it again. Never start a second run for the same flow; Hegl refuses it, and the user would see the same version listed twice.
 
 Write the narrative, experiment titles, hypotheses, and results in plain language. The user reads all of it.
@@ -23,7 +23,7 @@ Write the narrative, experiment titles, hypotheses, and results in plain languag
 
 The eval set is the single most important input. Nothing downstream fixes a dirty one.
 
-- Pull real past examples with `fetching-data-via-pieces` (through a subagent if your harness has one). For an `IMPROVEMENT` run, also mine Hegl: `search_feedbacks(agent_id, query: "")` and each review's `submittedValues` (`get_flow_run(id)` lists the run's `humanReviews`, `get_human_review(id)` returns the values; a reviewer's edited fields are the corrected output; diff against the run's `decisionBoxExecutions` `outputs` to find the box that erred). Split into a training set you tune on and a validation set you score on.
+- Pull real past examples with `fetching-data-via-pieces` (through a subagent if your harness has one). For an `IMPROVEMENT` run, also mine Hegl: `search_feedbacks(agent_id, query: "")` and each review's `submittedValues` (`get_flow_run(id)` lists the run's `humanReviews`, `get_human_review(id)` returns the values, or `findHumanReview(id:)` through `graphql` where that tool isn't offered; a reviewer's edited fields are the corrected output; diff against the run's `decisionBoxExecutions` `outputs` to find the box that erred). Split into a training set you tune on and a validation set you score on.
 - **Check the labels before trusting them.** An auto-derived label (a CRM stage, a subject-line rule) is a guess. Read a handful of rows yourself; if labels look wrong, re-label with subagents against a written rubric.
 - **Represent every class, including rare ones.** Proportional sampling from a 92/5/3 source leaves a class with one or two rows, which scores nothing. Stratify or oversample until each class has enough rows to score (`sampling: STRATIFIED | OVERSAMPLED`, counts in `classes`). When the source has none of a class you know exists, write a few rows yourself and mark them `provenance: "synthetic"` in the annotations.
 - **Size is a trade-off**, not a fixed number. Early on, favour a small fast set; large gains show up on small sets. As gains shrink, grow the validation set, or a 2-point lift on 40 rows is noise. Surface the trade-off to the user in their terms; do not pick silently.
@@ -80,5 +80,7 @@ Port the winning configuration **verbatim**, then smoke-test the step with sampl
 ## Finishing
 
 `finish_improvement_run` refuses until every wired box has a pinned flow iteration and is `READY`. It also refuses when a pinned box's primary metric is below target, unmeasured on `VALIDATION`, or worse than the base version, unless you pass `result_justification`. Compare first and pass the justification on the first call; a knowing shortfall is fine, a silent one is not.
+
+If a `candidate_stale` event arrives, rebuild the candidate on the live version it names and finish with `base_flow_id` set to it.
 
 If you hit a decision only the user can make mid-run, ask the user and wait for the answer.

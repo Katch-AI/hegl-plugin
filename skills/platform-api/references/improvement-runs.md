@@ -16,12 +16,13 @@ Opens a run against an existing candidate flow, in status `RUNNING`. The run nev
 - "Candidate flow not found" / "Base flow not found" come back as errors if an id doesn't resolve to a flow on the agent.
 - A flow can carry only one open run. Starting a second while one is `RUNNING`, `PAUSED_ON_QUESTION` or `AWAITING_REVIEW` is refused, naming the open run — use `reopen_improvement_run` on it instead.
 
-## finish_improvement_run(id, publish_narrative, result_justification?)
+## finish_improvement_run(id, publish_narrative, result_justification?, base_flow_id?)
 
 Submits the candidate for the user's review: `RUNNING` → `AWAITING_REVIEW`, storing the publish narrative.
 
 - `publish_narrative` — markdown summary of the experiments run and their results. The user reads this when deciding whether to publish.
 - `result_justification` — optional-but-gated — **required whenever any pinned box's primary metric is below its `targetValue`, has no VALIDATION value while a target is set, or is worse than the base version's pinned value** (all direction-aware; meeting the bar exactly passes). Explain why finishing anyway is the right call (e.g. label noise makes the target unreachable, or an apparent regression is dataset drift). Shown prominently to the user at publish review next to the shortfall numbers.
+- `base_flow_id` — the live flow, after another version went live while the run was open (a `candidate_stale` event). Rebuild the candidate on it first. Finishing a candidate not built on the live version is refused, and the error names the id to pass. Result shortfalls are then judged against it.
 
 ### The result gate
 
@@ -31,7 +32,7 @@ Before calling finish, compare each pinned iteration's primary-metric VALIDATION
 
 - Only a `RUNNING` run can be finished; any other status returns a status-guard error.
 - **Wiring gate:** `AWAITING_REVIEW` is refused until every decision box wired into the candidate flow has a pinned iteration (via `pin_flow_iteration`) and `status = READY`. The error lists the unfinished boxes by name. Use `pin_best_iteration` + `pin_flow_iteration` on each box first. If the published flow has trigger flows, call `set_supported_triggers` first.
-- After review the user either publishes (run → `COMPLETED`), requests changes (run → `RUNNING` — iterate and call `finish_improvement_run` again), or cancels (run → `CANCELLED`). You observe this via the run's `status`; you do not call the gate.
+- After review the user either publishes (run → `COMPLETED`), requests changes (run → `RUNNING` — iterate and call `finish_improvement_run` again), or cancels (run → `CANCELLED`). Publishing any version sends every other open candidate back to `RUNNING` to be rebuilt on it. You observe this via the run's `status`; you do not call the gate.
 
 ## reopen_improvement_run(id)
 
