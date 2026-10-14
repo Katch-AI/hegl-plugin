@@ -1,4 +1,8 @@
-# Hegl plugin
+# Hegl
+
+**Hegl is the reliability layer for agentic automation.** LLM-first automations are brittle, they drift, fail in subtle ways and require constant babysitting. Hegl learns the task from your systems and data, builds it as a deterministic flow, and isolates every judgment call in a decision box - a typed step with its own evals and success criteria, tested on real production data. The entire system runs inside a feedback loop that rewrites its own logic as feedback and new data arrive, so it gets more accurate and cost efficient over time. 
+
+## Plugin
 
 Build, measure and improve [Hegl](https://hegl.ai) agents from your own coding harness. The plugin registers the Hegl MCP server (`https://app.hegl.ai/mcp`) and the skills Hegl's hosted coding agent works from. Sign-in happens in your browser on first use; a new email gets a link to create an account. Whenever a step needs you (connecting an account, filling a form, publishing), the right dashboard page opens in your browser: in Claude Code a hook does it (set `HEGL_NO_BROWSER=1` to turn that off), elsewhere the skills ask your coding agent to.
 
