@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.18 — 2026-10-14
+
+- Refresh pieces-catalog.md
+- Document replies reaching the flow through the inbound-email trigger
+
 ## 0.1.17 — 2026-10-14
 
 - Document finish_improvement_run base_flow_id, and name findHumanReview for the hosted agent
