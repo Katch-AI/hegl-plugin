@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.15 — 2026-10-14
+
+- Update README with detailed Hegl plugin information
+
 ## 0.1.14 — 2026-10-13
 
 - Refresh pieces-catalog.md
