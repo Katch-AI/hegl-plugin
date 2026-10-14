@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.16 — 2026-10-14
+
+- Update README with GitHub assets link
+
 ## 0.1.15 — 2026-10-14
 
 - Update README with detailed Hegl plugin information
