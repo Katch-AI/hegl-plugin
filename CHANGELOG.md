@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.17 — 2026-10-14
+
+- Document finish_improvement_run base_flow_id, and name findHumanReview for the hosted agent
+
 ## 0.1.16 — 2026-10-14
 
 - Update README with GitHub assets link
