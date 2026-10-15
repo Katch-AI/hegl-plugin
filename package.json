@@ -1,6 +1,6 @@
 {
   "name": "hegl",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "Hegl plugin for coding harnesses",
   "type": "module",
   "main": ".opencode/plugins/hegl.js",
