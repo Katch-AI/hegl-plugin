@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.21 — 2026-10-17
+
+- Check incidents first in fix-errors and mark them fixed
+
 ## 0.1.20 — 2026-10-16
 
 - Refresh pieces-catalog.md
