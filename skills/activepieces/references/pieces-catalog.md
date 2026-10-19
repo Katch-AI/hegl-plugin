@@ -1,7 +1,7 @@
 # AP pieces catalog
 
 Source: <https://cloud.activepieces.com/api/v1/pieces>
-Pieces: 769 (plus 2 Hegl-internal pieces; see bottom of table)
+Pieces: 770 (plus 2 Hegl-internal pieces; see bottom of table)
 Detail files: 4 (see `piece-<name>.md` files in this directory for trigger/action/prop reference per piece)
 
 The `detail` column marks pieces with a per-piece file at `piece-<piece-name>.md` in this
@@ -51,6 +51,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-alt-text-ai | AltText.ai | 0.2.1 | 2 | 0 |  |
 | @activepieces/piece-alttextify | AltTextify | 0.2.1 | 2 | 0 |  |
 | @activepieces/piece-amazon-bedrock | AWS Bedrock | 0.4.1 | 5 | 0 |  |
+| @activepieces/piece-amazon-lambda | AWS Lambda | 0.0.1 | 3 | 1 |  |
 | @activepieces/piece-amazon-s3 | Amazon S3 | 0.8.0 | 8 | 1 |  |
 | @activepieces/piece-amazon-secrets-manager | AWS Secrets Manager | 0.2.1 | 6 | 0 |  |
 | @activepieces/piece-amazon-ses | Amazon SES | 0.1.7 | 7 | 0 |  |
@@ -170,7 +171,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-cohere | Cohere | 0.1.3 | 2 | 0 |  |
 | @activepieces/piece-cometapi | CometAPI | 0.2.1 | 2 | 0 |  |
 | @activepieces/piece-comfyicu | Comfy.ICU | 0.1.6 | 4 | 3 |  |
-| @activepieces/piece-confluence | Confluence | 0.3.2 | 21 | 5 |  |
+| @activepieces/piece-confluence | Confluence | 0.4.0 | 21 | 5 |  |
 | @activepieces/piece-connections | Connections | 0.5.10 | 1 | 0 |  |
 | @activepieces/piece-connectuc | ConnectUC | 0.0.13 | 6 | 8 |  |
 | @activepieces/piece-constant-contact | Constant Contact | 0.3.1 | 2 | 0 |  |
@@ -766,7 +767,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-whatsscale | WhatsScale | 1.1.0 | 41 | 5 |  |
 | @activepieces/piece-wistia | Wistia | 0.1.0 | 8 | 2 |  |
 | @activepieces/piece-wonderchat | Wonderchat | 0.1.7 | 4 | 1 |  |
-| @activepieces/piece-woocommerce | WooCommerce | 0.4.1 | 16 | 12 |  |
+| @activepieces/piece-woocommerce | WooCommerce | 0.5.0 | 16 | 12 |  |
 | @activepieces/piece-woodpecker | Woodpecker | 0.1.0 | 6 | 20 |  |
 | @activepieces/piece-wootric | Wootric | 0.1.6 | 1 | 0 |  |
 | @activepieces/piece-wordpress | WordPress | 0.7.1 | 5 | 1 |  |
