@@ -1,7 +1,7 @@
 # AP pieces catalog
 
 Source: <https://cloud.activepieces.com/api/v1/pieces>
-Pieces: 772 (plus 2 Hegl-internal pieces; see bottom of table)
+Pieces: 773 (plus 2 Hegl-internal pieces; see bottom of table)
 Detail files: 4 (see `piece-<name>.md` files in this directory for trigger/action/prop reference per piece)
 
 The `detail` column marks pieces with a per-piece file at `piece-<piece-name>.md` in this
@@ -772,6 +772,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-woocommerce | WooCommerce | 0.5.1 | 16 | 12 |  |
 | @activepieces/piece-woodpecker | Woodpecker | 0.1.0 | 6 | 20 |  |
 | @activepieces/piece-wootric | Wootric | 0.1.6 | 1 | 0 |  |
+| @activepieces/piece-word-documents | Word Documents | 0.0.2 | 2 | 0 |  |
 | @activepieces/piece-wordpress | WordPress | 0.9.1 | 5 | 1 |  |
 | @activepieces/piece-workable | Workable | 0.2.1 | 7 | 1 |  |
 | @activepieces/piece-workday | Workday | 0.3.0 | 25 | 14 |  |
