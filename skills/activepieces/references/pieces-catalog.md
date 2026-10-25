@@ -298,13 +298,13 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-gitlab | GitLab | 0.4.2 | 2 | 1 |  |
 | @activepieces/piece-gladia | Gladia | 0.2.0 | 3 | 0 |  |
 | @activepieces/piece-glide | Glide | 0.1.2 | 6 | 0 |  |
-| @activepieces/piece-gmail | Gmail | 0.18.1 | 11 | 4 |  |
+| @activepieces/piece-gmail | Gmail | 0.18.2 | 11 | 4 |  |
 | @activepieces/piece-goodmem | GoodMem | 0.0.8 | 5 | 0 |  |
 | @activepieces/piece-google-ads | Google Ads | 0.0.2 | 8 | 1 |  |
 | @activepieces/piece-google-bigquery | Google BigQuery | 0.1.2 | 10 | 4 |  |
 | @activepieces/piece-google-calendar | Google Calendar | 0.13.1 | 9 | 7 |  |
 | @activepieces/piece-google-cloud-storage | Google Cloud Storage | 0.1.8 | 12 | 2 |  |
-| @activepieces/piece-google-contacts | Google Contacts | 0.5.4 | 4 | 1 |  |
+| @activepieces/piece-google-contacts | Google Contacts | 0.5.5 | 4 | 1 |  |
 | @activepieces/piece-google-docs | Google Docs | 0.6.1 | 6 | 1 |  |
 | @activepieces/piece-google-document-ai | Google Document AI | 0.0.2 | 2 | 0 |  |
 | @activepieces/piece-google-drive | Google Drive | 0.13.0 | 17 | 3 |  |
@@ -768,7 +768,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-whatsapp | WhatsApp Business | 1.0.1 | 22 | 4 |  |
 | @activepieces/piece-whatsscale | WhatsScale | 1.1.0 | 41 | 5 |  |
 | @activepieces/piece-wistia | Wistia | 0.1.0 | 8 | 2 |  |
-| @activepieces/piece-wonderchat | Wonderchat | 0.1.7 | 4 | 1 |  |
+| @activepieces/piece-wonderchat | Wonderchat | 0.1.8 | 4 | 1 |  |
 | @activepieces/piece-woocommerce | WooCommerce | 0.5.1 | 16 | 12 |  |
 | @activepieces/piece-woodpecker | Woodpecker | 0.1.0 | 6 | 20 |  |
 | @activepieces/piece-wootric | Wootric | 0.1.6 | 1 | 0 |  |
