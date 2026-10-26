@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.28 — 2026-10-26
+
+- Document externalCaseId on trigger_flow and the email trigger's external_case_id
+
 ## 0.1.27 — 2026-10-26
 
 - Refresh pieces-catalog.md
