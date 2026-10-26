@@ -245,7 +245,8 @@ candidate flow.
         "actionName": "trigger_flow",
         "input": {
           "auth": "{{connections['<platform connection external id>']}}",
-          "trigger": "every_hour"
+          "trigger": "every_hour",
+          "externalCaseId": "<id of the unit of work, optional>"
         },
         "propertySettings": {
           "auth": { "type": "MANUAL" },
@@ -266,7 +267,8 @@ webhook body — wire it from the production trigger's output when the candidate
 (e.g. `"inputs": { "messageId": "{{ trigger.output.body.message_id }}" }`). If the payload needs real
 shaping, put a formatting-only CODE step between the trigger and this action and read
 `{{ <format_step>.output }}`. Omit `flowId` — the override is rejected for the connection's
-`flow_execution` scope; Hegl selects the published flow.
+`flow_execution` scope; Hegl selects the published flow. Pass `externalCaseId` (Slack `thread_ts`,
+document number…) when the trigger continues an existing unit of work; same value → same Case.
 
 **Gotcha — env substitution in `input`:** when a step prop genuinely needs a literal value from
 your environment (rare now that Hegl's auth + URL come from the connection), write the resolved
