@@ -15,8 +15,11 @@ Every agent gets an inbox at creation (`ibx-<random>@<domain>`). Do not use the 
 { "received_email_id": "rcv-…", "inbox": { "id": "ibx-…", "name": "…", "address": "…" }, "from": "…", "to": ["…"], "cc": ["…"],
   "subject": "…", "text_body": "…", "html_body": "…", "received_at": "2026-…",
   "attachments": [{ "id": "att-…", "filename": "…", "content_type": "…", "byte_size": 123, "download_url": "https://…" }],
-  "dropped_attachments": [{ "filename": "…", "detected_content_type": "…" }], "in_reply_to": null }
+  "dropped_attachments": [{ "filename": "…", "detected_content_type": "…" }], "in_reply_to": null,
+  "external_case_id": "<root Message-ID>" }
 ```
+
+`external_case_id` is the thread's root Message-ID; Hegl's provisioned email trigger flow passes it as `externalCaseId` to `trigger_flow`, so every reply in a thread joins one Case.
 
 For a reply to an email the agent sent, `in_reply_to` is:
 
