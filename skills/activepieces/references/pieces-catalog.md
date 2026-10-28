@@ -468,7 +468,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-microsoft-teams | Microsoft Teams | 0.7.4 | 16 | 4 |  |
 | @activepieces/piece-microsoft-teams-bot | Microsoft Teams Bot | 0.1.1 | 1 | 0 |  |
 | @activepieces/piece-microsoft-todo | Microsoft To Do | 0.5.2 | 13 | 4 |  |
-| @activepieces/piece-millionverifier | MillionVerifier | 0.1.8 | 1 | 0 |  |
+| @activepieces/piece-millionverifier | MillionVerifier | 0.1.9 | 2 | 0 |  |
 | @activepieces/piece-mind-studio | MindStudio | 0.1.7 | 1 | 0 |  |
 | @activepieces/piece-mindee | Mindee | 0.4.0 | 15 | 0 |  |
 | @activepieces/piece-missive | Missive | 0.2.0 | 6 | 5 |  |
