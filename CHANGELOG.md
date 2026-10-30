@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.32 — 2026-10-30
+
+- Refresh pieces-catalog.md
+
 ## 0.1.31 — 2026-10-29
 
 - Refresh pieces-catalog.md
