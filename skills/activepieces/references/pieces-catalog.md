@@ -584,7 +584,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-quickzu | Quickzu | 0.1.7 | 15 | 1 |  |
 | @activepieces/piece-quizell | Quizell | 0.1.0 | 8 | 0 |  |
 | @activepieces/piece-qwilr | Qwilr | 0.2.0 | 2 | 7 |  |
-| @activepieces/piece-rabbitmq | RabbitMQ | 0.1.8 | 2 | 1 |  |
+| @activepieces/piece-rabbitmq | RabbitMQ | 0.2.0 | 2 | 1 |  |
 | @activepieces/piece-raia-ai | raia | 0.2.0 | 3 | 0 |  |
 | @activepieces/piece-raindrop | Raindrop | 0.2.0 | 6 | 0 |  |
 | @activepieces/piece-rapidtext-ai | RapidText AI | 0.1.7 | 2 | 0 |  |
