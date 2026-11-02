@@ -156,7 +156,7 @@ When an API takes a username and password or an API key and returns a token, ses
 - Find the session with `session_path` (dotted, XML namespace prefixes ignored) or `session_cookie`. It is sent as `Authorization: Bearer` unless you set `session_header_name` and `session_header_prefix`; a cookie is sent back as a cookie. For an API that wants it elsewhere, put `%SESSION%` in `body`, `body_raw`, or `headers` and set `send_session_header` to `false`.
 - `api_url_path` takes the API host from the login response instead of `base_url`.
 - Output is `{ok, login, status, body, error}`, where `login` is `ok`, `failed`, or `skipped`. No response headers.
-- HTTP 401, 403, or a value at `rejected_path` counts as rejected credentials. Later runs then return `skipped` without trying again until the connection's credentials change, to avoid locking the account. Set `rejected_path` for any API that rejects with another status. Tell the user; never work around it.
+- HTTP 401 or a value at `rejected_path` counts as rejected credentials. Later runs then return `skipped` without trying again until the connection's credentials change, to avoid locking the account. Set `rejected_path` for any API that rejects with another status, including 403. Tell the user; never work around it.
 - Every execution of the step logs in once. Never put it in a loop: fetch what you need in one request.
 
 Salesforce with a username and password, when OAuth isn't possible (the password field holds the password followed by the security token). Salesforce plans to retire SOAP `login()` in Summer '27, so flag that to the user:
