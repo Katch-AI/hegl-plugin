@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.36 — 2026-11-03
+
+- Teach session_request and keep secrets out of run logs
+
 ## 0.1.35 — 2026-11-03
 
 - Refresh pieces-catalog.md
