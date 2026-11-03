@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.38 — 2026-11-03
+
+- Use the dot form for connection field references
+
 ## 0.1.37 — 2026-11-03
 
 - Shorten the session_request Salesforce example
