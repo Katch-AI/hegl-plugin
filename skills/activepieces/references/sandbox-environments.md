@@ -25,7 +25,7 @@ command on stdin. The connection does not have to belong to the Hegl piece —
 AP looks connections up by externalId alone:
 
 ```json
-"inputs": { "password": "{{connections['<externalId>'].password}}" }
+"inputs": { "password": "{{connections.<externalId>.password}}" }
 ```
 
 Never echo a credential: `output` is combined stdout+stderr and travels into the

@@ -200,7 +200,7 @@ If the response contains no reusable secret, AP resolves connection fields into 
   "base_url": "{{trigger.output.body.config.connection_requirements['cr-abc123'].base_url}}",
   "method": "POST",
   "send_auth_header": false,
-  "body": { "username": "{{connections['<externalId>'].username}}", "password": "{{connections['<externalId>'].password}}" }
+  "body": { "username": "{{connections.<externalId>.username}}", "password": "{{connections.<externalId>.password}}" }
 }
 ```
 
