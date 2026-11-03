@@ -8,7 +8,7 @@ description: Use when the customer's agent must call an HTTP API that has no ded
 ## Overview
 
 The `@marcus-ai/piece-marcus-custom-api` piece calls any HTTP API with credentials
-stored as a normal AP connection. One action — `custom_api_request` — applies
+stored as a normal AP connection. `custom_api_request` applies
 the connection's auth automatically: API key header, basic auth, OAuth2
 bearer token, or a fresh short-lived JWT signed from a shared secret on every
 request. You never hand-build auth headers or signing code.
@@ -25,6 +25,7 @@ piece-worthy integrations).
    - username + password → `BASIC_AUTH`
    - OAuth2 authorization-code (customer has client id/secret + endpoint URLs) → `OAUTH2`
    - JWT minted from a shared secret (HS256/384/512) → `CUSTOM_AUTH`
+   - A login that returns a token or session → `BASIC_AUTH` or `SECRET_TEXT`, with `session_request`
 3. **An example request** (curl or docs) if one exists; it pins the header
    name (`Authorization: Bearer` vs `X-Api-Key`) and paths.
 
@@ -123,11 +124,78 @@ into the step as a literal:
   algorithm, claims, ttl, header) lives on the connection the customer fills
   in.
 
+## Secrets in run logs
+
+A run stores every step's input and output in plain text. Only a `{{connections[…]}}` reference written directly in a step's input is masked.
+
+- Never use `read_connection` (`@activepieces/piece-connections`) to get a credential: its whole output is logged.
+- Never pass a password, token, or session through a step output. A login step whose response holds a token logs that token, and every later step that references it logs it again.
+
+## Logging in for a session or token
+
+When an API takes a username and password or an API key and returns a token, session, or cookie, use `session_request`. It logs in and makes one request in the same step, so neither the credentials nor the session reach the run log. It needs a `BASIC_AUTH` or `SECRET_TEXT` connection.
+
+```json
+"actionName": "session_request",
+"input": {
+  "auth": "{{connections['<externalId>']}}",
+  "login_url": "https://api.acme.example/oauth/token",
+  "login_content_type": "application/x-www-form-urlencoded",
+  "login_body": "grant_type=password&username=%USERNAME%&password=%PASSWORD%",
+  "session_path": "access_token",
+  "rejected_path": "error",
+  "error_path": "error_description",
+  "base_url": "https://api.acme.example",
+  "path": "/v1/orders",
+  "method": "GET",
+  "fail_on_error": false
+}
+```
+
+- Read `login_url` and `base_url` from config, as above, when they vary per customer.
+- The piece fills `%USERNAME%`, `%PASSWORD%`, and `%SECRET%` (API key) in `login_body` and `login_headers`, escaping them for XML, form, or JSON from `login_content_type`. Don't use `{{connections[…]}}` for these. In JSON, you write the quotes: `"{\"user\":\"%USERNAME%\",\"pass\":\"%PASSWORD%\"}"`. `login_body` is optional for a login that only needs headers.
+- The login is always a POST. The API request takes `method` (required), `path` (appended to `base_url`), `query`, `headers`, and `body` (JSON) or `body_raw` with `content_type`. A `GET` or `HEAD` can't have a body. The connection's credentials are never sent on the API request.
+- Set exactly one of `session_path` (dotted, XML namespace prefixes ignored) and `session_cookie` (the cookie's name). A path's value is sent as `Authorization: Bearer` unless you set `session_header_name` and `session_header_prefix` (`""` for none); a cookie is sent back as a cookie.
+- Set exactly one of `base_url` and `api_url_path`, which takes the API host from the login response.
+
+Output, with `fail_on_error: false`. With the default `true`, every outcome except the first fails the step instead. Invalid config always fails the step.
+
+| Outcome | `ok` | `login` | `status`, `body` |
+|---|---|---|---|
+| API 2xx | `true` | `ok` | API's |
+| API non-2xx | `false` | `ok` | API's |
+| API unreachable | `false` | `ok` | `null` |
+| Login failed | `false` | `failed` | `null` |
+| Credentials already rejected | `false` | `skipped` | `null` |
+
+`error` holds the message, and response headers are never returned. Set `fail_on_error: false` only to branch on these; on `failed` or `skipped`, end the run with `fail_flow_run` so the user sees `error`.
+
+**Rejected credentials.** HTTP 401, or `rejected_path` existing in the login response whatever the status, stops later runs without trying again until the connection's credentials change, to avoid locking the account. Never work around it.
+
+- **Set `rejected_path` unless the API rejects logins with a 401.** Otherwise every run retries bad credentials. A failure that wasn't counted says so in `error`.
+- Use a field that exists only on rejection: `reason`, not a `success` that is always present. Any other error at that path also blocks later runs, so prefer a credential-specific path where there is one.
+- If the docs don't give the rejection format, ask the user for it or for a non-production account to observe one. Don't enable the flow on a shared account until you know it, and never test with real credentials.
+- Every execution of the step logs in once. Never put it in a loop: fetch what you need in one request.
+
+Salesforce with a username and password, when OAuth isn't possible (the password field holds the password followed by the security token). Salesforce plans to retire SOAP `login()` in Summer '27, so flag that to the user:
+
+```json
+"login_url": "https://<domain>.my.salesforce.com/services/Soap/u/59.0",
+"login_content_type": "text/xml; charset=UTF-8",
+"login_headers": { "SOAPAction": "login" },
+"login_body": "<env:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"urn:partner.soap.sforce.com\"><env:Body><urn:login><urn:username>%USERNAME%</urn:username><urn:password>%PASSWORD%</urn:password></urn:login></env:Body></env:Envelope>",
+"session_path": "Envelope.Body.loginResponse.result.sessionId",
+"api_url_path": "Envelope.Body.loginResponse.result.serverUrl",
+"rejected_path": "Envelope.Body.Fault.detail.LoginFault",
+"error_path": "Envelope.Body.Fault.faultstring",
+"path": "/services/data/v59.0/query"
+```
+
+A disabled SOAP login also shows up as a rejected login.
+
 ## Credentials the API wants in the body
 
-SOAP `login()` and the OAuth2 password grant put credentials in the body, not a
-header. AP resolves connection fields into **any** prop, so reference them there
-and turn the auth header off:
+If the response contains no reusable secret, AP resolves connection fields into **any** prop, so reference them in a JSON `body` and turn the auth header off:
 
 ```json
 "input": {
@@ -135,25 +203,15 @@ and turn the auth header off:
   "base_url": "{{trigger.output.body.config.connection_requirements['cr-abc123'].base_url}}",
   "method": "POST",
   "send_auth_header": false,
-  "content_type": "text/xml",
-  "body_raw": "<soapenv:Envelope …><n1:username>{{connections['<externalId>'].username}}</n1:username><n1:password>{{connections['<externalId>'].password}}</n1:password>…</soapenv:Envelope>",
-  "response_format": "xml"
+  "body": { "username": "{{connections['<externalId>'].username}}", "password": "{{connections['<externalId>'].password}}" }
 }
 ```
 
-- `{{auth.username}}` does **not** work. AP evaluates unknown template paths and
-  yields an empty string, so the request silently goes out with no credential.
-  Only `{{connections[…]}}` resolves.
-- `body_raw` and `body` are mutually exclusive; setting both fails the step.
-- `response_format: "xml"` parses the reply — namespace prefixes stripped,
-  attributes under `@_`, values left as strings. Read it as
-  `{{step_login.output.body.Envelope.Body.loginResponse.result.sessionId}}`.
-- For a form grant use `"content_type": "application/x-www-form-urlencoded"` and
-  a `body_raw` of `grant_type=password&username=…&password=…`.
+- `{{auth.username}}` does **not** work. AP evaluates unknown template paths and yields an empty string, so the request silently goes out with no credential. Only `{{connections[…]}}` resolves.
+- AP inserts values unescaped, so a credential in `body_raw` breaks on `&`, `<` or `"` in XML or form data. `body_raw` and `body` are mutually exclusive; setting both fails the step.
+- `response_format: "xml"` parses an XML reply: namespace prefixes stripped, attributes under `@_`, values left as strings.
 
-Credentials the piece cannot reach at all — an SDK handshake, a non-HTTP
-protocol — belong in a sandbox step instead (`activepieces` →
-`references/sandbox-environments.md`).
+If a login needs more than `session_request` offers (a signed challenge, the session sent in a request body, several calls that depend on each other), log in and use the token inside one sandbox step instead, printing neither (`activepieces` → `references/sandbox-environments.md`). The same goes for credentials the piece cannot reach at all: an SDK handshake, a non-HTTP protocol.
 
 ## Per-auth-shape notes
 
