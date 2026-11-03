@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.37 — 2026-11-03
+
+- Shorten the session_request Salesforce example
+
 ## 0.1.36 — 2026-11-03
 
 - Teach session_request and keep secrets out of run logs
