@@ -152,11 +152,29 @@ When an API takes a username and password or an API key and returns a token, ses
 }
 ```
 
-- The piece fills `%USERNAME%`, `%PASSWORD%`, and `%SECRET%` (API key) in `login_body` and `login_headers`, escaping them for XML, form, or JSON from `login_content_type`. Don't use `{{connections[…]}}` for these.
-- Find the session with `session_path` (dotted, XML namespace prefixes ignored) or `session_cookie`. It is sent as `Authorization: Bearer` unless you set `session_header_name` and `session_header_prefix`; a cookie is sent back as a cookie. For an API that wants it elsewhere, put `%SESSION%` in `body`, `body_raw`, or `headers` and set `send_session_header` to `false`.
-- `api_url_path` takes the API host from the login response instead of `base_url`.
-- Output is `{ok, login, status, body, error}`, where `login` is `ok`, `failed`, or `skipped`. No response headers.
-- HTTP 401 or a value at `rejected_path` counts as rejected credentials. Later runs then return `skipped` without trying again until the connection's credentials change, to avoid locking the account. Set `rejected_path` for any API that rejects with another status, including 403. Tell the user; never work around it.
+- Read `login_url` and `base_url` from config, as above, when they vary per customer.
+- The piece fills `%USERNAME%`, `%PASSWORD%`, and `%SECRET%` (API key) in `login_body` and `login_headers`, escaping them for XML, form, or JSON from `login_content_type`. Don't use `{{connections[…]}}` for these. In JSON, you write the quotes: `"{\"user\":\"%USERNAME%\",\"pass\":\"%PASSWORD%\"}"`. `login_body` is optional for a login that only needs headers.
+- The login is always a POST. The API request takes `method` (required), `path` (appended to `base_url`), `query`, `headers`, and `body` (JSON) or `body_raw` with `content_type`. A `GET` or `HEAD` can't have a body. The connection's credentials are never sent on the API request.
+- Set exactly one of `session_path` (dotted, XML namespace prefixes ignored) and `session_cookie` (the cookie's name). A path's value is sent as `Authorization: Bearer` unless you set `session_header_name` and `session_header_prefix` (`""` for none); a cookie is sent back as a cookie.
+- Set exactly one of `base_url` and `api_url_path`, which takes the API host from the login response.
+
+Output, with `fail_on_error: false`. With the default `true`, every outcome except the first fails the step instead. Invalid config always fails the step.
+
+| Outcome | `ok` | `login` | `status`, `body` |
+|---|---|---|---|
+| API 2xx | `true` | `ok` | API's |
+| API non-2xx | `false` | `ok` | API's |
+| API unreachable | `false` | `ok` | `null` |
+| Login failed | `false` | `failed` | `null` |
+| Credentials already rejected | `false` | `skipped` | `null` |
+
+`error` holds the message, and response headers are never returned. Set `fail_on_error: false` only to branch on these; on `failed` or `skipped`, end the run with `fail_flow_run` so the user sees `error`.
+
+**Rejected credentials.** HTTP 401, or `rejected_path` existing in the login response whatever the status, stops later runs without trying again until the connection's credentials change, to avoid locking the account. Never work around it.
+
+- **Set `rejected_path` unless the API rejects logins with a 401.** Otherwise every run retries bad credentials. A failure that wasn't counted says so in `error`.
+- Use a field that exists only on rejection: `reason`, not a `success` that is always present. Any other error at that path also blocks later runs, so prefer a credential-specific path where there is one.
+- If the docs don't give the rejection format, ask the user for it or for a non-production account to observe one. Don't enable the flow on a shared account until you know it, and never test with real credentials.
 - Every execution of the step logs in once. Never put it in a loop: fetch what you need in one request.
 
 Salesforce with a username and password, when OAuth isn't possible (the password field holds the password followed by the security token). Salesforce plans to retire SOAP `login()` in Summer '27, so flag that to the user:
@@ -193,7 +211,7 @@ If the response contains no reusable secret, AP resolves connection fields into 
 - AP inserts values unescaped, so a credential in `body_raw` breaks on `&`, `<` or `"` in XML or form data. `body_raw` and `body` are mutually exclusive; setting both fails the step.
 - `response_format: "xml"` parses an XML reply: namespace prefixes stripped, attributes under `@_`, values left as strings.
 
-If a login needs more than `session_request` offers (a signed challenge, several calls that depend on each other), log in and use the token inside one sandbox step instead, printing neither (`activepieces` → `references/sandbox-environments.md`). The same goes for credentials the piece cannot reach at all: an SDK handshake, a non-HTTP protocol.
+If a login needs more than `session_request` offers (a signed challenge, the session sent in a request body, several calls that depend on each other), log in and use the token inside one sandbox step instead, printing neither (`activepieces` → `references/sandbox-environments.md`). The same goes for credentials the piece cannot reach at all: an SDK handshake, a non-HTTP protocol.
 
 ## Per-auth-shape notes
 
