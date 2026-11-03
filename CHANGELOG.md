@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.35 — 2026-11-03
+
+- Refresh pieces-catalog.md
+
 ## 0.1.34 — 2026-11-01
 
 - Document dismiss_config_requirement in platform-api
