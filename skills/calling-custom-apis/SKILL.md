@@ -177,7 +177,7 @@ Output, with `fail_on_error: false`. With the default `true`, every outcome exce
 - If the docs don't give the rejection format, ask the user for it or for a non-production account to observe one. Don't enable the flow on a shared account until you know it, and never test with real credentials.
 - Every execution of the step logs in once. Never put it in a loop: fetch what you need in one request.
 
-Salesforce with a username and password, when OAuth isn't possible (the password field holds the password followed by the security token). Salesforce plans to retire SOAP `login()` in Summer '27, so flag that to the user:
+An XML login that also returns the API host (Salesforce SOAP):
 
 ```json
 "login_url": "https://<domain>.my.salesforce.com/services/Soap/u/59.0",
@@ -187,11 +187,8 @@ Salesforce with a username and password, when OAuth isn't possible (the password
 "session_path": "Envelope.Body.loginResponse.result.sessionId",
 "api_url_path": "Envelope.Body.loginResponse.result.serverUrl",
 "rejected_path": "Envelope.Body.Fault.detail.LoginFault",
-"error_path": "Envelope.Body.Fault.faultstring",
-"path": "/services/data/v59.0/query"
+"error_path": "Envelope.Body.Fault.faultstring"
 ```
-
-A disabled SOAP login also shows up as a rejected login.
 
 ## Credentials the API wants in the body
 
