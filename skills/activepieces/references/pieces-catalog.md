@@ -228,7 +228,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-dropbox | Dropbox | 0.10.1 | 14 | 1 |  |
 | @activepieces/piece-drupal | Drupal | 1.1.12 | 6 | 3 |  |
 | @activepieces/piece-dub | Dub | 0.1.2 | 6 | 2 |  |
-| @activepieces/piece-duckdb | DuckDB | 0.0.9 | 1 | 0 |  |
+| @activepieces/piece-duckdb | DuckDB | 0.1.0 | 1 | 0 |  |
 | @activepieces/piece-dumpling-ai | Dumpling AI | 0.2.1 | 7 | 0 |  |
 | @activepieces/piece-dust | Dust | 0.3.0 | 7 | 0 |  |
 | @activepieces/piece-easy-peasy-ai | Easy-Peasy.AI | 0.2.0 | 4 | 0 |  |
@@ -299,7 +299,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-gitlab | GitLab | 0.4.2 | 2 | 1 |  |
 | @activepieces/piece-gladia | Gladia | 0.2.0 | 3 | 0 |  |
 | @activepieces/piece-glide | Glide | 0.1.2 | 6 | 0 |  |
-| @activepieces/piece-gmail | Gmail | 0.18.3 | 11 | 4 |  |
+| @activepieces/piece-gmail | Gmail | 0.18.4 | 11 | 4 |  |
 | @activepieces/piece-goodmem | GoodMem | 0.0.8 | 5 | 0 |  |
 | @activepieces/piece-google-ads | Google Ads | 0.0.3 | 8 | 1 |  |
 | @activepieces/piece-google-bigquery | Google BigQuery | 0.1.2 | 10 | 4 |  |
@@ -326,14 +326,14 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-gptzero-detect-ai | GPTZero | 0.1.8 | 2 | 0 |  |
 | @activepieces/piece-granola | Granola | 0.1.2 | 3 | 2 |  |
 | @activepieces/piece-graphql | GraphQL | 0.0.20 | 1 | 0 |  |
-| @activepieces/piece-gravityforms | Gravity Forms | 0.1.7 | 0 | 1 |  |
+| @activepieces/piece-gravityforms | Gravity Forms | 0.2.0 | 1 | 1 |  |
 | @activepieces/piece-greenhouse | Greenhouse | 0.1.0 | 8 | 6 |  |
 | @activepieces/piece-greenpt | GreenPT | 0.2.1 | 4 | 0 |  |
 | @activepieces/piece-greip | Greip | 0.1.8 | 6 | 5 |  |
 | @activepieces/piece-griptape | Griptape Cloud | 0.2.1 | 5 | 4 |  |
 | @activepieces/piece-grist | Grist | 0.3.0 | 5 | 2 |  |
 | @activepieces/piece-grok-xai | Grok by xAI | 0.2.1 | 5 | 0 |  |
-| @activepieces/piece-groq | Groq | 0.5.1 | 4 | 0 |  |
+| @activepieces/piece-groq | Groq | 0.6.0 | 4 | 0 |  |
 | @activepieces/piece-guidelite | GuideLite | 0.2.1 | 2 | 1 |  |
 | @activepieces/piece-hackernews | Hacker News | 0.5.0 | 2 | 0 |  |
 | @activepieces/piece-harvest | Harvest | 0.2.0 | 11 | 0 |  |
@@ -464,8 +464,8 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-microsoft-outlook-calendar | Microsoft Outlook Calendar | 0.4.0 | 4 | 0 |  |
 | @activepieces/piece-microsoft-power-bi | Microsoft Power BI | 0.4.2 | 9 | 0 |  |
 | @activepieces/piece-microsoft-sharepoint | Microsoft SharePoint | 0.4.3 | 16 | 8 |  |
-| @activepieces/piece-microsoft-sql-server | Microsoft SQL Server | 0.1.1 | 7 | 1 |  |
-| @activepieces/piece-microsoft-teams | Microsoft Teams | 0.7.4 | 16 | 4 |  |
+| @activepieces/piece-microsoft-sql-server | Microsoft SQL Server | 0.2.0 | 7 | 1 |  |
+| @activepieces/piece-microsoft-teams | Microsoft Teams | 0.8.0 | 16 | 4 |  |
 | @activepieces/piece-microsoft-teams-bot | Microsoft Teams Bot | 0.1.1 | 1 | 0 |  |
 | @activepieces/piece-microsoft-todo | Microsoft To Do | 0.5.2 | 13 | 4 |  |
 | @activepieces/piece-millionverifier | MillionVerifier | 0.1.9 | 2 | 0 |  |
@@ -478,7 +478,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-modelslab | ModelsLab | 0.0.5 | 1 | 0 |  |
 | @activepieces/piece-mollie | Mollie | 0.1.7 | 8 | 7 |  |
 | @activepieces/piece-monday | monday.com | 0.4.0 | 9 | 2 |  |
-| @activepieces/piece-mongodb | MongoDB | 0.1.7 | 7 | 0 |  |
+| @activepieces/piece-mongodb | MongoDB | 0.2.0 | 7 | 0 |  |
 | @activepieces/piece-moonclerk | Moonclerk | 0.1.0 | 2 | 5 |  |
 | @activepieces/piece-mooninvoice | Moon Invoice | 0.0.9 | 7 | 0 |  |
 | @activepieces/piece-motion | Motion | 0.2.2 | 7 | 1 |  |
@@ -489,7 +489,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-murf-api | Murf AI | 0.2.2 | 5 | 0 |  |
 | @activepieces/piece-mycase-piece | MyCase | 0.1.7 | 37 | 5 |  |
 | @activepieces/piece-mysendingbox | Mysendingbox | 0.1.0 | 1 | 0 |  |
-| @activepieces/piece-mysql | MySQL | 0.4.0 | 7 | 0 |  |
+| @activepieces/piece-mysql | MySQL | 0.5.0 | 7 | 0 |  |
 | @activepieces/piece-netlify | Netlify | 0.2.2 | 16 | 4 |  |
 | @activepieces/piece-netsuite | NetSuite | 0.2.1 | 5 | 0 |  |
 | @activepieces/piece-neverbounce | NeverBounce | 0.2.0 | 2 | 0 |  |
@@ -537,7 +537,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-pdfmonkey | PDFMonkey | 0.3.1 | 10 | 1 |  |
 | @activepieces/piece-peekshot | PeekShot | 0.2.0 | 2 | 0 |  |
 | @activepieces/piece-pendo | Pendo | 0.2.0 | 5 | 0 |  |
-| @activepieces/piece-perplexity-ai | Perplexity AI | 0.5.0 | 1 | 0 |  |
+| @activepieces/piece-perplexity-ai | Perplexity AI | 0.6.0 | 1 | 0 |  |
 | @activepieces/piece-personal-ai | Personal AI | 0.1.8 | 10 | 0 |  |
 | @activepieces/piece-phantombuster | PhantomBuster | 0.2.0 | 2 | 1 |  |
 | @activepieces/piece-phone-validator | Phone Validator | 0.0.8 | 1 | 0 |  |
@@ -554,7 +554,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-pollybot-ai | PollyBot AI | 0.2.0 | 5 | 1 |  |
 | @activepieces/piece-polydoc | PolyDoc | 0.1.1 | 4 | 0 |  |
 | @activepieces/piece-poper | Poper | 0.2.7 | 0 | 1 |  |
-| @activepieces/piece-postgres | Postgres | 0.5.1 | 7 | 1 |  |
+| @activepieces/piece-postgres | Postgres | 0.6.0 | 7 | 1 |  |
 | @activepieces/piece-posthog | PostHog | 0.7.1 | 5 | 1 |  |
 | @activepieces/piece-postiz | Postiz | 0.1.2 | 9 | 1 |  |
 | @activepieces/piece-postmark | Postmark | 0.1.1 | 5 | 0 |  |
@@ -628,7 +628,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-segment | Segment | 0.1.7 | 1 | 0 |  |
 | @activepieces/piece-send-it | SendIt | 0.3.0 | 10 | 3 |  |
 | @activepieces/piece-sender | Sender | 0.2.1 | 8 | 7 |  |
-| @activepieces/piece-sendfox | SendFox | 0.3.0 | 4 | 0 |  |
+| @activepieces/piece-sendfox | SendFox | 0.4.0 | 4 | 0 |  |
 | @activepieces/piece-sendgrid | SendGrid | 0.6.3 | 8 | 0 |  |
 | @activepieces/piece-sendinblue | Brevo | 0.6.0 | 7 | 8 |  |
 | @activepieces/piece-sendpulse | SendPulse | 0.2.2 | 6 | 3 |  |
@@ -682,7 +682,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-subflows | Sub Flows | 0.7.0 | 3 | 1 |  |
 | @activepieces/piece-supabase | Supabase | 0.4.1 | 22 | 1 |  |
 | @activepieces/piece-supadata | Supadata | 0.2.0 | 2 | 0 |  |
-| @activepieces/piece-surrealdb | SurrealDB | 0.1.8 | 1 | 1 |  |
+| @activepieces/piece-surrealdb | SurrealDB | 0.2.0 | 2 | 1 |  |
 | @activepieces/piece-surveymonkey | SurveyMonkey | 0.3.1 | 1 | 1 |  |
 | @activepieces/piece-surveytale | SurveyTale | 0.1.0 | 1 | 3 |  |
 | @activepieces/piece-swarmnode | SwarmNode | 0.2.0 | 3 | 0 |  |
