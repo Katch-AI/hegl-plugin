@@ -41,7 +41,7 @@ Tools that create, search or run in an agent's context take `agent_id` (from `li
 
 **Platform issues.** `report_platform_issue(title, category, severity, body)` when a skill, tool, piece or API is missing, wrong or awkward. `category`: `MISSING_SKILL | MISSING_API | BUG | INCONSISTENCY | TOOLING | OTHER`; `severity`: `BLOCKER | FRICTION | IDEA`; `body`: what you were doing, what happened, what you tried, a suggested fix. `list_platform_issues` first to avoid duplicates; `update_platform_issue`, `discard_platform_issue`.
 
-**Hosted agent files.** `list_workspace_files`, `read_workspace_file`, `write_workspace_file` reach the files Hegl's hosted coding agent produced for the agent.
+**Hosted agent files.** `list_workspace_files`, `read_workspace_file`, `write_workspace_file` reach the files Hegl's hosted coding agent produced for the agent. For more than a few files, move one `.tar.gz` through a URL valid for 15 minutes: `download_workspace`, then poll `get_workspace_transfer` for `url`; or `start_workspace_upload`, PUT the archive, `finish_workspace_upload`, and poll. A push adds and overwrites, never deletes, and can land mid-turn: prefer a new directory (`into`) to overwriting the hosted agent's files.
 
 ## Runtime actions in flow JSON
 
