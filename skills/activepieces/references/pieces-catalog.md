@@ -1,7 +1,7 @@
 # AP pieces catalog
 
 Source: <https://cloud.activepieces.com/api/v1/pieces>
-Pieces: 775 (plus 2 Hegl-internal pieces; see bottom of table)
+Pieces: 776 (plus 2 Hegl-internal pieces; see bottom of table)
 Detail files: 4 (see `piece-<name>.md` files in this directory for trigger/action/prop reference per piece)
 
 The `detail` column marks pieces with a per-piece file at `piece-<piece-name>.md` in this
@@ -37,7 +37,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-add-event | AddEvent | 0.1.2 | 9 | 2 |  |
 | @activepieces/piece-afforai | Afforai | 0.1.7 | 1 | 0 |  |
 | @activepieces/piece-agentx | AgentX | 0.1.8 | 5 | 2 |  |
-| @activepieces/piece-ai | AI | 0.15.1 | 6 | 0 |  |
+| @activepieces/piece-ai | AI | 0.15.2 | 6 | 0 |  |
 | @activepieces/piece-aianswer | AI Answer | 0.2.1 | 6 | 0 |  |
 | @activepieces/piece-aidbase | Aidbase | 0.2.1 | 7 | 8 |  |
 | @activepieces/piece-aiprise | AiPrise | 0.2.2 | 17 | 0 |  |
@@ -46,12 +46,13 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-airparser | Airparser | 0.1.7 | 2 | 1 |  |
 | @activepieces/piece-airtable | Airtable | 0.9.3 | 15 | 2 |  |
 | @activepieces/piece-airtop | Airtop | 0.2.1 | 12 | 0 |  |
-| @activepieces/piece-alai | Alai | 0.3.0 | 12 | 0 |  |
+| @activepieces/piece-alai | Alai | 0.3.1 | 12 | 0 |  |
 | @activepieces/piece-algolia | Algolia | 0.1.2 | 4 | 0 |  |
 | @activepieces/piece-alt-text-ai | AltText.ai | 0.2.1 | 2 | 0 |  |
 | @activepieces/piece-alttextify | AltTextify | 0.2.1 | 2 | 0 |  |
 | @activepieces/piece-amazon-bedrock | AWS Bedrock | 0.4.1 | 5 | 0 |  |
 | @activepieces/piece-amazon-lambda | AWS Lambda | 0.0.2 | 3 | 1 |  |
+| @activepieces/piece-amazon-redshift | Amazon Redshift | 0.0.2 | 5 | 2 |  |
 | @activepieces/piece-amazon-s3 | Amazon S3 | 0.8.1 | 8 | 1 |  |
 | @activepieces/piece-amazon-secrets-manager | AWS Secrets Manager | 0.2.1 | 6 | 0 |  |
 | @activepieces/piece-amazon-ses | Amazon SES | 0.1.7 | 7 | 0 |  |
@@ -68,7 +69,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-apitemplate-io | APITemplate.io | 0.3.1 | 8 | 0 |  |
 | @activepieces/piece-apollo | Apollo | 0.2.1 | 7 | 0 |  |
 | @activepieces/piece-appfollow | AppFollow | 0.2.1 | 3 | 2 |  |
-| @activepieces/piece-approval | Approval (Legacy) | 0.2.0 | 2 | 0 |  |
+| @activepieces/piece-approval | Approval (Legacy) | 0.2.1 | 2 | 0 |  |
 | @activepieces/piece-asana | Asana | 0.8.0 | 2 | 0 |  |
 | @activepieces/piece-ashby | Ashby | 0.2.1 | 1 | 0 |  |
 | @activepieces/piece-ask-handle | AskHandle | 0.1.8 | 4 | 3 |  |
@@ -127,7 +128,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-camb-ai | Camb.AI | 0.2.0 | 5 | 0 |  |
 | @activepieces/piece-campaign-monitor | Campaign Monitor | 0.2.0 | 21 | 4 |  |
 | @activepieces/piece-canny | Canny | 0.2.2 | 5 | 4 |  |
-| @activepieces/piece-canva | Canva | 0.3.0 | 13 | 0 |  |
+| @activepieces/piece-canva | Canva | 0.3.1 | 13 | 0 |  |
 | @activepieces/piece-capsule-crm | Capsule CRM | 0.1.7 | 10 | 4 |  |
 | @activepieces/piece-captain-data | Captain-data | 0.2.0 | 3 | 0 |  |
 | @activepieces/piece-carbone | Carbone | 0.1.2 | 8 | 0 |  |
@@ -168,7 +169,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-cloutly | Cloutly | 0.2.0 | 2 | 0 |  |
 | @activepieces/piece-coda | Coda | 0.3.1 | 35 | 1 |  |
 | @activepieces/piece-cody | Cody | 0.3.1 | 7 | 0 |  |
-| @activepieces/piece-cognito-forms | Cognito Forms | 0.3.0 | 10 | 2 |  |
+| @activepieces/piece-cognito-forms | Cognito Forms | 0.3.1 | 10 | 2 |  |
 | @activepieces/piece-cohere | Cohere | 0.1.3 | 2 | 0 |  |
 | @activepieces/piece-cometapi | CometAPI | 0.2.1 | 2 | 0 |  |
 | @activepieces/piece-comfyicu | Comfy.ICU | 0.1.7 | 4 | 3 |  |
@@ -204,7 +205,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-datafuel | DataFuel | 0.2.0 | 4 | 0 |  |
 | @activepieces/piece-date-helper | Date Helper | 0.2.0 | 9 | 0 |  |
 | @activepieces/piece-datocms | Dato CMS | 0.2.0 | 1 | 0 |  |
-| @activepieces/piece-deepgram | Deepgram | 0.3.1 | 17 | 0 |  |
+| @activepieces/piece-deepgram | Deepgram | 0.3.2 | 17 | 0 |  |
 | @activepieces/piece-deepl | DeepL | 0.2.2 | 2 | 0 |  |
 | @activepieces/piece-deepseek | DeepSeek | 0.1.7 | 1 | 0 |  |
 | @activepieces/piece-deftform | Deftform | 0.1.2 | 8 | 1 |  |
@@ -216,8 +217,8 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-digital-ocean | DigitalOcean | 0.1.1 | 11 | 0 |  |
 | @activepieces/piece-digital-pilot | DigitalPilot | 0.1.7 | 2 | 2 |  |
 | @activepieces/piece-dimo | DIMO | 0.3.7 | 38 | 9 |  |
-| @activepieces/piece-discord | Discord | 0.8.2 | 16 | 2 |  |
-| @activepieces/piece-discourse | Discourse | 0.3.1 | 6 | 5 |  |
+| @activepieces/piece-discord | Discord | 0.8.3 | 16 | 2 |  |
+| @activepieces/piece-discourse | Discourse | 0.3.2 | 6 | 5 |  |
 | @activepieces/piece-dittofeed | Dittofeed | 0.1.6 | 3 | 0 |  |
 | @activepieces/piece-docsbot | DocsBot | 0.2.1 | 6 | 0 |  |
 | @activepieces/piece-doctly | Doctly AI | 0.2.1 | 2 | 0 |  |
@@ -237,7 +238,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-editionguard | EditionGuard | 0.2.2 | 2 | 0 |  |
 | @activepieces/piece-elastic-email | Elastic Email | 0.3.2 | 11 | 0 |  |
 | @activepieces/piece-elevenlabs | ElevenLabs | 0.4.0 | 2 | 0 |  |
-| @activepieces/piece-emailit | Emailit | 0.2.1 | 21 | 0 |  |
+| @activepieces/piece-emailit | Emailit | 0.2.2 | 21 | 0 |  |
 | @activepieces/piece-emailoctopus | EmailOctopus | 0.3.0 | 8 | 5 |  |
 | @activepieces/piece-enrichlayer | Enrich Layer | 0.1.2 | 26 | 0 |  |
 | @activepieces/piece-esignatures | eSignatures | 0.2.1 | 2 | 0 |  |
@@ -296,10 +297,10 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-gistly | Gistly | 0.1.7 | 1 | 0 |  |
 | @activepieces/piece-gitea | Gitea | 0.2.0 | 4 | 4 |  |
 | @activepieces/piece-github | GitHub | 0.11.0 | 19 | 14 |  |
-| @activepieces/piece-gitlab | GitLab | 0.4.2 | 2 | 1 |  |
+| @activepieces/piece-gitlab | GitLab | 0.4.3 | 2 | 1 |  |
 | @activepieces/piece-gladia | Gladia | 0.2.0 | 3 | 0 |  |
 | @activepieces/piece-glide | Glide | 0.1.2 | 6 | 0 |  |
-| @activepieces/piece-gmail | Gmail | 0.18.4 | 11 | 4 |  |
+| @activepieces/piece-gmail | Gmail | 0.18.5 | 11 | 4 |  |
 | @activepieces/piece-goodmem | GoodMem | 0.0.8 | 5 | 0 |  |
 | @activepieces/piece-google-ads | Google Ads | 0.0.3 | 8 | 1 |  |
 | @activepieces/piece-google-bigquery | Google BigQuery | 0.1.2 | 10 | 4 |  |
@@ -313,7 +314,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-google-gemini | Google Gemini | 0.5.2 | 11 | 0 |  |
 | @activepieces/piece-google-my-business | Google My Business | 0.6.0 | 7 | 1 |  |
 | @activepieces/piece-google-search | Google Search | 0.0.9 | 1 | 0 |  |
-| @activepieces/piece-google-search-console | Google Search Console | 0.4.1 | 9 | 0 |  |
+| @activepieces/piece-google-search-console | Google Search Console | 0.4.2 | 9 | 0 |  |
 | @activepieces/piece-google-sheets | Google Sheets | 0.19.3 | 27 | 4 |  |
 | @activepieces/piece-google-slides | Google Slides | 0.4.2 | 19 | 0 |  |
 | @activepieces/piece-google-tasks | Google Tasks | 0.7.2 | 2 | 1 |  |
@@ -322,7 +323,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-google-workspace | Google Workspace | 0.0.1 | 9 | 3 |  |
 | @activepieces/piece-googlechat | Google Chat | 0.1.8 | 6 | 2 |  |
 | @activepieces/piece-gorgias | Gorgias | 0.1.0 | 7 | 0 |  |
-| @activepieces/piece-gotify | Gotify | 0.5.1 | 2 | 0 |  |
+| @activepieces/piece-gotify | Gotify | 0.5.2 | 2 | 0 |  |
 | @activepieces/piece-gptzero-detect-ai | GPTZero | 0.1.8 | 2 | 0 |  |
 | @activepieces/piece-granola | Granola | 0.1.2 | 3 | 2 |  |
 | @activepieces/piece-graphql | GraphQL | 0.0.20 | 1 | 0 |  |
@@ -346,15 +347,15 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-heymarket-sms | Heymarket SMS | 0.1.1 | 5 | 2 |  |
 | @activepieces/piece-hootsuite | Hootsuite | 0.1.0 | 4 | 2 |  |
 | @activepieces/piece-housecall-pro | Housecall Pro | 0.2.1 | 46 | 0 |  |
-| @activepieces/piece-http | HTTP | 0.13.0 | 2 | 0 |  |
-| @activepieces/piece-http-oauth2 | HTTP (OAuth2) | 0.4.0 | 1 | 0 |  |
+| @activepieces/piece-http | HTTP | 0.13.1 | 2 | 0 |  |
+| @activepieces/piece-http-oauth2 | HTTP (OAuth2) | 0.4.1 | 1 | 0 |  |
 | @activepieces/piece-hubspot | HubSpot | 0.13.1 | 45 | 24 |  |
 | @activepieces/piece-hugging-face | Hugging Face | 0.3.1 | 8 | 0 |  |
 | @activepieces/piece-hume-ai | Hume AI | 0.1.9 | 6 | 1 |  |
 | @activepieces/piece-hunter | Hunter | 0.1.8 | 9 | 1 |  |
 | @activepieces/piece-hystruct | Hystruct | 0.1.7 | 1 | 1 |  |
 | @activepieces/piece-ibm-cognose | IBM Cognos Analytics | 0.2.0 | 9 | 0 |  |
-| @activepieces/piece-iloveapi | iLoveAPI | 0.1.0 | 35 | 11 |  |
+| @activepieces/piece-iloveapi | iLoveAPI | 0.1.1 | 35 | 11 |  |
 | @activepieces/piece-image-helper | Image Helper | 0.1.22 | 7 | 0 |  |
 | @activepieces/piece-image-router | ImageRouter | 0.2.0 | 3 | 0 |  |
 | @activepieces/piece-imap | IMAP | 0.6.3 | 4 | 1 |  |
@@ -367,9 +368,9 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-instagram-business | Instagram for Business | 1.1.1 | 27 | 0 |  |
 | @activepieces/piece-instantly-ai | Instantly.ai | 0.2.2 | 6 | 2 |  |
 | @activepieces/piece-instasent | Instasent | 0.1.7 | 3 | 0 |  |
-| @activepieces/piece-intercom | Intercom | 0.9.2 | 26 | 22 |  |
+| @activepieces/piece-intercom | Intercom | 0.9.3 | 26 | 22 |  |
 | @activepieces/piece-intruder | Intruder | 0.1.0 | 6 | 0 |  |
-| @activepieces/piece-invoiceninja | Invoice Ninja | 0.5.1 | 10 | 0 |  |
+| @activepieces/piece-invoiceninja | Invoice Ninja | 0.5.2 | 10 | 0 |  |
 | @activepieces/piece-jina-ai | Jina AI | 0.2.0 | 6 | 0 |  |
 | @activepieces/piece-jira-cloud | Jira Cloud | 0.6.2 | 17 | 9 |  |
 | @activepieces/piece-jira-data-center | Jira Data Center | 0.1.1 | 15 | 3 |  |
@@ -400,7 +401,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-leap-ai | Leap AI | 0.0.8 | 2 | 0 |  |
 | @activepieces/piece-leexi | Leexi | 0.2.2 | 2 | 1 |  |
 | @activepieces/piece-lemlist | Lemlist | 0.2.1 | 14 | 2 |  |
-| @activepieces/piece-lemon-squeezy | Lemon Squeezy | 0.3.1 | 35 | 16 |  |
+| @activepieces/piece-lemon-squeezy | Lemon Squeezy | 0.3.2 | 35 | 16 |  |
 | @activepieces/piece-letmepost | Letmepost | 0.1.1 | 5 | 2 |  |
 | @activepieces/piece-lets-calendar | Let's Calendar | 0.1.1 | 2 | 1 |  |
 | @activepieces/piece-letta | Letta | 0.1.8 | 4 | 2 |  |
@@ -439,11 +440,11 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-mastodon | Mastodon | 0.9.0 | 14 | 4 |  |
 | @activepieces/piece-math-helper | Math Helper | 0.2.0 | 6 | 0 |  |
 | @activepieces/piece-matomo | Matomo | 0.2.2 | 2 | 0 |  |
-| @activepieces/piece-matrix | Matrix | 0.6.1 | 2 | 0 |  |
-| @activepieces/piece-mattermost | Mattermost | 0.5.1 | 2 | 0 |  |
+| @activepieces/piece-matrix | Matrix | 0.6.2 | 2 | 0 |  |
+| @activepieces/piece-mattermost | Mattermost | 0.6.0 | 2 | 0 |  |
 | @activepieces/piece-mautic | Mautic | 0.7.0 | 7 | 4 |  |
 | @activepieces/piece-mcp | MCP | 0.0.21 | 1 | 1 |  |
-| @activepieces/piece-mcp-client | MCP Client | 0.0.7 | 1 | 0 |  |
+| @activepieces/piece-mcp-client | MCP Client | 0.0.8 | 1 | 0 |  |
 | @activepieces/piece-medullar | Medullar | 0.3.7 | 6 | 0 |  |
 | @activepieces/piece-meetgeek-ai | Meetgeek | 0.1.7 | 6 | 1 |  |
 | @activepieces/piece-meistertask | MeisterTask | 0.2.2 | 13 | 9 |  |
@@ -460,17 +461,17 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-microsoft-excel-365 | Microsoft Excel 365 | 0.8.4 | 33 | 4 |  |
 | @activepieces/piece-microsoft-onedrive | Microsoft OneDrive | 0.6.1 | 6 | 1 |  |
 | @activepieces/piece-microsoft-onenote | Microsoft OneNote | 0.5.0 | 7 | 1 |  |
-| @activepieces/piece-microsoft-outlook | Microsoft Outlook | 0.7.4 | 12 | 3 |  |
+| @activepieces/piece-microsoft-outlook | Microsoft Outlook | 0.7.5 | 12 | 3 |  |
 | @activepieces/piece-microsoft-outlook-calendar | Microsoft Outlook Calendar | 0.4.0 | 4 | 0 |  |
 | @activepieces/piece-microsoft-power-bi | Microsoft Power BI | 0.4.2 | 9 | 0 |  |
 | @activepieces/piece-microsoft-sharepoint | Microsoft SharePoint | 0.4.3 | 16 | 8 |  |
 | @activepieces/piece-microsoft-sql-server | Microsoft SQL Server | 0.2.0 | 7 | 1 |  |
-| @activepieces/piece-microsoft-teams | Microsoft Teams | 0.8.0 | 16 | 4 |  |
+| @activepieces/piece-microsoft-teams | Microsoft Teams | 0.8.1 | 16 | 4 |  |
 | @activepieces/piece-microsoft-teams-bot | Microsoft Teams Bot | 0.1.1 | 1 | 0 |  |
 | @activepieces/piece-microsoft-todo | Microsoft To Do | 0.5.2 | 13 | 4 |  |
 | @activepieces/piece-millionverifier | MillionVerifier | 0.1.9 | 2 | 0 |  |
 | @activepieces/piece-mind-studio | MindStudio | 0.1.7 | 1 | 0 |  |
-| @activepieces/piece-mindee | Mindee | 0.4.0 | 15 | 0 |  |
+| @activepieces/piece-mindee | Mindee | 0.4.1 | 15 | 0 |  |
 | @activepieces/piece-missive | Missive | 0.2.0 | 6 | 5 |  |
 | @activepieces/piece-mistral-ai | Mistral AI | 0.5.0 | 6 | 0 |  |
 | @activepieces/piece-mixmax | Mixmax | 0.1.0 | 6 | 0 |  |
@@ -490,7 +491,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-mycase-piece | MyCase | 0.1.7 | 37 | 5 |  |
 | @activepieces/piece-mysendingbox | Mysendingbox | 0.1.0 | 1 | 0 |  |
 | @activepieces/piece-mysql | MySQL | 0.5.0 | 7 | 0 |  |
-| @activepieces/piece-netlify | Netlify | 0.2.2 | 16 | 4 |  |
+| @activepieces/piece-netlify | Netlify | 0.2.3 | 16 | 4 |  |
 | @activepieces/piece-netsuite | NetSuite | 0.2.1 | 5 | 0 |  |
 | @activepieces/piece-neverbounce | NeverBounce | 0.2.0 | 2 | 0 |  |
 | @activepieces/piece-nifty | Nifty | 0.3.0 | 17 | 3 |  |
@@ -500,7 +501,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-nocodb | NocoDB | 0.6.0 | 5 | 0 |  |
 | @activepieces/piece-notion | Notion | 0.8.3 | 15 | 4 |  |
 | @activepieces/piece-ntfy | ntfy | 0.4.2 | 8 | 1 |  |
-| @activepieces/piece-nuelink | Nuelink | 0.2.2 | 7 | 1 |  |
+| @activepieces/piece-nuelink | Nuelink | 0.2.3 | 7 | 1 |  |
 | @activepieces/piece-octopush-sms | Octopush SMS | 0.2.0 | 3 | 0 |  |
 | @activepieces/piece-odoo | Odoo | 0.3.3 | 15 | 5 |  |
 | @activepieces/piece-okta | Okta | 0.2.0 | 10 | 1 |  |
@@ -522,19 +523,19 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-outseta | Outseta | 0.3.2 | 44 | 6 |  |
 | @activepieces/piece-paddle | Paddle | 0.1.0 | 6 | 5 |  |
 | @activepieces/piece-pagerduty | PagerDuty | 0.2.0 | 6 | 3 |  |
-| @activepieces/piece-pandadoc | PandaDoc | 0.3.0 | 23 | 6 |  |
+| @activepieces/piece-pandadoc | PandaDoc | 0.3.1 | 23 | 6 |  |
 | @activepieces/piece-paperform | Paperform | 0.2.0 | 14 | 2 |  |
 | @activepieces/piece-parallel | Parallel | 0.1.1 | 9 | 0 |  |
 | @activepieces/piece-parser-expert | Parser Expert | 0.1.7 | 2 | 0 |  |
 | @activepieces/piece-parseur | Parseur | 0.2.3 | 6 | 5 |  |
 | @activepieces/piece-pastebin | Pastebin | 0.3.1 | 2 | 0 |  |
-| @activepieces/piece-pastefy | Pastefy | 0.4.0 | 11 | 1 |  |
+| @activepieces/piece-pastefy | Pastefy | 0.4.1 | 11 | 1 |  |
 | @activepieces/piece-paywhirl | Paywhirl | 0.1.0 | 6 | 0 |  |
 | @activepieces/piece-pdf | PDF | 0.7.0 | 9 | 0 |  |
 | @activepieces/piece-pdf-co | PDF.co | 0.2.0 | 34 | 0 |  |
 | @activepieces/piece-pdf4me | PDF4me | 0.1.0 | 8 | 0 |  |
-| @activepieces/piece-pdfcrowd | Pdfcrowd | 0.3.1 | 10 | 0 |  |
-| @activepieces/piece-pdfmonkey | PDFMonkey | 0.3.1 | 10 | 1 |  |
+| @activepieces/piece-pdfcrowd | Pdfcrowd | 0.3.2 | 10 | 0 |  |
+| @activepieces/piece-pdfmonkey | PDFMonkey | 0.3.2 | 10 | 1 |  |
 | @activepieces/piece-peekshot | PeekShot | 0.2.0 | 2 | 0 |  |
 | @activepieces/piece-pendo | Pendo | 0.2.0 | 5 | 0 |  |
 | @activepieces/piece-perplexity-ai | Perplexity AI | 0.6.0 | 1 | 0 |  |
@@ -555,7 +556,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-polydoc | PolyDoc | 0.1.1 | 4 | 0 |  |
 | @activepieces/piece-poper | Poper | 0.2.7 | 0 | 1 |  |
 | @activepieces/piece-postgres | Postgres | 0.6.0 | 7 | 1 |  |
-| @activepieces/piece-posthog | PostHog | 0.7.1 | 5 | 1 |  |
+| @activepieces/piece-posthog | PostHog | 0.7.2 | 5 | 1 |  |
 | @activepieces/piece-postiz | Postiz | 0.1.2 | 9 | 1 |  |
 | @activepieces/piece-postmark | Postmark | 0.1.1 | 5 | 0 |  |
 | @activepieces/piece-predict-leads | PredictLeads | 0.2.0 | 12 | 0 |  |
@@ -584,7 +585,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-quickzu | Quickzu | 0.1.7 | 15 | 1 |  |
 | @activepieces/piece-quizell | Quizell | 0.1.0 | 8 | 0 |  |
 | @activepieces/piece-qwilr | Qwilr | 0.2.0 | 2 | 7 |  |
-| @activepieces/piece-rabbitmq | RabbitMQ | 0.2.0 | 2 | 1 |  |
+| @activepieces/piece-rabbitmq | RabbitMQ | 0.2.1 | 2 | 1 |  |
 | @activepieces/piece-raia-ai | raia | 0.2.0 | 3 | 0 |  |
 | @activepieces/piece-raindrop | Raindrop | 0.2.0 | 6 | 0 |  |
 | @activepieces/piece-rapidtext-ai | RapidText AI | 0.1.7 | 2 | 0 |  |
@@ -606,7 +607,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-returning-ai | Returning AI | 0.2.5 | 3 | 0 |  |
 | @activepieces/piece-ringcentral | RingCentral | 0.1.2 | 8 | 3 |  |
 | @activepieces/piece-robolly | Robolly | 0.3.0 | 2 | 0 |  |
-| @activepieces/piece-roe-ai | Roe AI | 0.1.0 | 3 | 0 |  |
+| @activepieces/piece-roe-ai | Roe AI | 0.1.1 | 3 | 0 |  |
 | @activepieces/piece-rounded-studio | Call-rounded | 0.3.1 | 1 | 0 |  |
 | @activepieces/piece-rss | RSS Feed | 0.7.2 | 0 | 2 |  |
 | @activepieces/piece-runware | Runware | 0.1.7 | 4 | 0 |  |
@@ -626,7 +627,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-scrapeless | Scrapeless | 0.2.1 | 6 | 0 |  |
 | @activepieces/piece-seek-table | SeekTable | 0.0.9 | 2 | 2 |  |
 | @activepieces/piece-segment | Segment | 0.1.7 | 1 | 0 |  |
-| @activepieces/piece-send-it | SendIt | 0.3.0 | 10 | 3 |  |
+| @activepieces/piece-send-it | SendIt | 0.3.1 | 10 | 3 |  |
 | @activepieces/piece-sender | Sender | 0.2.1 | 8 | 7 |  |
 | @activepieces/piece-sendfox | SendFox | 0.4.0 | 4 | 0 |  |
 | @activepieces/piece-sendgrid | SendGrid | 0.6.3 | 8 | 0 |  |
@@ -643,7 +644,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-sftp | FTP/SFTP | 0.5.12 | 8 | 1 |  |
 | @activepieces/piece-shippo | Shippo | 0.1.8 | 3 | 2 |  |
 | @activepieces/piece-shopify | Shopify | 0.11.2 | 27 | 6 |  |
-| @activepieces/piece-short-io | Short.io | 0.3.2 | 28 | 1 |  |
+| @activepieces/piece-short-io | Short.io | 0.3.3 | 28 | 1 |  |
 | @activepieces/piece-sign-now | SignNow | 0.0.8 | 8 | 5 |  |
 | @activepieces/piece-signrequest | Signrequest | 0.2.0 | 2 | 0 |  |
 | @activepieces/piece-simplepdf | SimplePDF | 1.1.7 | 0 | 1 |  |
@@ -694,14 +695,14 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-talkable | Talkable | 0.3.1 | 14 | 0 |  |
 | @activepieces/piece-tally | Tally | 0.7.1 | 1 | 1 |  |
 | @activepieces/piece-tapfiliate | Tapfiliate | 0.2.0 | 5 | 0 |  |
-| @activepieces/piece-tarvent | Tarvent | 0.2.0 | 27 | 17 |  |
+| @activepieces/piece-tarvent | Tarvent | 0.2.1 | 27 | 17 |  |
 | @activepieces/piece-taskade | Taskade | 0.3.1 | 40 | 6 |  |
 | @activepieces/piece-tavily | Tavily | 0.3.2 | 3 | 0 |  |
 | @activepieces/piece-teable | Teable | 0.3.2 | 17 | 2 |  |
 | @activepieces/piece-teamhood | Teamhood | 0.1.0 | 8 | 3 |  |
 | @activepieces/piece-teamleader | Teamleader | 0.2.0 | 13 | 5 |  |
 | @activepieces/piece-teamwork | Teamwork | 0.1.7 | 18 | 7 |  |
-| @activepieces/piece-telegram-bot | Telegram Bot | 0.9.1 | 20 | 1 |  |
+| @activepieces/piece-telegram-bot | Telegram Bot | 0.9.2 | 20 | 1 |  |
 | @activepieces/piece-telnyx | Telnyx | 0.1.0 | 3 | 1 |  |
 | @activepieces/piece-tenzo | Tenzo | 0.0.9 | 0 | 3 |  |
 | @activepieces/piece-text-helper | Text Helper | 0.6.6 | 12 | 0 |  |
@@ -752,13 +753,13 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-voipstudio | VoIPstudio | 0.2.1 | 6 | 7 |  |
 | @activepieces/piece-vouchery-io | Vouchery | 0.1.0 | 4 | 0 |  |
 | @activepieces/piece-vtex | VTEX | 0.3.0 | 17 | 0 |  |
-| @activepieces/piece-vtiger | Vtiger | 1.5.1 | 8 | 1 |  |
+| @activepieces/piece-vtiger | Vtiger | 1.5.2 | 8 | 1 |  |
 | @activepieces/piece-wafeq | Wafeq | 0.1.0 | 15 | 4 |  |
 | @activepieces/piece-waitwhile | WaitWhile | 0.1.0 | 5 | 2 |  |
 | @activepieces/piece-wayfront | Wayfront | 0.0.5 | 11 | 0 |  |
 | @activepieces/piece-wealthbox | Wealthbox | 0.1.7 | 11 | 4 |  |
 | @activepieces/piece-webex | Cisco Webex Meetings | 0.1.2 | 6 | 2 |  |
-| @activepieces/piece-webflow | Webflow | 0.3.0 | 13 | 1 |  |
+| @activepieces/piece-webflow | Webflow | 0.4.0 | 13 | 1 |  |
 | @activepieces/piece-webhook | Webhook | 0.1.43 | 2 | 1 | [piece-webhook](piece-webhook.md) |
 | @activepieces/piece-webling | Webling | 0.1.7 | 1 | 2 |  |
 | @activepieces/piece-webscraping-ai | WebScraping AI | 0.2.0 | 6 | 0 |  |
