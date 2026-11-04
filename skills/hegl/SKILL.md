@@ -51,4 +51,4 @@ Everything that lands on Hegl is read by people who are not developers: requirem
 - Before saying something is done, read it back (`get_agent`, `get_flow_run`, `get_activepieces_flow`) and go by what you saw, not by a mutation's return.
 - Big lookups (sampled records, piece metadata, long documents) belong in a subagent that returns a short answer, if your harness has one.
 - Something missing or broken (a piece, a tool, a skill)? `report_platform_issue`, then tell the user plainly what you cannot do. Do not fake around it.
-- Hegl's hosted coding agent may have worked on the same agent. `list_workspace_files` and `read_workspace_file` reach its files; `write_workspace_file` hands files back.
+- Hegl's hosted coding agent may have worked on the same agent. `list_workspace_files` and `read_workspace_file` reach its files; `write_workspace_file` hands files back. For more than a few files, `download_workspace` and `start_workspace_upload` move them as one archive.
