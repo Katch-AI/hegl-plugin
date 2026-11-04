@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.39 — 2026-11-04
+
+- Refresh pieces-catalog.md
+
 ## 0.1.38 — 2026-11-03
 
 - Use the dot form for connection field references
