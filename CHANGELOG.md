@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.41 — 2026-11-05
+
+- Refresh pieces-catalog.md
+
 ## 0.1.40 — 2026-11-04
 
 - Document the workspace archive tools in the Hegl skills
