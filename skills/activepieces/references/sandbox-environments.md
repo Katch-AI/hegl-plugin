@@ -12,7 +12,7 @@ Flows published before November 2026 run from snapshots (`sbs-…`, `execute_sna
 
 ## Workflow
 
-1. `create_sandbox(agent_id, name, description, dockerfile?)`. `FROM` needs a pinned tag/digest (not `latest`/`lts`/`stable`); max 64 KiB. Packages: `RUN pip install x==1.2`. Files: `COPY <<'EOF' /root/x.py … EOF` heredocs; no `COPY`/`ADD` from the build context (URLs, `--from=` fine). `get_sandbox` returns the Dockerfile and images. The Dockerfile is fixed at creation; to change it, create a new sandbox.
+1. `create_sandbox(agent_id, name, description, dockerfile?)`. `FROM` needs a pinned tag/digest (not `latest`/`lts`/`stable`); max 64 KiB. Packages: `RUN pip install x==1.2`. Files: `COPY <<'EOF' /root/x.py … EOF` heredocs; no `COPY`/`ADD` from the build context (URLs, `--from=` fine). `get_sandbox` returns the Dockerfile and images. Change it with `update_sandbox(id, dockerfile)`, which rebuilds the container (history kind `rebuild`).
 2. `run_sandbox_command` and `write_sandbox_files` are for exploring: anything not in the Dockerfile is not in the image.
 3. `execute_sandbox_command(sandbox_id, command, inputs, timeout_seconds?)` builds fresh from the Dockerfile: exactly what the flow runs. Bare command, no redirects.
 4. `publish_sandbox_image(sandbox_id, name, description)` for the winner: instant, unlimited, immutable.

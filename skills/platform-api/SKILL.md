@@ -29,7 +29,7 @@ Tools that create, search or run in an agent's context take `agent_id` (from `li
 
 **Evals from your own process.** `issue_llm_proxy_credentials(agent_id, session_key, title?)` returns a 24-hour key for Hegl's LLM proxy, OpenAI-compatible at `{proxyUrl}/v1`; spend is attributed to the agent and shown on the usage page. Model ids are provider-namespaced; the response's `x-litellm-response-cost` header is the cost in credits.
 
-**Sandboxes** (`activepieces/references/sandbox-environments.md`): `create_sandbox`, `get_sandbox`, `run_sandbox_command`, `write_sandbox_files`, `execute_sandbox_command`, `publish_sandbox_image`, `get_sandbox_image`, `execute_image_command`, `delete_sandbox`, `delete_sandbox_image`.
+**Sandboxes** (`activepieces/references/sandbox-environments.md`): `create_sandbox`, `get_sandbox`, `update_sandbox`, `run_sandbox_command`, `write_sandbox_files`, `execute_sandbox_command`, `publish_sandbox_image`, `get_sandbox_image`, `execute_image_command`, `delete_sandbox`, `delete_sandbox_image`.
 
 **Artifacts.** `validate_artifact(body)` at build time returns `{valid, validationErrors, warnings, renderedHtmlPreview}`; iterate until clean. `record_artifact` runs inside the flow via the Hegl piece's action after a formatter CODE step. Body format: the `asciidoc` skill.
 
