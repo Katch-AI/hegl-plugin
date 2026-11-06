@@ -36,4 +36,4 @@ Production runs `cd ~ && ( <command> ) < /tmp/run/input.json > /tmp/run/output.j
 
 The result is `{exitCode, output, outputJson, durationMs}`: `output` is combined stdout+stderr truncated at 10KiB (diagnostics only), `outputJson` is never truncated and is `null` on non-zero exit. The piece action drops `durationMs`; leave it unset on the box's record step.
 
-Timeouts default to 60s and cap at 300s. Build plus command share a ~290s ceiling; a slow cold build eats the command's time. Smoke-test with the `execute_image_command(image_id, command, inputs, timeout_seconds?)` tool before wiring.
+Timeouts default to 60s and cap at 300s. Build plus command share a ~280s ceiling; a slow cold build eats the command's time. Smoke-test with the `execute_image_command(image_id, command, inputs, timeout_seconds?)` tool before wiring.
