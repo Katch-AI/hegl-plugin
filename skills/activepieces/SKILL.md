@@ -12,7 +12,7 @@ Activepieces (AP) runs the flows. Hegl sits above it: it owns agents, decision b
 - **Project**: one per organization. The tools for flows, runs, pieces, connections, sampling and webhooks, and `activepieces_request`, take `agent_id` and run in that agent's organization project; the calls below omit it. Their `flow_id` is the AP flow id (`activepiecesFlowId` on `get_agent`), not `flw-…`.
 - **Flow**: a versioned tree of steps with a root **trigger**. A flow must be `ENABLED` (`LOCK_AND_PUBLISH`) before it accepts calls; otherwise webhooks answer 410.
 - **Steps**: `PIECE` (a piece action), `CODE` (TypeScript), `ROUTER`, `LOOP_ON_ITEMS`. Names match `^[a-zA-Z_][a-zA-Z0-9_]*$`; no hyphens.
-- **Sandbox step**: the Hegl piece's `execute_snapshot_command` runs your command in a container you set up yourself (root; `pip`, `npm`, `apt`, any language). Use it wherever a CODE step's bare isolate is too small: a library, another language, an integration with an SDK but no piece. `references/sandbox-environments.md`.
+- **Sandbox step**: the Hegl piece's `execute_image_command` runs your command in a container built from your own Dockerfile (root; `pip`, `npm`, `apt`, any language). Use it wherever a CODE step's bare isolate is too small: a library, another language, an integration with an SDK but no piece. `references/sandbox-environments.md`.
 - **Piece**: an integration package (`@activepieces/piece-slack`) with actions and triggers, pinned by exact version. `list_activepieces_pieces` is the authoritative list of installed versions; `references/pieces-catalog.md` is a snapshot for discovery, not for pinning. Most pieces also expose `custom_api_call`, which reuses the connection's auth against the vendor API and returns `{status, headers, body}`; reach for it when the piece lacks an action, before `calling-custom-apis`.
 - **Connection**: a credential the user creates in the dashboard. A step references it as `"{{connections['<externalId>']}}"` (AP resolves by `externalId`, never by display name); read it back from `get_agent` (`connectionRequirements[].connection.externalId`) or `list_activepieces_connections(piece_name)`. `status: ACTIVE` only means no refresh has failed yet; on a runtime 401 the user must reauthorize it in the dashboard — never borrow another connection instead. Never write or upsert the managed Hegl connections, even to fix an outage. Run logs store step inputs and outputs in plain text, so never read a credential with `read_connection` or pass a secret through a step output (`calling-custom-apis`).
 - **Trigger flows** hand external events to Hegl (`trigger_flow` action). **The candidate flow** starts with the Hegl piece's `marcus_triggered` trigger, which verifies Hegl's signature, then `start_flow_run` → work → `finish_flow_run` / `fail_flow_run`.
@@ -50,10 +50,10 @@ Only when the API was followed and the flow still misbehaves at runtime. Clone o
 
 ## References
 
-- `references/flow-json-shape.md` — step JSON, the trigger and candidate flow examples, operations (`IMPORT_FLOW`, `ADD_ACTION`, `LOCK_AND_PUBLISH`…), router and loop semantics, `execute_snapshot_command`.
+- `references/flow-json-shape.md` — step JSON, the trigger and candidate flow examples, operations (`IMPORT_FLOW`, `ADD_ACTION`, `LOCK_AND_PUBLISH`…), router and loop semantics, `execute_image_command`.
 - `references/code-step-authoring.md` — the CODE step contract, the isolate's limits, the decision-box pair.
 - `references/api-endpoints.md` — the `activepieces_request` allowlist, the tool for each path, response shapes.
-- `references/sandbox-environments.md` — sandbox steps: build → test → snapshot → wire.
+- `references/sandbox-environments.md` — sandbox steps: Dockerfile → test → publish image → wire.
 - `references/pieces-catalog.md`, `references/piece-schedule.md`, `references/piece-slack.md`, `references/piece-store.md`, `references/piece-webhook.md`.
 
 Still stuck: fetch the page at https://www.activepieces.com/docs/endpoints/<endpoint>, then probe the live API with a `GET` through `activepieces_request`.

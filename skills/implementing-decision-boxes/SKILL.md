@@ -75,7 +75,7 @@ Port the winning configuration **verbatim**, then smoke-test the step with sampl
 - **LLM boxes** use the Hegl LLM piece's `completions` action (auth `"{{connections['<platformLlmConnectionExternalId>']}}"`, the id from `get_agent`), the same proxy contract the harness used: same model string, same messages including the system prompt, same parameters (anything without a typed field goes in `extraBody`). Read the answer from the step's `text` output in a CODE step that strips fences and parses the first balanced `{…}`; recompute derived numbers in code. Stamp `startedAt` in the prep CODE step so `durationMs` spans the completions call. Never re-implement the call in a CODE step.
 - **Jev boxes and checks** use the LLM piece's `jev_decision` action with the model, state shape and questions the harness used; threshold and compose the answers in the CODE step after it.
 - **Pure-computation boxes** stay CODE steps. A CODE step is a bare V8 isolate: no `fetch`, `require`, `console`, timers, or npm packages.
-- **Boxes that need a package or runtime** run from a sandbox snapshot: build and test in a sandbox, `snapshot_sandbox(sandbox_id, name)`, then wire the Hegl piece's `execute_snapshot_command` with the `sbs-…` id. See `activepieces/references/sandbox-environments.md`.
+- **Boxes that need a package or runtime** run from a sandbox image: write the Dockerfile and test in a sandbox, `publish_sandbox_image(sandbox_id, name)`, then wire the Hegl piece's `execute_image_command` with the `sbi-…` id. See `activepieces/references/sandbox-environments.md`.
 
 ## Finishing
 
