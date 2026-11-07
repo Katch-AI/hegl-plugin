@@ -153,7 +153,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-chess-com | Chess.com | 0.0.8 | 3 | 0 |  |
 | @activepieces/piece-circle | Circle | 0.2.2 | 7 | 2 |  |
 | @activepieces/piece-clarifai | Clarifai | 0.4.2 | 10 | 0 |  |
-| @activepieces/piece-claude | Anthropic Claude | 0.8.1 | 3 | 0 |  |
+| @activepieces/piece-claude | Anthropic Claude | 0.9.0 | 3 | 0 |  |
 | @activepieces/piece-clay | Clay | 0.2.2 | 4 | 1 |  |
 | @activepieces/piece-clearout | Clearout | 0.2.1 | 2 | 0 |  |
 | @activepieces/piece-clearoutphone | ClearoutPhone | 0.1.9 | 3 | 0 |  |
