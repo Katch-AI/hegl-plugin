@@ -98,7 +98,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-bettermode | Bettermode | 0.3.2 | 5 | 3 |  |
 | @activepieces/piece-bexio | Bexio | 0.3.1 | 24 | 7 |  |
 | @activepieces/piece-bigcommerce | BigCommerce | 0.2.2 | 16 | 11 |  |
-| @activepieces/piece-bigin-by-zoho | Bigin by Zoho CRM | 0.1.7 | 16 | 9 |  |
+| @activepieces/piece-bigin-by-zoho | Bigin by Zoho CRM | 0.2.0 | 18 | 9 |  |
 | @activepieces/piece-bika | Bika.ai | 0.3.1 | 7 | 0 |  |
 | @activepieces/piece-billplz | Billplz | 0.0.9 | 2 | 1 |  |
 | @activepieces/piece-binance | Binance | 0.5.1 | 10 | 0 |  |
@@ -289,7 +289,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-gameball | Gameball | 0.1.6 | 1 | 0 |  |
 | @activepieces/piece-gamma | Gamma | 0.1.9 | 2 | 0 |  |
 | @activepieces/piece-gcloud-pubsub | GCloud Pub/Sub | 0.1.8 | 1 | 1 |  |
-| @activepieces/piece-gender-api | Gender API | 0.1.3 | 4 | 0 |  |
+| @activepieces/piece-gender-api | Gender API | 0.2.0 | 6 | 0 |  |
 | @activepieces/piece-generatebanners | GenerateBanners | 0.4.7 | 1 | 0 |  |
 | @activepieces/piece-getresponse | GetResponse | 0.1.3 | 6 | 0 |  |
 | @activepieces/piece-ghostcms | GhostCMS | 0.3.2 | 6 | 6 |  |
@@ -718,7 +718,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-todos | Todos | 0.0.17 | 3 | 0 |  |
 | @activepieces/piece-toggl-track | Toggl Track | 0.2.2 | 33 | 7 |  |
 | @activepieces/piece-totalcms | Total CMS | 1.0.2 | 23 | 3 |  |
-| @activepieces/piece-trello | Trello | 0.8.1 | 9 | 3 |  |
+| @activepieces/piece-trello | Trello | 0.9.0 | 9 | 3 |  |
 | @activepieces/piece-truelayer | TrueLayer | 0.2.4 | 39 | 0 |  |
 | @activepieces/piece-trust | Trust | 0.1.1 | 12 | 1 |  |
 | @activepieces/piece-twenty | Twenty | 0.2.1 | 8 | 2 |  |
