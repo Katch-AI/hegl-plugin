@@ -29,7 +29,7 @@ Available: ECMAScript built-ins (`Object`, `Array`, `JSON`, `Math`, `Date`, `Reg
 
 Not available (throws or undefined): `console`, `fetch`, `require` and Node built-ins, `Buffer`, `atob`/`btoa`, `TextEncoder`, `URL`, timers, `process`, and every npm package (declared dependencies are stripped; the import fails to compile).
 
-So a CODE step does pure computation only. Anything that needs I/O or a package is a PIECE step (piece actions run in full Node) or a sandbox snapshot via `execute_snapshot_command` (`sandbox-environments.md`). To see what the resolver delivered, temporarily `return { _debug: inputs }` or `throw new Error(JSON.stringify(inputs))`.
+So a CODE step does pure computation only. Anything that needs I/O or a package is a PIECE step (piece actions run in full Node) or a sandbox image via `execute_image_command` (`sandbox-environments.md`). To see what the resolver delivered, temporarily `return { _debug: inputs }` or `throw new Error(JSON.stringify(inputs))`.
 
 ## The decision-box pair
 
@@ -55,4 +55,4 @@ The record step reads `inputs`, `outputs`, `durationMs` off the CODE step, with 
 | step never runs, flow hangs on the previous step | top-level `await` or an import that fails to resolve |
 | `inputs.x` is `undefined` | a template failed silently: typo in a step or field name |
 | `ReferenceError: console is not defined` | isolate limits above; remove the call |
-| `Could not resolve "<pkg>"` | npm packages are stripped; move to a piece or snapshot |
+| `Could not resolve "<pkg>"` | npm packages are stripped; move to a piece or sandbox image |

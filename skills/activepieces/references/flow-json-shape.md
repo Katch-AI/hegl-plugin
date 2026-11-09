@@ -493,7 +493,7 @@ After publishing, a signed webhook call (`trigger_flow` or `trigger_activepieces
 
 ---
 
-## `execute_snapshot_command` step example
+## `execute_image_command` step example
 
 A sandbox step (`sandbox-environments.md`) goes anywhere a CODE step would. As a decision box it replaces the CODE-step half of the pair and still runs *before* `record_decision_box_execution`, which reads its output.
 
@@ -511,16 +511,16 @@ A sandbox step (`sandbox-environments.md`) goes anywhere a CODE step would. As a
       "settings": {
         "pieceName": "@marcus-ai/piece-marcus",
         "pieceVersion": "~0.2.0",
-        "actionName": "execute_snapshot_command",
+        "actionName": "execute_image_command",
         "input": {
           "auth": "{{connections['<platform connection external id>']}}",
-          "snapshotId": "sbs-<from snapshot_sandbox>",
+          "imageId": "sbi-<from publish_sandbox_image>",
           "command": "node classify_lead.js",
           "inputs": "{{ trigger.output.body.inputs.lead }}"
         },
         "propertySettings": {
           "auth": { "type": "MANUAL" },
-          "snapshotId": { "type": "MANUAL" },
+          "imageId": { "type": "MANUAL" },
           "command": { "type": "MANUAL" },
           "inputs": { "type": "MANUAL" }
         },
@@ -534,13 +534,13 @@ A sandbox step (`sandbox-environments.md`) goes anywhere a CODE step would. As a
 }
 ```
 
-- **`snapshotId` is the published snapshot's `sbs-…` id, never the build sandbox's `sbx-…` id.** Wiring the sandbox id in by mistake fails the mutation's lookup with `"Snapshot not found"`.
-- **Leave the `Timeout (seconds)` prop unset for the server default (60s, capped at 300s) — do not wire an explicit `null`.** This is a pinned regression (`dashboard/spec/system/sandbox_execution_smoke_spec.rb`): the piece must *omit* `timeoutSeconds` from the GraphQL variables when the prop is empty, because graphql-ruby only applies its `default_value` to an *absent* argument, and the underlying operation rejects an explicit nil timeout outright. If you're hand-assembling `input` (rather than going through the AP UI, which already omits empty optional props), simply don't include a `timeoutSeconds` key at all when you want the default.
+- **`imageId` is the published image's `sbi-…` id, never the build sandbox's `sbx-…` id.** A wrong id fails with `"Image not found"`.
+- **Leave the `Timeout (seconds)` prop unset for the server default (60s, capped at 300s).** Never wire `null` or include a `timeoutSeconds` key: the server rejects an explicit nil (pinned by `dashboard/spec/system/sandbox_image_execution_smoke_spec.rb`).
 - The action throws on a non-zero exit (surfacing the combined output in the error), so `continueOnFailure: true` here plays the same role it does for a CODE-step decision box: it lets the flow proceed to the `record_decision_box_execution` step even when the box's implementation fails, so telemetry is still recorded. The same fail-edge ROUTER pattern documented in the candidate flow example above applies — branch on the absence of the step's success-only output (`outputJson`), not on a `status` check.
 - The action's returned `outputJson` is what the box's `record_decision_box_execution` step should read as `outputs` — same wiring pattern as reading a CODE step's return value, just off a different upstream step name. **The action does not return `durationMs`** — it returns only `{ exitCode, output, outputJson }` (the piece TS deliberately drops the mutation's `durationMs` field before returning to the flow), so don't wire `record_decision_box_execution`'s `durationMs` prop to `{{ step_decide_classify_lead.output.durationMs }}` — that path is only for a CODE-step decision box, whose stub computes its own `Date.now()` delta and returns it. A sandbox-backed box can leave `durationMs` unset.
-- **`command` must be the bare command — no `<`/`>` redirects.** The production wrapper already runs it as `cd ~ && ( <command> ) < /tmp/run/input.json > /tmp/run/output.json`. Adding your own redirect inside `command` wins over the outer one for that inner process, so it silently reads whatever stale sample file was left in the snapshot's home directory instead of the real production input — and the outer `/tmp/run/output.json` ends up empty, which surfaces downstream as a misleading JSON-parse error rather than the redirect mistake it actually is. See `sandbox-environments.md` → "The workflow" for the full rule, and its note on deleting the test `input.json`/`output.json` before snapshotting.
+- **`command` must be the bare command — no `<`/`>` redirects.** The production wrapper already runs it as `cd ~ && ( <command> ) < /tmp/run/input.json > /tmp/run/output.json`. Adding your own redirect inside `command` wins over the outer one for that inner process, so it silently reads a stale sample file instead of the real production input — and the outer `/tmp/run/output.json` ends up empty, which surfaces downstream as a misleading JSON-parse error rather than the redirect mistake it actually is. See `sandbox-environments.md` → "The command contract".
 
-See `sandbox-environments.md` for the full build → install → write → test → snapshot workflow that produces the `sbs-…` id this step references.
+See `sandbox-environments.md` for the Dockerfile → test → publish workflow that produces the `sbi-…` id this step references.
 
 ---
 
