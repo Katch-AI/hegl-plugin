@@ -653,7 +653,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-sitespeakai | SiteSpeakAI | 0.1.7 | 3 | 1 |  |
 | @activepieces/piece-skyprep | SkyPrep | 0.0.10 | 3 | 3 |  |
 | @activepieces/piece-skyvern | Skyvern | 0.2.2 | 6 | 0 |  |
-| @activepieces/piece-slack | Slack | 0.23.1 | 29 | 14 | [piece-slack](piece-slack.md) |
+| @activepieces/piece-slack | Slack | 0.23.2 | 29 | 14 | [piece-slack](piece-slack.md) |
 | @activepieces/piece-slashed | SlashedCloud | 0.1.1 | 2 | 0 |  |
 | @activepieces/piece-slidespeak | SlideSpeak | 0.2.2 | 5 | 1 |  |
 | @activepieces/piece-slite | Slite | 0.1.1 | 9 | 0 |  |
