@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.47 — 2026-11-10
+
+- Refresh pieces-catalog.md
+
 ## 0.1.46 — 2026-11-09
 
 - Teach sandbox steps from Dockerfile images and uploaded files
