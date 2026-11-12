@@ -306,17 +306,17 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-google-calendar | Google Calendar | 0.13.4 | 9 | 7 |  |
 | @activepieces/piece-google-cloud-storage | Google Cloud Storage | 0.1.8 | 12 | 2 |  |
 | @activepieces/piece-google-contacts | Google Contacts | 0.6.1 | 4 | 1 |  |
-| @activepieces/piece-google-docs | Google Docs | 0.6.5 | 6 | 1 |  |
+| @activepieces/piece-google-docs | Google Docs | 0.7.0 | 6 | 1 |  |
 | @activepieces/piece-google-document-ai | Google Document AI | 0.0.2 | 2 | 0 |  |
-| @activepieces/piece-google-drive | Google Drive | 0.13.3 | 17 | 3 |  |
+| @activepieces/piece-google-drive | Google Drive | 0.14.0 | 17 | 3 |  |
 | @activepieces/piece-google-forms | Google Forms | 0.8.0 | 1 | 1 |  |
 | @activepieces/piece-google-gemini | Google Gemini | 0.5.3 | 11 | 0 |  |
 | @activepieces/piece-google-my-business | Google My Business | 0.6.1 | 7 | 1 |  |
 | @activepieces/piece-google-search | Google Search | 0.0.9 | 1 | 0 |  |
 | @activepieces/piece-google-search-console | Google Search Console | 0.4.3 | 9 | 0 |  |
-| @activepieces/piece-google-sheets | Google Sheets | 0.19.5 | 27 | 4 |  |
+| @activepieces/piece-google-sheets | Google Sheets | 0.20.0 | 27 | 4 |  |
 | @activepieces/piece-google-slides | Google Slides | 0.4.4 | 19 | 0 |  |
-| @activepieces/piece-google-tasks | Google Tasks | 0.7.3 | 2 | 1 |  |
+| @activepieces/piece-google-tasks | Google Tasks | 0.8.0 | 2 | 1 |  |
 | @activepieces/piece-google-translate | Google Translate | 0.0.3 | 4 | 0 |  |
 | @activepieces/piece-google-vertexai | Google Vertex AI | 0.1.9 | 3 | 0 |  |
 | @activepieces/piece-google-workspace | Google Workspace | 0.0.1 | 9 | 3 |  |
