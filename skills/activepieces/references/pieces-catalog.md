@@ -1,7 +1,7 @@
 # AP pieces catalog
 
 Source: <https://cloud.activepieces.com/api/v1/pieces>
-Pieces: 775 (plus 2 Hegl-internal pieces; see bottom of table)
+Pieces: 776 (plus 2 Hegl-internal pieces; see bottom of table)
 Detail files: 4 (see `piece-<name>.md` files in this directory for trigger/action/prop reference per piece)
 
 The `detail` column marks pieces with a per-piece file at `piece-<piece-name>.md` in this
@@ -44,7 +44,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-air-ops | AirOps | 0.2.2 | 4 | 0 |  |
 | @activepieces/piece-aircall | Aircall | 0.2.2 | 8 | 5 |  |
 | @activepieces/piece-airparser | Airparser | 0.1.7 | 2 | 1 |  |
-| @activepieces/piece-airtable | Airtable | 0.9.4 | 15 | 2 |  |
+| @activepieces/piece-airtable | Airtable | 0.9.5 | 15 | 2 |  |
 | @activepieces/piece-airtop | Airtop | 0.2.2 | 12 | 0 |  |
 | @activepieces/piece-alai | Alai | 0.3.2 | 12 | 0 |  |
 | @activepieces/piece-algolia | Algolia | 0.1.4 | 4 | 0 |  |
@@ -65,7 +65,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-anyhook-websocket | AnyHook Websocket | 0.1.7 | 0 | 1 |  |
 | @activepieces/piece-apache-kafka | Apache Kafka | 0.1.1 | 2 | 2 |  |
 | @activepieces/piece-apify | Apify | 0.4.2 | 6 | 2 |  |
-| @activepieces/piece-apitable | AITable | 0.5.3 | 4 | 1 |  |
+| @activepieces/piece-apitable | AITable | 0.5.4 | 4 | 1 |  |
 | @activepieces/piece-apitemplate-io | APITemplate.io | 0.3.3 | 8 | 0 |  |
 | @activepieces/piece-apollo | Apollo | 0.2.2 | 7 | 0 |  |
 | @activepieces/piece-appfollow | AppFollow | 0.2.3 | 3 | 2 |  |
@@ -299,24 +299,24 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-gitlab | GitLab | 0.4.4 | 2 | 1 |  |
 | @activepieces/piece-gladia | Gladia | 0.2.1 | 3 | 0 |  |
 | @activepieces/piece-glide | Glide | 0.1.3 | 6 | 0 |  |
-| @activepieces/piece-gmail | Gmail | 0.18.6 | 11 | 4 |  |
+| @activepieces/piece-gmail | Gmail | 0.19.0 | 11 | 4 |  |
 | @activepieces/piece-goodmem | GoodMem | 0.1.0 | 6 | 0 |  |
 | @activepieces/piece-google-ads | Google Ads | 0.0.3 | 8 | 1 |  |
 | @activepieces/piece-google-bigquery | Google BigQuery | 0.1.3 | 10 | 4 |  |
-| @activepieces/piece-google-calendar | Google Calendar | 0.13.4 | 9 | 7 |  |
+| @activepieces/piece-google-calendar | Google Calendar | 0.14.0 | 9 | 7 |  |
 | @activepieces/piece-google-cloud-storage | Google Cloud Storage | 0.1.8 | 12 | 2 |  |
 | @activepieces/piece-google-contacts | Google Contacts | 0.6.1 | 4 | 1 |  |
-| @activepieces/piece-google-docs | Google Docs | 0.7.0 | 6 | 1 |  |
+| @activepieces/piece-google-docs | Google Docs | 0.7.1 | 6 | 1 |  |
 | @activepieces/piece-google-document-ai | Google Document AI | 0.0.2 | 2 | 0 |  |
-| @activepieces/piece-google-drive | Google Drive | 0.14.0 | 17 | 3 |  |
+| @activepieces/piece-google-drive | Google Drive | 0.14.1 | 17 | 3 |  |
 | @activepieces/piece-google-forms | Google Forms | 0.8.0 | 1 | 1 |  |
 | @activepieces/piece-google-gemini | Google Gemini | 0.5.3 | 11 | 0 |  |
 | @activepieces/piece-google-my-business | Google My Business | 0.6.1 | 7 | 1 |  |
 | @activepieces/piece-google-search | Google Search | 0.0.9 | 1 | 0 |  |
 | @activepieces/piece-google-search-console | Google Search Console | 0.4.3 | 9 | 0 |  |
-| @activepieces/piece-google-sheets | Google Sheets | 0.20.0 | 27 | 4 |  |
+| @activepieces/piece-google-sheets | Google Sheets | 0.20.1 | 27 | 4 |  |
 | @activepieces/piece-google-slides | Google Slides | 0.4.4 | 19 | 0 |  |
-| @activepieces/piece-google-tasks | Google Tasks | 0.8.0 | 2 | 1 |  |
+| @activepieces/piece-google-tasks | Google Tasks | 0.8.1 | 2 | 1 |  |
 | @activepieces/piece-google-translate | Google Translate | 0.0.3 | 4 | 0 |  |
 | @activepieces/piece-google-vertexai | Google Vertex AI | 0.1.9 | 3 | 0 |  |
 | @activepieces/piece-google-workspace | Google Workspace | 0.0.1 | 9 | 3 |  |
@@ -348,7 +348,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-housecall-pro | Housecall Pro | 0.2.3 | 46 | 0 |  |
 | @activepieces/piece-http | HTTP | 0.13.3 | 2 | 0 |  |
 | @activepieces/piece-http-oauth2 | HTTP (OAuth2) | 0.4.2 | 1 | 0 |  |
-| @activepieces/piece-hubspot | HubSpot | 0.13.2 | 45 | 24 |  |
+| @activepieces/piece-hubspot | HubSpot | 0.14.0 | 45 | 24 |  |
 | @activepieces/piece-hugging-face | Hugging Face | 0.3.2 | 8 | 0 |  |
 | @activepieces/piece-hume-ai | Hume AI | 0.1.10 | 6 | 1 |  |
 | @activepieces/piece-hunter | Hunter | 0.2.0 | 20 | 1 |  |
@@ -435,7 +435,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-mailjet | Mailjet | 0.2.1 | 2 | 0 |  |
 | @activepieces/piece-manual-trigger | Manual Trigger | 0.0.8 | 0 | 1 |  |
 | @activepieces/piece-manus | Manus | 0.2.2 | 5 | 2 |  |
-| @activepieces/piece-manychat | Manychat | 0.1.7 | 7 | 0 |  |
+| @activepieces/piece-manychat | Manychat | 0.2.0 | 13 | 0 |  |
 | @activepieces/piece-mastodon | Mastodon | 0.9.2 | 14 | 4 |  |
 | @activepieces/piece-math-helper | Math Helper | 0.2.0 | 6 | 0 |  |
 | @activepieces/piece-matomo | Matomo | 0.2.4 | 2 | 0 |  |
@@ -554,7 +554,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-pollybot-ai | PollyBot AI | 0.2.1 | 5 | 1 |  |
 | @activepieces/piece-polydoc | PolyDoc | 0.1.3 | 4 | 0 |  |
 | @activepieces/piece-poper | Poper | 0.2.7 | 0 | 1 |  |
-| @activepieces/piece-postgres | Postgres | 0.6.1 | 7 | 1 |  |
+| @activepieces/piece-postgres | Postgres | 0.7.0 | 7 | 1 |  |
 | @activepieces/piece-posthog | PostHog | 0.7.3 | 5 | 1 |  |
 | @activepieces/piece-postiz | Postiz | 0.1.3 | 9 | 1 |  |
 | @activepieces/piece-postmark | Postmark | 0.1.2 | 5 | 0 |  |
@@ -608,7 +608,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-robolly | Robolly | 0.3.2 | 2 | 0 |  |
 | @activepieces/piece-roe-ai | Roe AI | 0.1.2 | 3 | 0 |  |
 | @activepieces/piece-rounded-studio | Call-rounded | 0.3.2 | 1 | 0 |  |
-| @activepieces/piece-rss | RSS Feed | 0.7.2 | 0 | 2 |  |
+| @activepieces/piece-rss | RSS Feed | 0.8.1 | 0 | 2 |  |
 | @activepieces/piece-runware | Runware | 0.1.8 | 4 | 0 |  |
 | @activepieces/piece-runway | Runway | 0.1.7 | 4 | 0 |  |
 | @activepieces/piece-saastic | Saastic | 0.2.2 | 3 | 0 |  |
@@ -616,6 +616,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-saleor | Saleor | 0.1.6 | 3 | 0 |  |
 | @activepieces/piece-salesforce | Salesforce | 0.10.2 | 27 | 9 |  |
 | @activepieces/piece-salesloft | Salesloft | 0.1.1 | 8 | 0 |  |
+| @activepieces/piece-salla | Salla | 0.2.1 | 31 | 14 |  |
 | @activepieces/piece-salsa | Salsa | 0.1.2 | 3 | 0 |  |
 | @activepieces/piece-sap-ariba | SAP Ariba | 0.0.8 | 14 | 0 |  |
 | @activepieces/piece-sardis | Sardis | 0.2.1 | 6 | 0 |  |
@@ -775,7 +776,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-woodpecker | Woodpecker | 0.1.1 | 6 | 20 |  |
 | @activepieces/piece-wootric | Wootric | 0.1.6 | 1 | 0 |  |
 | @activepieces/piece-word-documents | Word Documents | 0.0.2 | 2 | 0 |  |
-| @activepieces/piece-wordpress | WordPress | 0.9.1 | 5 | 1 |  |
+| @activepieces/piece-wordpress | WordPress | 0.9.2 | 5 | 1 |  |
 | @activepieces/piece-workable | Workable | 0.3.1 | 21 | 2 |  |
 | @activepieces/piece-workday | Workday | 0.3.1 | 25 | 14 |  |
 | @activepieces/piece-wrike | Wrike | 0.2.1 | 9 | 3 |  |
@@ -787,7 +788,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-youcanbookme | YouCanBookMe | 0.2.1 | 3 | 1 |  |
 | @activepieces/piece-youform | Youform | 0.2.1 | 1 | 1 |  |
 | @activepieces/piece-youtrack | YouTrack | 0.3.0 | 42 | 2 |  |
-| @activepieces/piece-youtube | YouTube | 0.9.4 | 9 | 1 |  |
+| @activepieces/piece-youtube | YouTube | 0.9.5 | 9 | 1 |  |
 | @activepieces/piece-zendesk | Zendesk | 0.5.3 | 18 | 10 |  |
 | @activepieces/piece-zendesk-sell | Zendesk-sell | 0.2.4 | 12 | 8 |  |
 | @activepieces/piece-zeplin | Zeplin | 0.1.1 | 6 | 2 |  |
