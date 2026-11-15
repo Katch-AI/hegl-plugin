@@ -1,7 +1,7 @@
 # AP pieces catalog
 
 Source: <https://cloud.activepieces.com/api/v1/pieces>
-Pieces: 776 (plus 2 Hegl-internal pieces; see bottom of table)
+Pieces: 778 (plus 2 Hegl-internal pieces; see bottom of table)
 Detail files: 4 (see `piece-<name>.md` files in this directory for trigger/action/prop reference per piece)
 
 The `detail` column marks pieces with a per-piece file at `piece-<piece-name>.md` in this
@@ -203,6 +203,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-datadog | Datadog | 0.2.2 | 3 | 0 |  |
 | @activepieces/piece-dataforb2b | DataForB2B | 0.1.4 | 7 | 0 |  |
 | @activepieces/piece-datafuel | DataFuel | 0.2.1 | 4 | 0 |  |
+| @activepieces/piece-datalab | Datalab | 0.0.2 | 8 | 0 |  |
 | @activepieces/piece-date-helper | Date Helper | 0.2.1 | 9 | 0 |  |
 | @activepieces/piece-datocms | Dato CMS | 0.2.1 | 1 | 0 |  |
 | @activepieces/piece-deepgram | Deepgram | 0.3.3 | 17 | 0 |  |
@@ -372,7 +373,8 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-invoiceninja | Invoice Ninja | 0.5.3 | 10 | 0 |  |
 | @activepieces/piece-jina-ai | Jina AI | 0.2.2 | 6 | 0 |  |
 | @activepieces/piece-jira-cloud | Jira Cloud | 0.6.4 | 17 | 9 |  |
-| @activepieces/piece-jira-data-center | Jira Data Center | 0.1.2 | 15 | 3 |  |
+| @activepieces/piece-jira-data-center | Jira Data Center | 0.2.0 | 16 | 3 |  |
+| @activepieces/piece-jira-service-management | Jira Service Management | 0.0.1 | 13 | 1 |  |
 | @activepieces/piece-jogg-ai | JoggAI | 0.1.7 | 8 | 2 |  |
 | @activepieces/piece-jotform | Jotform | 0.5.5 | 1 | 1 |  |
 | @activepieces/piece-jsm-operations | Jira Service Management Operations | 0.0.2 | 16 | 1 |  |
@@ -456,7 +458,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-microsoft-365-planner | Microsoft 365 Planner | 0.4.1 | 12 | 3 |  |
 | @activepieces/piece-microsoft-copilot | Microsoft 365 Copilot | 0.2.5 | 3 | 0 |  |
 | @activepieces/piece-microsoft-dynamics-365-business-central | Microsoft Dynamics 365 Business Central | 0.3.2 | 6 | 1 |  |
-| @activepieces/piece-microsoft-dynamics-crm | Microsoft Dynamics CRM | 0.4.3 | 5 | 0 |  |
+| @activepieces/piece-microsoft-dynamics-crm | Microsoft Dynamics CRM | 0.5.0 | 26 | 5 |  |
 | @activepieces/piece-microsoft-excel-365 | Microsoft Excel 365 | 0.8.5 | 33 | 4 |  |
 | @activepieces/piece-microsoft-onedrive | Microsoft OneDrive | 0.6.2 | 6 | 1 |  |
 | @activepieces/piece-microsoft-onenote | Microsoft OneNote | 0.5.1 | 7 | 1 |  |
@@ -616,7 +618,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-saleor | Saleor | 0.1.6 | 3 | 0 |  |
 | @activepieces/piece-salesforce | Salesforce | 0.10.2 | 27 | 9 |  |
 | @activepieces/piece-salesloft | Salesloft | 0.1.1 | 8 | 0 |  |
-| @activepieces/piece-salla | Salla | 0.2.1 | 31 | 14 |  |
+| @activepieces/piece-salla | Salla | 0.2.2 | 31 | 14 |  |
 | @activepieces/piece-salsa | Salsa | 0.1.2 | 3 | 0 |  |
 | @activepieces/piece-sap-ariba | SAP Ariba | 0.0.8 | 14 | 0 |  |
 | @activepieces/piece-sardis | Sardis | 0.2.1 | 6 | 0 |  |
