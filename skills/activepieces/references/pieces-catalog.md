@@ -259,9 +259,9 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-file-helper | Files Helper | 0.3.2 | 7 | 0 |  |
 | @activepieces/piece-filetopdf | FileToPDF | 0.1.0 | 4 | 0 |  |
 | @activepieces/piece-fillout-forms | Fillout Forms | 0.2.2 | 4 | 1 |  |
-| @activepieces/piece-fireberry | Fireberry | 0.1.8 | 4 | 1 |  |
+| @activepieces/piece-fireberry | Fireberry | 0.2.0 | 4 | 1 |  |
 | @activepieces/piece-firecrawl | Firecrawl | 0.7.3 | 6 | 0 |  |
-| @activepieces/piece-fireflies-ai | Fireflies.ai | 0.1.9 | 5 | 1 |  |
+| @activepieces/piece-fireflies-ai | Fireflies.ai | 0.2.0 | 6 | 2 |  |
 | @activepieces/piece-flipando | Flipando AI | 0.1.3 | 5 | 0 |  |
 | @activepieces/piece-fliqr-ai | Fliqr AI | 0.2.2 | 3 | 0 |  |
 | @activepieces/piece-floqer | Floqer | 0.1.2 | 4 | 0 |  |
@@ -315,7 +315,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-google-my-business | Google My Business | 0.6.1 | 7 | 1 |  |
 | @activepieces/piece-google-search | Google Search | 0.0.9 | 1 | 0 |  |
 | @activepieces/piece-google-search-console | Google Search Console | 0.4.3 | 9 | 0 |  |
-| @activepieces/piece-google-sheets | Google Sheets | 0.20.1 | 27 | 4 |  |
+| @activepieces/piece-google-sheets | Google Sheets | 0.20.2 | 27 | 4 |  |
 | @activepieces/piece-google-slides | Google Slides | 0.4.4 | 19 | 0 |  |
 | @activepieces/piece-google-tasks | Google Tasks | 0.8.1 | 2 | 1 |  |
 | @activepieces/piece-google-translate | Google Translate | 0.0.3 | 4 | 0 |  |
@@ -717,7 +717,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-timelines-ai | TimelinesAI | 0.2.5 | 11 | 7 |  |
 | @activepieces/piece-tiny-talk-ai | Tiny Talk AI | 0.1.8 | 1 | 0 |  |
 | @activepieces/piece-tl-dv | tl;dv | 0.1.7 | 5 | 2 |  |
-| @activepieces/piece-todoist | Todoist | 0.6.3 | 5 | 1 |  |
+| @activepieces/piece-todoist | Todoist | 0.6.4 | 5 | 1 |  |
 | @activepieces/piece-todos | Todos | 0.0.17 | 3 | 0 |  |
 | @activepieces/piece-toggl-track | Toggl Track | 0.2.2 | 33 | 7 |  |
 | @activepieces/piece-totalcms | Total CMS | 1.0.2 | 23 | 3 |  |
