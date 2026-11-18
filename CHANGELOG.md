@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.56 — 2026-11-18
+
+- Tell agents when a connection needs the customer's own OAuth app
+
 ## 0.1.55 — 2026-11-18
 
 - Add first-build and new-version checklists to the skills
