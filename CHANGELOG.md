@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.55 — 2026-11-18
+
+- Add first-build and new-version checklists to the skills
+
 ## 0.1.54 — 2026-11-18
 
 - Refresh pieces-catalog.md
