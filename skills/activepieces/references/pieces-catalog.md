@@ -37,7 +37,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-add-event | AddEvent | 0.1.3 | 9 | 2 |  |
 | @activepieces/piece-afforai | Afforai | 0.1.7 | 1 | 0 |  |
 | @activepieces/piece-agentx | AgentX | 0.1.8 | 5 | 2 |  |
-| @activepieces/piece-ai | AI | 0.15.4 | 6 | 0 |  |
+| @activepieces/piece-ai | AI | 0.16.0 | 6 | 0 |  |
 | @activepieces/piece-aianswer | AI Answer | 0.2.3 | 6 | 0 |  |
 | @activepieces/piece-aidbase | Aidbase | 0.2.2 | 7 | 8 |  |
 | @activepieces/piece-aiprise | AiPrise | 0.2.4 | 17 | 0 |  |
