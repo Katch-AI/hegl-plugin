@@ -16,6 +16,8 @@ Read `get_agent`, plus the agent's `improvementRuns` through `graphql`, to see h
 | A flow, no improvement run | Smoke-test it, then `implementing-decision-boxes` |
 | An open improvement run | `implementing-decision-boxes`, on that run. Never start a second |
 | A run `AWAITING_REVIEW` | The user's move: open the run's page for them |
-| A published flow (`publishedFlow`) | Nothing left to build. Offer `feedback` or `fix-errors` |
+| A published flow (`publishedFlow`) | Any change is an `IMPROVEMENT` run on a candidate copy (`hegl/references/new-version-checklist.md`). Never edit the published flow. Nothing asked for: offer `feedback` or `fix-errors` |
+
+Before finishing a first version, go through `hegl/references/first-build-checklist.md`.
 
 Say in one line where you are picking up, then go on. Go by what Hegl shows, not by what the user remembers.

@@ -35,11 +35,11 @@ Tool results carry links to dashboard pages. Link whatever you mention that the 
 4. Keep a backlog of ideas, run experiments, iterate until the target is met.
 5. Finish the version for review. The user publishes it from the dashboard.
 
-`building-the-automation` covers 1 and 2, `implementing-decision-boxes` 3 to 5. `platform-api` and `activepieces` hold the details. Read the skill before acting.
+`building-the-automation` covers 1 and 2, `implementing-decision-boxes` 3 to 5. `platform-api` and `activepieces` hold the details. Read the skill before acting. Two checklists to go through before finishing: `references/first-build-checklist.md` for a first version, `references/new-version-checklist.md` for any change to a published agent.
 
 ## Documents
 
-Keep two documents current with `update_agent_documents` whenever they change: `requirements` (what the job is and what the agent will do) and `flow_description` (how the flow works, step by step, with a Mermaid diagram; see `mermaid`). They are the user's window into your work. Do not wait for sign-off on them. Send the whole document each time.
+Keep two documents current with `update_agent_documents` whenever they change: `requirements` (what the job is and what the agent will do) and `flow_description` (how the flow works, step by step, with a Mermaid diagram; see `mermaid`). They are the user's window into your work. Do not wait for sign-off on them. Send the whole document each time. A rule the user states goes into `requirements`, and gets a test, in the same turn. Before finishing any version, rewrite both to match the candidate and read them back against the flow.
 
 ## Writing for the dashboard
 
