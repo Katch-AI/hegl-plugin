@@ -24,7 +24,8 @@ Start from the agent's name and description (`get_agent`). Play back what you un
 - What starts the job, the steps, what comes out, and who does it today.
 - How the process is documented today: a standard operating procedure, checklist, onboarding doc, training video, or recorded walkthrough. Ask for it when it likely exists; a link, pasted text, or a transcript saves many questions.
 - Which systems hold the data, read or write, and where exactly (which inbox, table, channel).
-- Where past examples of the job live. You will grade the agent against them.
+- Where past examples of the job live, and what the process already records about whether each was done right. You will grade the agent against that; never plan on people labelling for you.
+- How fast and how well the job is done today. That is the baseline.
 - How the team finds out today when the job was done wrong (a corrected record, a reply, a complaint). That becomes the feedback source.
 
 Propose an answer with each question; the user corrects a guess more easily than they fill a blank. Sample real data through a subagent if your harness has one (`fetching-data-via-pieces`) rather than asking the user to describe field shapes.
@@ -90,6 +91,8 @@ Trigger through Hegl, never by POSTing to the AP webhook (that skips the `FlowTr
 | first step failed | wrong `auth` on `start_flow_run`, or the Hegl connection was never provisioned (`get_agent` shows `platformConnectionExternalId` null) |
 | record step failed | wrong `decisionBoxId` or `flowId` |
 | `record_artifact` failed | body failed AsciiDoc validation; fix the formatter |
+
+A run that stops short of the last external write has not tested it. Before finishing the version, run once through the real trigger to that write on a record agreed with the user, and read it back; test output must reach no real person.
 
 On failure, say which step failed, the likely cause, and what the user needs to do, in plain words. Do not auto-retry.
 

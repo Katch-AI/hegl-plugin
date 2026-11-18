@@ -33,7 +33,7 @@ The eval set is the single most important input. Nothing downstream fixes a dirt
 
 ## Invariants
 
-Before the first iteration, write down the deterministic checks a correct output always passes: line costs sum to the total, every extracted value appears verbatim in the source, numbers fall within a range. Ranges, enums, and required keys go in the output schema at design time; the rest is one validation function the eval harness and the flow both call.
+Before the first iteration, write down the deterministic checks a correct output always passes: line costs sum to the total, every extracted value appears verbatim in the source, numbers fall within a range. Ranges, enums, and required keys go in the output schema at design time; the rest is one validation function the eval harness and the flow both call. A box inherited from an earlier version without invariants gets them now.
 
 - In eval, a row that still fails after the retry is a miss for the primary metric. Every box with invariants also records `invariant_failure_rate` (`%`, `LOWER_BETTER`) so the rate is visible, and experiments aim to drive it down.
 - In the flow, a CODE step validates; a ROUTER sends a failing result to a second completions step whose prompt quotes the violation, then validates again. One or two extra attempts, never a loop.
@@ -44,6 +44,7 @@ Before the first iteration, write down the deterministic checks a correct output
 
 - `define_decision_box_metric(decision_box_id, name, description, direction, primary?, unit?, kind?, target_value?)` once per metric; `direction` is `HIGHER_BETTER | LOWER_BETTER`. `description` is for the user. Declare only what you measure.
 - **Every box records cost and latency.** Define `cost` (credits per execution, mean over the eval rows) and `latency` (ms per execution, mean), both `LOWER_BETTER`, never primary. Per-call cost is the proxy's `x-litellm-response-cost` response header (read it via `with_raw_response`); 1 dollar = 1 credit. Cost reaches the user in credits only, never dollars, including `cost_to_test` and `run_cost_impact`.
+- **Re-measure, never re-quote.** Score the base version and the candidate the same day on the same rows. A new scorer or dataset is a new metric name; numbers across them do not compare.
 - **Keep one scale per metric across iterations.** A `%` metric is recorded 0–100, not 0–1; the dashboard appends the unit, so `0.85%` is a 100× error.
 - `primary: true` re-points the box's primary metric. Last write wins, so omit it on secondary metrics.
 - Values ride on `record_decision_box_iteration(metrics: [{metric_definition_id, split, value}])`; add later splits with `add_iteration_metrics(iteration_id, metrics)`. A `(metric, split)` value is write-once. Whatever you pin needs a `VALIDATION` value for the primary metric; the dashboard and the finish gate read nothing else.
@@ -79,7 +80,7 @@ Port the winning configuration **verbatim**, then smoke-test the step with sampl
 
 ## Finishing
 
-`finish_improvement_run` refuses until every wired box has a pinned flow iteration and is `READY`. It also refuses when a pinned box's primary metric is below target, unmeasured on `VALIDATION`, or worse than the base version, unless you pass `result_justification`. Compare first and pass the justification on the first call; a knowing shortfall is fine, a silent one is not.
+`finish_improvement_run` refuses until every wired box has a pinned flow iteration and is `READY`. It also refuses when a pinned box's primary metric is below target, unmeasured on `VALIDATION`, or worse than the base version, unless you pass `result_justification`. Compare first and pass the justification on the first call; a knowing shortfall is fine, a silent one is not. The justification names what is unaddressed and unproven; it is never a score carried over from an earlier run.
 
 If a `candidate_stale` event arrives, rebuild the candidate on the live version it names and finish with `base_flow_id` set to it.
 
