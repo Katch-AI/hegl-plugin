@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.58 — 2026-11-19
+
+- Require an owned measure, traced misses and an exhausted run in the new-version checklist
+
 ## 0.1.57 — 2026-11-19
 
 - Refresh pieces-catalog.md
