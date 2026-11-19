@@ -64,7 +64,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-anyhook-graphql | AnyHook GraphQL | 0.1.7 | 0 | 1 |  |
 | @activepieces/piece-anyhook-websocket | AnyHook Websocket | 0.1.7 | 0 | 1 |  |
 | @activepieces/piece-apache-kafka | Apache Kafka | 0.1.1 | 2 | 2 |  |
-| @activepieces/piece-apify | Apify | 0.4.2 | 6 | 2 |  |
+| @activepieces/piece-apify | Apify | 0.4.3 | 6 | 2 |  |
 | @activepieces/piece-apitable | AITable | 0.5.4 | 4 | 1 |  |
 | @activepieces/piece-apitemplate-io | APITemplate.io | 0.3.3 | 8 | 0 |  |
 | @activepieces/piece-apollo | Apollo | 0.2.2 | 7 | 0 |  |
@@ -305,7 +305,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-google-ads | Google Ads | 0.0.3 | 8 | 1 |  |
 | @activepieces/piece-google-bigquery | Google BigQuery | 0.1.3 | 10 | 4 |  |
 | @activepieces/piece-google-calendar | Google Calendar | 0.14.0 | 9 | 7 |  |
-| @activepieces/piece-google-cloud-storage | Google Cloud Storage | 0.1.8 | 12 | 2 |  |
+| @activepieces/piece-google-cloud-storage | Google Cloud Storage | 0.2.0 | 12 | 2 |  |
 | @activepieces/piece-google-contacts | Google Contacts | 0.6.1 | 4 | 1 |  |
 | @activepieces/piece-google-docs | Google Docs | 0.7.1 | 6 | 1 |  |
 | @activepieces/piece-google-document-ai | Google Document AI | 0.0.2 | 2 | 0 |  |
