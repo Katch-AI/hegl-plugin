@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.57 — 2026-11-19
+
+- Refresh pieces-catalog.md
+
 ## 0.1.56 — 2026-11-18
 
 - Tell agents when a connection needs the customer's own OAuth app
