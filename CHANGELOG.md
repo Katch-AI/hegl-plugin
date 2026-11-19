@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.59 — 2026-11-19
+
+- State the goal of a new version in the checklist: the best that can be built
+
 ## 0.1.58 — 2026-11-19
 
 - Require an owned measure, traced misses and an exhausted run in the new-version checklist
