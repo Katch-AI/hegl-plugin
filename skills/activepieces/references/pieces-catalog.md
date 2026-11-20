@@ -462,14 +462,14 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-microsoft-excel-365 | Microsoft Excel 365 | 0.8.5 | 33 | 4 |  |
 | @activepieces/piece-microsoft-onedrive | Microsoft OneDrive | 0.6.2 | 6 | 1 |  |
 | @activepieces/piece-microsoft-onenote | Microsoft OneNote | 0.5.1 | 7 | 1 |  |
-| @activepieces/piece-microsoft-outlook | Microsoft Outlook | 0.7.7 | 12 | 3 |  |
+| @activepieces/piece-microsoft-outlook | Microsoft Outlook | 0.7.8 | 12 | 3 |  |
 | @activepieces/piece-microsoft-outlook-calendar | Microsoft Outlook Calendar | 0.4.1 | 4 | 0 |  |
 | @activepieces/piece-microsoft-power-bi | Microsoft Power BI | 0.4.4 | 9 | 0 |  |
 | @activepieces/piece-microsoft-sharepoint | Microsoft SharePoint | 0.5.2 | 16 | 8 |  |
 | @activepieces/piece-microsoft-sql-server | Microsoft SQL Server | 0.2.0 | 7 | 1 |  |
 | @activepieces/piece-microsoft-teams | Microsoft Teams | 0.8.2 | 16 | 4 |  |
 | @activepieces/piece-microsoft-teams-bot | Microsoft Teams Bot | 0.1.1 | 1 | 0 |  |
-| @activepieces/piece-microsoft-todo | Microsoft To Do | 0.5.3 | 13 | 4 |  |
+| @activepieces/piece-microsoft-todo | Microsoft To Do | 0.5.4 | 13 | 4 |  |
 | @activepieces/piece-millionverifier | MillionVerifier | 0.2.0 | 2 | 0 |  |
 | @activepieces/piece-mind-studio | MindStudio | 0.1.7 | 1 | 0 |  |
 | @activepieces/piece-mindee | Mindee | 0.4.2 | 15 | 0 |  |
