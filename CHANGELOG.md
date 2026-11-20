@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.60 — 2026-11-20
+
+- Refresh pieces-catalog.md
+
 ## 0.1.59 — 2026-11-19
 
 - State the goal of a new version in the checklist: the best that can be built
