@@ -218,7 +218,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-digital-ocean | DigitalOcean | 0.1.2 | 11 | 0 |  |
 | @activepieces/piece-digital-pilot | DigitalPilot | 0.1.7 | 2 | 2 |  |
 | @activepieces/piece-dimo | DIMO | 0.3.7 | 38 | 9 |  |
-| @activepieces/piece-discord | Discord | 0.8.5 | 16 | 2 |  |
+| @activepieces/piece-discord | Discord | 0.9.0 | 16 | 2 |  |
 | @activepieces/piece-discourse | Discourse | 0.3.4 | 6 | 5 |  |
 | @activepieces/piece-dittofeed | Dittofeed | 0.1.6 | 3 | 0 |  |
 | @activepieces/piece-docsbot | DocsBot | 0.2.3 | 6 | 0 |  |
@@ -358,7 +358,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-iloveapi | iLoveAPI | 0.1.1 | 35 | 11 |  |
 | @activepieces/piece-image-helper | Image Helper | 0.1.22 | 7 | 0 |  |
 | @activepieces/piece-image-router | ImageRouter | 0.2.0 | 3 | 0 |  |
-| @activepieces/piece-imap | IMAP | 0.6.5 | 4 | 1 |  |
+| @activepieces/piece-imap | IMAP | 0.6.6 | 4 | 1 |  |
 | @activepieces/piece-imeetify | iMeetify | 0.0.5 | 0 | 1 |  |
 | @activepieces/piece-influencers-club | Influencers.club | 0.1.1 | 4 | 0 |  |
 | @activepieces/piece-insightly | Insightly | 0.1.8 | 5 | 3 |  |
@@ -459,7 +459,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-microsoft-copilot | Microsoft 365 Copilot | 0.2.5 | 3 | 0 |  |
 | @activepieces/piece-microsoft-dynamics-365-business-central | Microsoft Dynamics 365 Business Central | 0.3.2 | 6 | 1 |  |
 | @activepieces/piece-microsoft-dynamics-crm | Microsoft Dynamics CRM | 0.5.0 | 26 | 5 |  |
-| @activepieces/piece-microsoft-excel-365 | Microsoft Excel 365 | 0.8.5 | 33 | 4 |  |
+| @activepieces/piece-microsoft-excel-365 | Microsoft Excel 365 | 0.9.0 | 33 | 4 |  |
 | @activepieces/piece-microsoft-onedrive | Microsoft OneDrive | 0.6.2 | 6 | 1 |  |
 | @activepieces/piece-microsoft-onenote | Microsoft OneNote | 0.5.1 | 7 | 1 |  |
 | @activepieces/piece-microsoft-outlook | Microsoft Outlook | 0.7.8 | 12 | 3 |  |
