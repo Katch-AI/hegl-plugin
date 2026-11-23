@@ -348,7 +348,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-hootsuite | Hootsuite | 0.1.1 | 4 | 2 |  |
 | @activepieces/piece-housecall-pro | Housecall Pro | 0.2.3 | 46 | 0 |  |
 | @activepieces/piece-http | HTTP | 0.13.3 | 2 | 0 |  |
-| @activepieces/piece-http-oauth2 | HTTP (OAuth2) | 0.4.2 | 1 | 0 |  |
+| @activepieces/piece-http-oauth2 | HTTP (OAuth2) | 0.4.3 | 1 | 0 |  |
 | @activepieces/piece-hubspot | HubSpot | 0.14.0 | 45 | 24 |  |
 | @activepieces/piece-hugging-face | Hugging Face | 0.3.2 | 8 | 0 |  |
 | @activepieces/piece-hume-ai | Hume AI | 0.1.10 | 6 | 1 |  |
@@ -656,7 +656,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-sitespeakai | SiteSpeakAI | 0.1.7 | 3 | 1 |  |
 | @activepieces/piece-skyprep | SkyPrep | 0.0.10 | 3 | 3 |  |
 | @activepieces/piece-skyvern | Skyvern | 0.2.2 | 6 | 0 |  |
-| @activepieces/piece-slack | Slack | 0.23.3 | 29 | 14 | [piece-slack](piece-slack.md) |
+| @activepieces/piece-slack | Slack | 0.23.4 | 29 | 14 | [piece-slack](piece-slack.md) |
 | @activepieces/piece-slashed | SlashedCloud | 0.1.1 | 2 | 0 |  |
 | @activepieces/piece-slidespeak | SlideSpeak | 0.2.2 | 5 | 1 |  |
 | @activepieces/piece-slite | Slite | 0.1.1 | 9 | 0 |  |
