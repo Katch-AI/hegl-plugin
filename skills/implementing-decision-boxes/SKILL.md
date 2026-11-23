@@ -55,7 +55,7 @@ Record ideas before trying them, so the user can see the plan:
 
 1. `create_experiment(decision_box_id, title, hypothesis, expected_gain?, basis?, cost_to_test?, run_cost_impact?, prerequisites?)` per idea; `reorder_experiments(decision_box_id, ordered_ids)` sets priority. `hypothesis` is the reasoning, `expected_gain` the predicted size. Cost fields are your estimates from the change, not measurements.
 2. `update_experiment(id, status: IN_PROGRESS)`, then `start_decision_box_iteration(improvement_run_id, decision_box_id, number, title, experiment_id)`. `number` is your own per-box counter.
-3. Implement, then score in widening steps. Probe on a dozen rows: half the rows the change should move (the last run's misses in the class it targets), half guard rows that are right today where the change could do harm (a fix for missing content is guarded by rows with nothing surplus). Drop the idea if the target rows do not move or the guard rows get worse. Widen to about half the set on the same test, then run the full set and record that run alone: `record_decision_box_iteration(iteration_id, narrative, metrics, eval_dataset_id, implementation_ref?, duration_ms?)`. Mention the probe in the narrative.
+3. Implement, then score in widening steps. Probe on a dozen rows: half the rows the change should move (the last run's misses in the class it targets), half guard rows that are right today where the change could do harm (a fix for missing content is guarded by rows with nothing surplus). Drop the idea if the target rows do not move or the guard rows get worse. Widen to about half the set on the same test, then the full set, scoring only the rows each step adds: the earlier rows keep their cached scores. Record the full-set result alone: `record_decision_box_iteration(iteration_id, narrative, metrics, eval_dataset_id, implementation_ref?, duration_ms?)`. Mention the probe in the narrative.
 4. `update_experiment(id, status: DONE | ABANDONED, result:)`. Never rewrite `hypothesis`; the prediction stays next to the outcome.
 5. `pin_best_iteration(decision_box_id, iteration_id)` when you have a winner. Re-pin freely when a later one wins. Check the box's `maxIterations` (`graphql` on `node(id:)`) before opening another.
 
@@ -70,7 +70,7 @@ Record ideas before trying them, so the user can see the plan:
   - to audit labels before recording the eval set (one `noul`: is this label consistent with the input; read the low-probability rows first) and to sort misses into model error versus label defect.
 - **Run the eval loop as a script in your harness, not one model call per row.** If your harness has subagents, one runs it and returns scores and misses, not rows.
 - Make the script checkpoint per row to a JSONL file and skip scored rows on restart, so a re-run after a timeout resumes instead of starting over.
-- **Judge a row only when its output changed.** Key each verdict by row and output text; a row whose output equals the base version's reuses the base verdict. A probe picks ideas and overstates them: only the full set, scored by the primary metric's own judge, decides a pin.
+- **Never score the same output twice.** Cache every score by row and output text, across steps, variants and restarts; a row whose output equals the base version's, or one already scored in a narrower step, reuses its score. A probe picks ideas and overstates them: only the full set, scored by the primary metric's own judge, decides a pin.
 
 ## Porting the winner into the flow
 
