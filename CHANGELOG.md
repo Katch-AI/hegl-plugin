@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.64 — 2026-11-23
+
+- Reuse cached scores when an experiment widens
+
 ## 0.1.63 — 2026-11-23
 
 - Score experiments in widening steps with guard rows
