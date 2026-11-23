@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.63 — 2026-11-23
+
+- Score experiments in widening steps with guard rows
+
 ## 0.1.62 — 2026-11-23
 
 - Refresh pieces-catalog.md
