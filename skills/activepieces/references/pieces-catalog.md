@@ -315,7 +315,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-google-my-business | Google My Business | 0.6.1 | 7 | 1 |  |
 | @activepieces/piece-google-search | Google Search | 0.0.9 | 1 | 0 |  |
 | @activepieces/piece-google-search-console | Google Search Console | 0.4.3 | 9 | 0 |  |
-| @activepieces/piece-google-sheets | Google Sheets | 0.20.2 | 27 | 4 |  |
+| @activepieces/piece-google-sheets | Google Sheets | 0.21.0 | 27 | 4 |  |
 | @activepieces/piece-google-slides | Google Slides | 0.4.4 | 19 | 0 |  |
 | @activepieces/piece-google-tasks | Google Tasks | 0.8.1 | 2 | 1 |  |
 | @activepieces/piece-google-translate | Google Translate | 0.0.3 | 4 | 0 |  |
@@ -505,7 +505,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-nuelink | Nuelink | 0.2.3 | 7 | 1 |  |
 | @activepieces/piece-octopush-sms | Octopush SMS | 0.2.1 | 3 | 0 |  |
 | @activepieces/piece-odoo | Odoo | 0.3.4 | 15 | 5 |  |
-| @activepieces/piece-okta | Okta | 0.2.1 | 10 | 1 |  |
+| @activepieces/piece-okta | Okta | 0.2.2 | 10 | 1 |  |
 | @activepieces/piece-omni-co | Omni | 0.2.1 | 9 | 0 |  |
 | @activepieces/piece-omnihr | Omni HR | 0.2.3 | 6 | 0 |  |
 | @activepieces/piece-omnisend | Omnisend | 0.1.1 | 6 | 0 |  |
@@ -616,7 +616,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-saastic | Saastic | 0.2.2 | 3 | 0 |  |
 | @activepieces/piece-sage-accounting | Sage Accounting | 0.0.1 | 30 | 8 |  |
 | @activepieces/piece-saleor | Saleor | 0.1.6 | 3 | 0 |  |
-| @activepieces/piece-salesforce | Salesforce | 0.10.2 | 27 | 9 |  |
+| @activepieces/piece-salesforce | Salesforce | 0.10.3 | 27 | 9 |  |
 | @activepieces/piece-salesloft | Salesloft | 0.1.1 | 8 | 0 |  |
 | @activepieces/piece-salla | Salla | 0.2.2 | 31 | 14 |  |
 | @activepieces/piece-salsa | Salsa | 0.1.2 | 3 | 0 |  |
@@ -624,7 +624,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-sardis | Sardis | 0.2.1 | 6 | 0 |  |
 | @activepieces/piece-savvycal | SavvyCal | 0.2.3 | 15 | 3 |  |
 | @activepieces/piece-scenario | Scenario | 0.2.2 | 1 | 0 |  |
-| @activepieces/piece-schedule | Schedule | 0.1.22 | 0 | 6 | [piece-schedule](piece-schedule.md) |
+| @activepieces/piece-schedule | Schedule | 0.1.23 | 0 | 6 | [piece-schedule](piece-schedule.md) |
 | @activepieces/piece-scrapegrapghai | ScrapeGraphAI | 0.3.1 | 4 | 0 |  |
 | @activepieces/piece-scrapeless | Scrapeless | 0.2.2 | 6 | 0 |  |
 | @activepieces/piece-seek-table | SeekTable | 0.0.9 | 2 | 2 |  |
@@ -781,7 +781,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-wordpress | WordPress | 0.9.2 | 5 | 1 |  |
 | @activepieces/piece-workable | Workable | 0.3.1 | 21 | 2 |  |
 | @activepieces/piece-workday | Workday | 0.3.1 | 25 | 14 |  |
-| @activepieces/piece-wrike | Wrike | 0.2.1 | 9 | 3 |  |
+| @activepieces/piece-wrike | Wrike | 0.2.2 | 9 | 3 |  |
 | @activepieces/piece-writesonic-bulk | Writesonic | 0.2.1 | 11 | 0 |  |
 | @activepieces/piece-wufoo | Wufoo | 0.2.3 | 5 | 2 |  |
 | @activepieces/piece-xero | Xero | 0.8.2 | 48 | 13 |  |
