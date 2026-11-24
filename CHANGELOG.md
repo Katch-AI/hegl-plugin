@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.65 — 2026-11-24
+
+- Refresh pieces-catalog.md
+
 ## 0.1.64 — 2026-11-23
 
 - Reuse cached scores when an experiment widens
