@@ -1,7 +1,7 @@
 # AP pieces catalog
 
 Source: <https://cloud.activepieces.com/api/v1/pieces>
-Pieces: 778 (plus 2 Hegl-internal pieces; see bottom of table)
+Pieces: 779 (plus 2 Hegl-internal pieces; see bottom of table)
 Detail files: 4 (see `piece-<name>.md` files in this directory for trigger/action/prop reference per piece)
 
 The `detail` column marks pieces with a per-piece file at `piece-<piece-name>.md` in this
@@ -615,6 +615,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-runway | Runway | 0.1.7 | 4 | 0 |  |
 | @activepieces/piece-saastic | Saastic | 0.2.2 | 3 | 0 |  |
 | @activepieces/piece-sage-accounting | Sage Accounting | 0.0.1 | 30 | 8 |  |
+| @activepieces/piece-sage-intacct | Sage Intacct | 0.0.1 | 14 | 5 |  |
 | @activepieces/piece-saleor | Saleor | 0.1.6 | 3 | 0 |  |
 | @activepieces/piece-salesforce | Salesforce | 0.10.3 | 27 | 9 |  |
 | @activepieces/piece-salesloft | Salesloft | 0.1.1 | 8 | 0 |  |
@@ -656,7 +657,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-sitespeakai | SiteSpeakAI | 0.1.7 | 3 | 1 |  |
 | @activepieces/piece-skyprep | SkyPrep | 0.0.10 | 3 | 3 |  |
 | @activepieces/piece-skyvern | Skyvern | 0.2.2 | 6 | 0 |  |
-| @activepieces/piece-slack | Slack | 0.23.4 | 29 | 14 | [piece-slack](piece-slack.md) |
+| @activepieces/piece-slack | Slack | 0.23.5 | 29 | 15 | [piece-slack](piece-slack.md) |
 | @activepieces/piece-slashed | SlashedCloud | 0.1.1 | 2 | 0 |  |
 | @activepieces/piece-slidespeak | SlideSpeak | 0.2.2 | 5 | 1 |  |
 | @activepieces/piece-slite | Slite | 0.1.1 | 9 | 0 |  |
