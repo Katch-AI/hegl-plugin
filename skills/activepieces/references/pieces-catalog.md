@@ -311,7 +311,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-google-document-ai | Google Document AI | 0.0.2 | 2 | 0 |  |
 | @activepieces/piece-google-drive | Google Drive | 0.14.1 | 17 | 3 |  |
 | @activepieces/piece-google-forms | Google Forms | 0.8.0 | 1 | 1 |  |
-| @activepieces/piece-google-gemini | Google Gemini | 0.5.3 | 11 | 0 |  |
+| @activepieces/piece-google-gemini | Google Gemini | 0.5.4 | 11 | 0 |  |
 | @activepieces/piece-google-my-business | Google My Business | 0.6.1 | 7 | 1 |  |
 | @activepieces/piece-google-search | Google Search | 0.0.9 | 1 | 0 |  |
 | @activepieces/piece-google-search-console | Google Search Console | 0.4.3 | 9 | 0 |  |
@@ -514,7 +514,7 @@ The bulk of the file is one big alphabetical table — grep for the piece name. 
 | @activepieces/piece-onfleet | Onfleet | 0.2.1 | 33 | 18 |  |
 | @activepieces/piece-open-phone | OpenPhone | 0.1.7 | 4 | 5 |  |
 | @activepieces/piece-open-router | OpenRouter | 0.4.1 | 9 | 0 |  |
-| @activepieces/piece-openai | OpenAI | 0.13.2 | 19 | 0 |  |
+| @activepieces/piece-openai | OpenAI | 0.13.3 | 19 | 0 |  |
 | @activepieces/piece-openmic-ai | OpenMic AI | 0.2.2 | 6 | 1 |  |
 | @activepieces/piece-opnform | Opnform | 0.3.1 | 1 | 1 |  |
 | @activepieces/piece-opportify | Opportify | 0.1.7 | 2 | 0 |  |
